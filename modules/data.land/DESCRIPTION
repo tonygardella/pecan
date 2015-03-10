@@ -12,13 +12,13 @@ Description: The Predictive Ecosystem Carbon Analyzer (PEcAn) is a scientific
     streamline the interaction between data and models, and to improve the
     efficacy of scientific investigation.
 Depends:
-    XML,
     PEcAn.DB,
     PEcAn.utils,
-    fields,
-    rgdal
 Suggests:
-    testthat
+    fields,
+    rgdal,
+    testthat,
+    XML
 License: FreeBSD + file LICENSE
 Copyright: Authors
 LazyLoad: yes

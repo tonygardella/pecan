@@ -15,6 +15,12 @@ list.of.packages <- c('abind', 'car', 'chron', 'coda', 'data.table', 'doSNOW', '
                       'XML', 'RNCEP', 'foreign', 'RCurl', 'udunits2', 'RPostgreSQL',
                       'rPython','minpack.lm','geonames')
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+
+libncdf <- paste0(gsub("netcdf: ", "", system('whereis netcdf', intern = TRUE)), "lib")
+
+if('ncdf' %in% new.packages) install.packages('ncdf', configure.args = paste0("'--with-netcdf-lib=", libncdf")
+
+}
 if(length(new.packages)) {
   print("installing : ")
   print(new.packages)
