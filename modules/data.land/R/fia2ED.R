@@ -51,10 +51,9 @@ table.expand <- function(x){
 ##' @return nothing
 ##' @export
 ##' @author Mike Dietze, Rob Kooper
-fia.to.psscss <- function(settings) {
+fia.to.psscss <- function(settings,gridres=0.075) {
 	## spatial info
-	POI	    <- TRUE	 ## point or region?
-	gridres	<- 0.1
+	POI	    <- TRUE	 ## point or region?	
 	lat     <- as.numeric(settings$run$site$lat)
 	lon     <- as.numeric(settings$run$site$lon)
 	
@@ -190,7 +189,8 @@ fia.to.psscss <- function(settings) {
 			if(length(sel) > 0){
 				y <- floor((i-1)/nx)
 				x <- i-1-y*nx
-				fname <- paste(path,"lat",(x+0.5)*gridres+latmin[r],"lon",(y+0.5)*gridres+lonmin[r],".pss",sep="") #filename      
+				#fname <- paste(path,"lat",(x+0.5)*gridres+latmin[r],"lon",(y+0.5)*gridres+lonmin[r],".pss",sep="") #filename 
+				fname <- paste(path,".radius ",gridres,".lat ",round(lat,digits=4)," lon ",round(lon,digits=4),".pss",sep="") #filename
 				water = rep(0,length(sel))
 				write.table(cbind(pss[sel,2+1:4],area[sel],water,matrix(soil,length(sel),7,byrow=TRUE)),file=fname,quote=FALSE,row.names=FALSE)
 			}
@@ -277,7 +277,8 @@ fia.to.psscss <- function(settings) {
 			if(length(sel) > 0){
 				y <- floor((i-1)/nx)
 				x <- i-1-y*nx
-				cssfile <- file(paste(path,"lat",(y+0.5)*gridres+latmin[r],"lon",(x+0.5)*gridres+lonmin[r],".css",sep=""), "w")
+				#cssfile <- file(paste(path,"lat",(y+0.5)*gridres+latmin[r],"lon",(x+0.5)*gridres+lonmin[r],".css",sep=""), "w")
+				cssfile <- file(paste(path,".radius ",gridres,".lat ",round(lat,digits=4)," lon ",round(lon,digits=4),".css",sep=""), "w")
 				writeLines("time patch cohort dbh hite pft n bdead balive lai",con=cssfile)
 				for(j in sel){
 					sel2 <- which(as.character(css$patch) == pss$patch[j])
