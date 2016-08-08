@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <Ameriflux>
+  <type>met</type>
   <scale>site</scale>
   <format>
     <id>38</id>
