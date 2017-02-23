@@ -32,7 +32,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="about-the-pecan-book.html">
+<link rel="prev" href="part-basic-user-guide.html">
 
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
@@ -72,12 +72,12 @@
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="about-the-pecan-book.html"><a href="about-the-pecan-book.html#how-this-book-is-organized"><i class="fa fa-check"></i><b>1.2</b> How this Book is organized</a></li>
 </ul></li>
-<li class="part"><span><b>I Basic User Guide</b></span></li>
-<li class="chapter" data-level="2" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>2</b> Getting Started</a><ul>
-<li class="chapter" data-level="2.1" data-path="getting-started.html"><a href="getting-started.html#how-pecan-works-in-a-nutshell"><i class="fa fa-check"></i><b>2.1</b> How PEcAn Works in a nutshell</a></li>
-<li class="chapter" data-level="2.2" data-path="getting-started.html"><a href="getting-started.html#quick-start"><i class="fa fa-check"></i><b>2.2</b> Quick Start</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="getting-started.html"><a href="getting-started.html#working-with-the-pecan-vm"><i class="fa fa-check"></i><b>2.2.1</b> Working with the PEcAn VM</a></li>
-<li class="chapter" data-level="2.2.2" data-path="getting-started.html"><a href="getting-started.html#using-amazonweb-services-aws"><i class="fa fa-check"></i><b>2.2.2</b> Using AmazonWeb Services (AWS)</a></li>
+<li class="chapter" data-level="2" data-path="part-basic-user-guide.html"><a href="part-basic-user-guide.html"><i class="fa fa-check"></i><b>2</b> (PART) Basic User Guide</a></li>
+<li class="chapter" data-level="3" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>3</b> Getting Started</a><ul>
+<li class="chapter" data-level="3.1" data-path="getting-started.html"><a href="getting-started.html#how-pecan-works-in-a-nutshell"><i class="fa fa-check"></i><b>3.1</b> How PEcAn Works in a nutshell</a></li>
+<li class="chapter" data-level="3.2" data-path="getting-started.html"><a href="getting-started.html#quick-start"><i class="fa fa-check"></i><b>3.2</b> Quick Start</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="getting-started.html"><a href="getting-started.html#working-with-the-pecan-vm"><i class="fa fa-check"></i><b>3.2.1</b> Working with the PEcAn VM</a></li>
+<li class="chapter" data-level="3.2.2" data-path="getting-started.html"><a href="getting-started.html#using-amazonweb-services-aws"><i class="fa fa-check"></i><b>3.2.2</b> Using AmazonWeb Services (AWS)</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -98,16 +98,16 @@
 
             <section class="normal" id="section-">
 <div id="getting-started" class="section level1">
-<h1><span class="header-section-number">2</span> Getting Started</h1>
+<h1><span class="header-section-number">3</span> Getting Started</h1>
 <div id="how-pecan-works-in-a-nutshell" class="section level2">
-<h2><span class="header-section-number">2.1</span> How PEcAn Works in a nutshell</h2>
+<h2><span class="header-section-number">3.1</span> How PEcAn Works in a nutshell</h2>
 <p>PEcAn provides an interface to a variety of ecosystem models and attempts to standardize and automate the processes of model parameterization, execution, and analysis. First, you choose an ecosystem model, then the time and location of interest (a site), the plant community (or crop) that you are interested in simulating, and a source of atmospheric data from the BETY database (LeBauer et al, 2010). These are set in a “settings” file, commonly named <code>pecan.xml</code> which can be edited manually if desired. From here, PEcAn will take over and set up and execute the selected model using your settings. The key is that PEcAn uses models as-is, and all of the translation steps are done within PEcAn so no modifications are required of the model itself. Once the model is finished it will allow you to create graphs with the results of the simulation as well as download the results. It is also possible to see all past experiments and simulations.</p>
 </div>
 <div id="quick-start" class="section level2">
-<h2><span class="header-section-number">2.2</span> Quick Start</h2>
+<h2><span class="header-section-number">3.2</span> Quick Start</h2>
 <p>There are two ways of using PEcAn, via the web interface and directly within R. Even for users familiar with R, using the web interface is a good place to start because it provides a high level overview of the PEcAn workflow.The quickest way to get started is to download the virtual machine or use an AWS instance.</p>
 <div id="working-with-the-pecan-vm" class="section level3">
-<h3><span class="header-section-number">2.2.1</span> Working with the PEcAn VM</h3>
+<h3><span class="header-section-number">3.2.1</span> Working with the PEcAn VM</h3>
 <ol style="list-style-type: decimal">
 <li><p>PEcAn consists of a set of scripts and code that is compiled within a Linux operating system and saved in a “virtual machine (VM)”. Virtual machines allow for running consistent set-ups without worrying about differences between operating systems, library dependencies, compiling the code, etc.</p></li>
 <li><p>To run the PEcAn VM you will need to install VirtualBox, the program that runs the virtual machine <a href="http://www.virtualbox.org" class="uri">http://www.virtualbox.org</a>. On Windows you may see a warning about Logo testing, it is okay to ignore the warning.</p></li>
@@ -121,7 +121,7 @@
 </ol>
 </div>
 <div id="using-amazonweb-services-aws" class="section level3">
-<h3><span class="header-section-number">2.2.2</span> Using AmazonWeb Services (AWS)</h3>
+<h3><span class="header-section-number">3.2.2</span> Using AmazonWeb Services (AWS)</h3>
 <p>Login to <a href="http://console.aws.amazon.com/">Amazon Web Services (AWS)</a> and select the EC2 Dashboard. If this is your first time using AWS you will need to set up an account before you are able to access the EC2 Dashboard. Important: You will need a credit card number and access to a phone to be able to verify AWS account registration. AWS is free for one year.</p>
 <ol style="list-style-type: decimal">
 <li>Choose AMI
@@ -193,7 +193,7 @@
           </div>
         </div>
       </div>
-<a href="about-the-pecan-book.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="part-basic-user-guide.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
