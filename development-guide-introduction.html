@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="getting-started.html">
-<link rel="next" href="user-appendix.html">
+<link rel="prev" href="workflow.html">
+
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -86,7 +86,7 @@
 <li class="chapter" data-level="3.0.2" data-path="advanced-web-interface-guide.html"><a href="advanced-web-interface-guide.html#how-do-i-perform-specific-analyses"><i class="fa fa-check"></i><b>3.0.2</b> How do I perform specific analyses?</a></li>
 </ul></li>
 <li class="part"><span><b>III Advanced User Guide - Cmd Line</b></span><ul>
-<li class="chapter" data-level="3.1" data-path="adv_users_guide/Advanced_Users_Guide.html"><a href="#advanced-command-line-guide"><i class="fa fa-check"></i><b>3.1</b> Advanced Command Line Guide</a></li>
+<li class="chapter" data-level="3.1" data-path="developers_guide/Development.html"><a href="#advanced-command-line-guide"><i class="fa fa-check"></i><b>3.1</b> Advanced Command Line Guide</a></li>
 </ul></li>
 <li class="part"><span><b>IV User Appendix</b></span></li>
 <li class="chapter" data-level="4" data-path="user-appendix.html"><a href="user-appendix.html"><i class="fa fa-check"></i><b>4</b> User Appendix</a></li>
@@ -116,54 +116,54 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="advanced-web-interface-guide" class="section level1">
-<h1><span class="header-section-number">3</span> Advanced Web Interface Guide</h1>
-<p>This section will provide information to those wanting to take advantage of PEcAn’s customizations from the web interface.</p>
-<div id="what-do-all-those-other-buttons-on-the-web-interface-do" class="section level3">
-<h3><span class="header-section-number">3.0.1</span> What do all those other buttons on the web interface do?</h3>
+<div id="development-guide-introduction" class="section level1">
+<h1><span class="header-section-number">6</span> Development Guide Introduction</h1>
+<div id="contributing-bug-reports-etc" class="section level3">
+<h3><span class="header-section-number">6.0.1</span> Contributing, Bug reports, Etc</h3>
 <ul>
-<li><a href="#using-browndog">Using Browndog</a></li>
-<li><a href="#pecan-xml-configuration">PEcAn XML</a></li>
-<li><a href="#advanced-setup">Advanced Setup</a></li>
+<li>[[Code of Conduct]]</li>
+<li>[[Reporting bugs or requesting features | Github issues]]</li>
+<li>[[Using GitHub and Git | Using Git]] to get a copy of the latest development code and/or submit changes to the main repository</li>
+<li>[[PEcAn Directory Structure | Directory Structure]]</li>
 </ul>
 </div>
-<div id="how-do-i-perform-specific-analyses" class="section level3">
-<h3><span class="header-section-number">3.0.2</span> How do I perform specific analyses?</h3>
-<p><strong>Under construction</strong></p>
+<div id="adding-or-extending-modules" class="section level3">
+<h3><span class="header-section-number">6.0.2</span> Adding or Extending Modules</h3>
 <ul>
-<li>Ensemble prediction</li>
-<li>Sensitivity &amp; Uncertainty analysis</li>
-<li><a href="pda.documentation.md">Parameter data assimilation</a></li>
-<li><a href="sda.documentation.md">State data assimilation</a></li>
-<li>Benchmarking</li>
+<li>[[Adding an Ecosystem Model]]</li>
+<li>[[Adding an Input Converter]]</li>
+<li>[[Implementing state data assimilation]]</li>
+</ul>
+</div>
+<div id="advanced-installation" class="section level3">
+<h3><span class="header-section-number">6.0.3</span> Advanced Installation</h3>
+<ul>
+<li>[[Installing PEcAn]] on a server</li>
+<li>Install [[PEcAn in the Cloud]] (e.g. Amazon Web Services [AWS])</li>
+<li>[[VM Creation]] documentation</li>
+<li>[[PEcAn Configuration and Settings Files | Configuration Files]]</li>
+</ul>
+</div>
+<div id="r-development" class="section level3">
+<h3><span class="header-section-number">6.0.4</span> R Development</h3>
+<p>The pages listed below provide project-specific guidelines and motivations. Hadley Wickham’s Books <a href="http://adv-r.had.co.nz/">Advanced R</a> and <a href="http://r-pkgs.had.co.nz/">Package Development</a> are canonical, free, online references.</p>
+<ul>
+<li>[[Coding Style]]</li>
+<li>[[Documentation|Roxygen2]]</li>
+<li>[[Testing]]</li>
+<li>[[Package Data]]</li>
+<li>[[Logging, Warnings, and Error Messages | Logging]]</li>
 </ul>
 
 </div>
 </div>
-
-
-
-<h2><span class="header-section-number">3.1</span> Advanced Command Line Guide</h2>
-<p>For those wanting to take full advantage of PEcAn and its tools, this section will provide you with the necessary information to do so. In this section we hope to answer the question: How can I use PEcAn to its fullest?</p>
-<ul>
-<li><a href="replicate_run_cmd.md">Replicating a basic run without touching the web interface</a></li>
-<li><a href="working_with_vm.md">Working with the VM</a></li>
-<li><a href="replicate_ens_sens_cmd.md">Replicating ensemble and sensitivity analysis</a></li>
-<li><a href="extra_tools.md">Extra Tools within PEcAn</a></li>
-</ul>
-
-</div>
-</div>
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="getting-started.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="user-appendix.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="workflow.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
