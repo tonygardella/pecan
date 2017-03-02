@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="extra-tools-in-pecan.html">
-<link rel="next" href="pecan-models.html">
+<link rel="prev" href="appendix.html">
+<link rel="next" href="centosredhat.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -145,7 +145,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6" data-path="specific-model-configurations.html"><a href="specific-model-configurations.html"><i class="fa fa-check"></i><b>6</b> Specific Model Configurations</a></li>
 <li class="chapter" data-level="7" data-path="advanced-setup.html"><a href="advanced-setup.html"><i class="fa fa-check"></i><b>7</b> Advanced Setup</a></li>
 <li class="part"><span><b>III Advanced User Guide - Cmd Line</b></span><ul>
-<li class="chapter" data-level="7.1" data-path="misc/user_appendix.html"><a href="#advanced-command-line-guide"><i class="fa fa-check"></i><b>7.1</b> Advanced Command Line Guide</a></li>
+<li class="chapter" data-level="7.1" data-path="installation/VM-Creation.html"><a href="#advanced-command-line-guide"><i class="fa fa-check"></i><b>7.1</b> Advanced Command Line Guide</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="run-pecan-from-command-line.html"><a href="run-pecan-from-command-line.html"><i class="fa fa-check"></i><b>8</b> Run PEcAn from COmmand Line</a></li>
 <li class="chapter" data-level="9" data-path="working-with-the-vm.html"><a href="working-with-the-vm.html"><i class="fa fa-check"></i><b>9</b> Working with the VM</a></li>
@@ -430,8 +430,80 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="user-appendix" class="section level1">
-<h1><span class="header-section-number">11</span> User Appendix</h1>
+<div id="creating-a-virtual-machine" class="section level1">
+<h1><span class="header-section-number">28</span> Creating a Virtual Machine</h1>
+<p>First create virtual machine</p>
+<pre><code># ----------------------------------------------------------------------
+# CREATE VM USING FOLLOWING:
+# - VM NAME  = PEcAn 32bit | PEcAn 64bit
+# - CPU      = 1
+# - MEMORY   = 2GB 
+# - DISK     = 100GB
+# - HOSTNAME = pecan32/64
+# - FULLNAME = PEcAn Demo User
+# - USERNAME = xxxxxxx
+# - PASSWORD = yyyyyyy
+# - PACKAGE  = openssh
+# ----------------------------------------------------------------------</code></pre>
+<p>To enable tunnels run the following on the host machine, I used xx=64 for the 64 bit version of the VM and xx=32 for the 32 bit version of the VM:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">VBoxManage</span> modifyvm <span class="st">&quot;&lt;virtual machine name&gt;&quot;</span> --natpf1 <span class="st">&quot;ssh,tcp,,xx22,,22&quot;</span>
+<span class="ex">VBoxManage</span> modifyvm <span class="st">&quot;&lt;virtual machine name&gt;&quot;</span> --natpf1 <span class="st">&quot;www,tcp,,xx80,,80&quot;</span></code></pre></div>
+<p>For the virtual machines created the following routes are created:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">VBoxManage</span> modifyvm <span class="st">&quot;PEcAn 32bit&quot;</span> --natpf1 <span class="st">&quot;ssh,tcp,,3222,,22&quot;</span>
+<span class="ex">VBoxManage</span> modifyvm <span class="st">&quot;PEcAn 32bit&quot;</span> --natpf1 <span class="st">&quot;www,tcp,,3280,,80&quot;</span>
+<span class="ex">VBoxManage</span> modifyvm <span class="st">&quot;PEcAn 64bit&quot;</span> --natpf1 <span class="st">&quot;ssh,tcp,,6422,,22&quot;</span>
+<span class="ex">VBoxManage</span> modifyvm <span class="st">&quot;PEcAn 64bit&quot;</span> --natpf1 <span class="st">&quot;www,tcp,,6480,,80&quot;</span></code></pre></div>
+<p>Make sure machine is up to date.</p>
+<p>UBUNTU</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">sudo</span> apt-get update
+<span class="fu">sudo</span> apt-get -y dist-upgrade
+<span class="fu">sudo</span> reboot</code></pre></div>
+<p>CENTOS/REDHAT</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">sudo</span> yum -y update
+<span class="fu">sudo</span> reboot</code></pre></div>
+<p>Install compiler and other packages needed and install the tools.</p>
+<p>UBUNTU</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">sudo</span> apt-get -y install build-essential linux-headers-server dkms</code></pre></div>
+<p>CENTOS/REDHAT</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">sudo</span> yum -y groupinstall <span class="st">&quot;Development Tools&quot;</span>
+<span class="fu">sudo</span> yum -y install wget</code></pre></div>
+<p>Install Virtual Box additions for better integration</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">sudo</span> mount /dev/cdrom /mnt
+<span class="fu">sudo</span> /mnt/VBoxLinuxAdditions.run
+<span class="fu">sudo</span> umount /mnt
+<span class="fu">sudo</span> usermod -a -G vboxsf carya</code></pre></div>
+<p><strong>Finishing up the machine</strong></p>
+<p><strong>Add a message to the login:</strong></p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">sudo</span> -s
+<span class="bu">export</span> <span class="va">PORT=$(</span> <span class="fu">hostname</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">&#39;s/pecan//&#39;</span> <span class="va">)</span>
+<span class="fu">cat</span> <span class="op">&gt;</span> /etc/motd <span class="op">&lt;&lt; EOF</span>
+PEcAn version 1.4.3
+
+For more information about:
+Pecan    - http://pecanproject.org
+BETY     - http://www.betydb.org
+
+For a list of all models currently navigate [here](../users_guide/basic_users_guide/models_table.md)
+
+
+You can access this system using a webbrowser at
+ http://&lt;hosting machine&gt;:<span class="va">${PORT}</span>80/
+or using SSH at
+ ssh -l carya -p <span class="va">${PORT}</span>22 &lt;hosting machine&gt;
+where &lt;hosting machine&gt; is the machine where the VM runs on.
+EOF
+exit</code></pre></div>
+<p><strong>Finishing up</strong></p>
+<p>Script to clean the VM and remove as much as possible history <a href="http://isda.ncsa.uiuc.edu/~kooper/EBI/cleanvm.sh">cleanvm.sh</a></p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">wget</span> -O ~/cleanvm.sh http://isda.ncsa.uiuc.edu/~kooper/EBI/cleanvm.sh
+<span class="fu">chmod</span> 755 ~/cleanvm.sh</code></pre></div>
+<p>Make sure machine has SSH keys <a href="http://isda.ncsa.illinois.edu/~kooper/EBI/rc.local">rc.local</a></p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">sudo</span> wget -O /etc/rc.local http://isda.ncsa.illinois.edu/~kooper/EBI/rc.local</code></pre></div>
+<p>Change the resolution of the console</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">sudo</span> sed -i -e <span class="st">&#39;s/#GRUB_GFXMODE=640x480/GRUB_GFXMODE=1024x768/&#39;</span> /etc/default/grub
+<span class="fu">sudo</span> update-grub</code></pre></div>
+<p>Once all done, stop the virtual machine</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="bu">history</span> -c <span class="kw">&amp;&amp;</span> <span class="va">${HOME}</span><span class="ex">/cleanvm.sh</span></code></pre></div>
 
 </div>
             </section>
@@ -439,8 +511,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="extra-tools-in-pecan.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="pecan-models.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="appendix.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="centosredhat.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
