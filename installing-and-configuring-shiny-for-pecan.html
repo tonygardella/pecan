@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="index.html">
-<link rel="next" href="contributor-covenant-code-of-conduct.html">
+<link rel="prev" href="porting-vm-to-aws.html">
+<link rel="next" href="faq.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -145,7 +145,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6" data-path="specific-model-configurations.html"><a href="specific-model-configurations.html"><i class="fa fa-check"></i><b>6</b> Specific Model Configurations</a></li>
 <li class="chapter" data-level="7" data-path="advanced-setup.html"><a href="advanced-setup.html"><i class="fa fa-check"></i><b>7</b> Advanced Setup</a></li>
 <li class="part"><span><b>III Advanced User Guide - Cmd Line</b></span><ul>
-<li class="chapter" data-level="7.1" data-path="book_intro/project_overview.html"><a href="#advanced-command-line-guide"><i class="fa fa-check"></i><b>7.1</b> Advanced Command Line Guide</a></li>
+<li class="chapter" data-level="7.1" data-path="installation/centos.shiny.html"><a href="#advanced-command-line-guide"><i class="fa fa-check"></i><b>7.1</b> Advanced Command Line Guide</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="run-pecan-from-command-line.html"><a href="run-pecan-from-command-line.html"><i class="fa fa-check"></i><b>8</b> Run PEcAn from COmmand Line</a></li>
 <li class="chapter" data-level="9" data-path="working-with-the-vm.html"><a href="working-with-the-vm.html"><i class="fa fa-check"></i><b>9</b> Working with the VM</a></li>
@@ -530,41 +530,101 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="project-overview" class="section level1 unnumbered">
-<h1>Project Overview</h1>
-<p>The Predictive Ecosystem Analyzer (PEcAn) is an integrated informatics toolbox for ecosystem modeling (Dietze et al. 2013, LeBauer et al. 2013). PEcAn consists of:</p>
-<ol style="list-style-type: decimal">
-<li><p>An application program interface (API) that encapsulates an ecosystem model, providing a common interface, inputs, and output.</p></li>
-<li><p>Core utilities for handling and tracking model runs and the flows of information and uncertainties into and out of models and analyses</p></li>
-<li><p>An accessible web-based user interface and visualization tools</p></li>
-<li><p>An extensible collection of modules to handle specific types of analyses (sensitivity, uncertainty, ensemble), model-data syntheses (benchmarking, parameter data assimilation, state data assimilation), and data processing (model inputs and data constraints)</p></li>
-</ol>
-<p><img src="figures/PEcAn_Components.jpeg" width="335" style="display: block; margin: auto;" /></p>
-<p>This project is motivated by the fact that many of the most pressing questions about global change are limited by our ability to synthesize existing data and strategically prioritize the collection of new data. This project seeks to improve this ability by developing a framework for integrating multiple data sources in a sensible manner.</p>
-<p>The workflow system allows ecosystem modeling to be more reproducible, automated, and transparent in terms of operations applied to data, and thus ultimately more comprehensible to both peers and the public. It reduces the redundancy of effort among modeling groups, facilitate collaboration, and make models more accessible the rest of the research community.</p>
-<p>PEcAn is not itself an ecosystem model, and it can be used to with a variety of different ecosystem models; integrating a model involves writing a wrapper to convert inputs and outputs to and from the standards used by PEcAn. Currently, PEcAn supports multiple models listed <a href="pecan-models.html#pecan-models">PEcAn Models</a>.</p>
-<p><strong>Acknowledgements</strong></p>
-<p>This material is based upon work supported by the National Science Foundation under Grant No. 1062547, 1062204, 1241894, 1261582, 1318164, 1346748, 1458021, 1638577, the National Aeronautics and Space Administration (NASA) Grant No. 13-TE13-0060, and the Energy Biosciences Institute. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation or NASA. PEcAn is a collaboration among research groups at the Department of Earth And Environment at Boston University, the Energy Biosciences Institute at the University of Illinois, the Image Spatial Data Analysis group at NCSA, the Department of Atmospheric &amp; Oceanic Sciences at the University Wisconsin-Madison, and the Terrestrial Ecosystem Science &amp; Technology (TEST) Group at Brookhaven National Lab.</p>
-<p>BETY-db is a product of the Energy Biosciences Institute at the University of Illinois at Urbana-Champaign. We gratefully acknowledge the great effort of other researchers who generously made their own data available for further study.</p>
-<p><strong>PEcAn Publications</strong></p>
+<div id="installing-and-configuring-shiny-for-pecan" class="section level1">
+<h1><span class="header-section-number">47</span> Installing and configuring Shiny for PEcAn</h1>
+<p>authors - Alexey Shiklomanov - Rob Kooper</p>
+<p><strong>NOTE: Instructions are only tested for CentOS 6.5.</strong> <strong>NOTE: Pretty much every step here requires root access.</strong></p>
+<div id="install-the-shiny-r-package-and-shiny-server" class="section level2">
+<h2><span class="header-section-number">47.1</span> Install the Shiny R package and Shiny server</h2>
+<p>The <code>shiny</code> R package can be installed directly in R via <code>install.packages(&quot;shiny&quot;)</code>.</p>
+<p>Download and install the Shiny server binary (<a href="https://www.rstudio.com/products/shiny/download-server">link</a>).</p>
+</div>
+<div id="centos" class="section level2">
+<h2><span class="header-section-number">47.2</span> CentOS</h2>
+<pre><code>wget https://download3.rstudio.org/centos5.9/x86_64/shiny-server-1.4.2.786-rh5-x86_64.rpm
+sudo yum install --nogpgcheck shiny-server-1.4.2.786-rh5-x86_64.rpm</code></pre>
+</div>
+<div id="ubuntu-1" class="section level2">
+<h2><span class="header-section-number">47.3</span> Ubuntu</h2>
+<p>NOTE: The additional <code>gdebi</code> dependence may be optional and <code>dpkg</code> may work just fine, but I haven’t tested this out.</p>
+<pre><code>$ sudo apt-get install gdebi-core
+$ wget https://download3.rstudio.org/ubuntu-12.04/x86_64/shiny-server-1.4.2.786-amd64.deb
+$ sudo gdebi shiny-server-1.4.2.786-amd64.deb</code></pre>
+</div>
+<div id="modify-the-shiny-configuration-file" class="section level2">
+<h2><span class="header-section-number">47.4</span> Modify the shiny configuration file</h2>
+<p>The Shiny configuration file is located in <code>/etc/shiny-server/shiny-server.conf</code>. Comment out the entire file and add the following, replacing <code>&lt;username&gt;</code> with your user name and <code>&lt;location&gt;</code> with the URL location you want for your app. This will allow you to run Shiny apps from your web browser at <a href="https://your.server.edu/shiny/your-location" class="uri">https://your.server.edu/shiny/your-location</a></p>
+<pre><code>run as shiny;
+server {
+    listen 3838;
+    location /&lt;location&gt;/ {
+        run as &lt;username&gt;;
+        site_dir /path/to/your/shiny/app;
+        log_dir /var/log/shiny-server;
+        directory_index on;
+    }
+}</code></pre>
+<p>For example, my configuration on the old test-pecan looks like this.</p>
+<pre><code>run as shiny;
+server {
+    listen 3838;
+    location /ashiklom/ {
+        run as ashiklom;
+        site_dir /home/ashiklom/fs-data/pecan/shiny/;
+        log_dir /var/log/shiny-server;
+        directory_index on;
+    }
+}</code></pre>
+<p>…and I can access my Shiny apps at, for instance, <a href="https://test-pecan.bu.edu/shiny/ashiklom/workflowPlots" class="uri">https://test-pecan.bu.edu/shiny/ashiklom/workflowPlots</a>.</p>
+<p>You can add as many <code>location &lt;loc&gt; { ... }</code> fields as you would like.</p>
+<pre><code>run as shiny;
+server {
+    listen 3838;
+    location /ashiklom/ {
+        ...
+    }
+    location /bety/ {
+        ...
+    }
+}</code></pre>
+</div>
+<div id="set-the-httpd-proxy" class="section level2">
+<h2><span class="header-section-number">47.5</span> Set the httpd proxy</h2>
+<p>Create a file <code>/etc/httpd/conf.d/shiny.conf</code> containing the following proxy settings:</p>
+<pre><code>ProxyPass           /shiny/ http://localhost:3838/
+ProxyPassReverse    /shiny/ http://localhost:3838/
+RedirectMatch permanent ^/shiny$ /shiny/</code></pre>
+</div>
+<div id="create-a-symbolic-link-to-the-shiny-server-service" class="section level2">
+<h2><span class="header-section-number">47.6</span> Create a symbolic link to the shiny server service</h2>
+<pre><code>sudo ln -s /opt/shiny-server/config/init.d/redhat/shiny-server /etc/init.d</code></pre>
+</div>
+<div id="start-the-shiny-server-and-restart-httpd" class="section level2">
+<h2><span class="header-section-number">47.7</span> Start the shiny server and restart httpd</h2>
+<pre><code>sudo service shiny-server stop
+sudo service shiny-server start
+sudo service httpd restart</code></pre>
+<p>You can check that Shiny is running with <code>service shiny-server status</code>.</p>
+</div>
+<div id="troubleshooting" class="section level2">
+<h2><span class="header-section-number">47.8</span> Troubleshooting</h2>
+<p>Refer to the log files for shiny (<code>/var/log/shiny-server.log</code>) and httpd (<code>/var/log/httpd/error-log</code>).</p>
+</div>
+<div id="further-reading" class="section level2">
+<h2><span class="header-section-number">47.9</span> Further reading</h2>
 <ul>
-<li>Shiklomanov. A, MC Dietze, T Viskari, PA Townsend, SP Serbin. 2016 “Quantifying the influences of spectral resolution on uncertainty in leaf trait estimates through a Bayesian approach to RTM inversion” Remote Sensing of the Environment 183: 226-238</li>
-<li>Viskari et al. 2015 Model-data assimilation of multiple phenological observations to constrain and forecast leaf area index. Ecological Applications 25(2): 546-558</li>
-<li>Dietze, M. C., S. P. Serbin, C. Davidson, A. R. Desai, X. Feng, R. Kelly, R. Kooper, D. LeBauer, J. Mantooth, K. McHenry, and D. Wang (2014) A quantitative assessment of a terrestrial biosphere model’s data needs across North American biomes. Journal of Geophysical Research-Biogeosciences <a href="http://dx.doi.org/10.1002/2013jg002392">doi:10.1002/2013jg002392</a></li>
-<li>LeBauer, D.S., D. Wang, K. Richter, C. Davidson, &amp; M.C. Dietze. (2013). Facilitating feedbacks between field measurements and ecosystem models. Ecological Monographs. <a href="http://dx.doi.org/10.1890/12-0137.1">doi:10.1890/12-0137.1</a></li>
-<li>Wang, D, D.S. LeBauer, and M.C. Dietze(2013) Predicting yields of short-rotation hybrid poplar (Populus spp.) for the contiguous US through model-data synthesis. Ecological Applications <a href="http://dx.doi.org/10.1890/12-0854.1">doi:10.1890/12-0854.1</a></li>
-<li>Dietze, M.C., D.S LeBauer, R. Kooper (2013) On improving the communication between models and data. Plant, Cell, &amp; Environment <a href="http://dx.doi.org/10.1111/pce.12043">doi:10.1111/pce.12043</a></li>
+<li><a href="http://docs.rstudio.com/shiny-server/">Shiny server configuration reference</a></li>
 </ul>
-<p><a href="https://scholar.google.com/scholar?start=0&amp;q=%22predictive+ecosystem+analyzer+PEcAn%22">Longer / auto-updated list of publications that mention PEcAn’s full name in Google Scholar</a></p>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="contributor-covenant-code-of-conduct.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="porting-vm-to-aws.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="faq.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

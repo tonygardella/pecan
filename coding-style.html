@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="index.html">
-<link rel="next" href="contributor-covenant-code-of-conduct.html">
+<link rel="prev" href="met-data.html">
+<link rel="next" href="roxygen2.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -145,7 +145,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6" data-path="specific-model-configurations.html"><a href="specific-model-configurations.html"><i class="fa fa-check"></i><b>6</b> Specific Model Configurations</a></li>
 <li class="chapter" data-level="7" data-path="advanced-setup.html"><a href="advanced-setup.html"><i class="fa fa-check"></i><b>7</b> Advanced Setup</a></li>
 <li class="part"><span><b>III Advanced User Guide - Cmd Line</b></span><ul>
-<li class="chapter" data-level="7.1" data-path="book_intro/project_overview.html"><a href="#advanced-command-line-guide"><i class="fa fa-check"></i><b>7.1</b> Advanced Command Line Guide</a></li>
+<li class="chapter" data-level="7.1" data-path="developers_guide/Coding_style.html"><a href="#advanced-command-line-guide"><i class="fa fa-check"></i><b>7.1</b> Advanced Command Line Guide</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="run-pecan-from-command-line.html"><a href="run-pecan-from-command-line.html"><i class="fa fa-check"></i><b>8</b> Run PEcAn from COmmand Line</a></li>
 <li class="chapter" data-level="9" data-path="working-with-the-vm.html"><a href="working-with-the-vm.html"><i class="fa fa-check"></i><b>9</b> Working with the VM</a></li>
@@ -530,41 +530,85 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="project-overview" class="section level1 unnumbered">
-<h1>Project Overview</h1>
-<p>The Predictive Ecosystem Analyzer (PEcAn) is an integrated informatics toolbox for ecosystem modeling (Dietze et al. 2013, LeBauer et al. 2013). PEcAn consists of:</p>
-<ol style="list-style-type: decimal">
-<li><p>An application program interface (API) that encapsulates an ecosystem model, providing a common interface, inputs, and output.</p></li>
-<li><p>Core utilities for handling and tracking model runs and the flows of information and uncertainties into and out of models and analyses</p></li>
-<li><p>An accessible web-based user interface and visualization tools</p></li>
-<li><p>An extensible collection of modules to handle specific types of analyses (sensitivity, uncertainty, ensemble), model-data syntheses (benchmarking, parameter data assimilation, state data assimilation), and data processing (model inputs and data constraints)</p></li>
-</ol>
-<p><img src="figures/PEcAn_Components.jpeg" width="335" style="display: block; margin: auto;" /></p>
-<p>This project is motivated by the fact that many of the most pressing questions about global change are limited by our ability to synthesize existing data and strategically prioritize the collection of new data. This project seeks to improve this ability by developing a framework for integrating multiple data sources in a sensible manner.</p>
-<p>The workflow system allows ecosystem modeling to be more reproducible, automated, and transparent in terms of operations applied to data, and thus ultimately more comprehensible to both peers and the public. It reduces the redundancy of effort among modeling groups, facilitate collaboration, and make models more accessible the rest of the research community.</p>
-<p>PEcAn is not itself an ecosystem model, and it can be used to with a variety of different ecosystem models; integrating a model involves writing a wrapper to convert inputs and outputs to and from the standards used by PEcAn. Currently, PEcAn supports multiple models listed <a href="pecan-models.html#pecan-models">PEcAn Models</a>.</p>
-<p><strong>Acknowledgements</strong></p>
-<p>This material is based upon work supported by the National Science Foundation under Grant No. 1062547, 1062204, 1241894, 1261582, 1318164, 1346748, 1458021, 1638577, the National Aeronautics and Space Administration (NASA) Grant No. 13-TE13-0060, and the Energy Biosciences Institute. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation or NASA. PEcAn is a collaboration among research groups at the Department of Earth And Environment at Boston University, the Energy Biosciences Institute at the University of Illinois, the Image Spatial Data Analysis group at NCSA, the Department of Atmospheric &amp; Oceanic Sciences at the University Wisconsin-Madison, and the Terrestrial Ecosystem Science &amp; Technology (TEST) Group at Brookhaven National Lab.</p>
-<p>BETY-db is a product of the Energy Biosciences Institute at the University of Illinois at Urbana-Champaign. We gratefully acknowledge the great effort of other researchers who generously made their own data available for further study.</p>
-<p><strong>PEcAn Publications</strong></p>
+<div id="coding-style" class="section level1">
+<h1><span class="header-section-number">36</span> Coding Style</h1>
+<p>Consistent coding style improves readability and reduces errors in shared code.</p>
+<p>R does not have an official style guide, but Hadley Wickham provides one that is well thought out and widely adopted. <a href="http://r-pkgs.had.co.nz/style.html">Advanced R: Coding Style</a>.</p>
+<p>Both the Wickham text and this page are derived from <a href="https://google.github.io/styleguide/Rguide.xml">Google’s R Style Guide</a>.</p>
+<div id="use-roxygen2-documentation" class="section level2">
+<h2><span class="header-section-number">36.1</span> Use Roxygen2 documentation</h2>
+<p>This is the standard method of documentation used in PEcAn development, it provides inline documentation similar to doxygen. Even trivial functions should be documented.</p>
+<p>See <a href="Roxygen2.md">Roxygen2</a> Wiki page</p>
+</div>
+<div id="write-your-name-at-the-top" class="section level2">
+<h2><span class="header-section-number">36.2</span> Write your name at the top</h2>
+<p>Any function that you create or make a meaningful contribution to should have your name listed after the author tag in the function documentation.</p>
+</div>
+<div id="use-testthat-testing-package" class="section level2">
+<h2><span class="header-section-number">36.3</span> Use testthat testing package</h2>
+<p>See <a href="Testing.md">Unit_Testing</a> wiki for instructions, and <a href="http://r-pkgs.had.co.nz/tests.html">Advanced R: Tests</a>.</p>
 <ul>
-<li>Shiklomanov. A, MC Dietze, T Viskari, PA Townsend, SP Serbin. 2016 “Quantifying the influences of spectral resolution on uncertainty in leaf trait estimates through a Bayesian approach to RTM inversion” Remote Sensing of the Environment 183: 226-238</li>
-<li>Viskari et al. 2015 Model-data assimilation of multiple phenological observations to constrain and forecast leaf area index. Ecological Applications 25(2): 546-558</li>
-<li>Dietze, M. C., S. P. Serbin, C. Davidson, A. R. Desai, X. Feng, R. Kelly, R. Kooper, D. LeBauer, J. Mantooth, K. McHenry, and D. Wang (2014) A quantitative assessment of a terrestrial biosphere model’s data needs across North American biomes. Journal of Geophysical Research-Biogeosciences <a href="http://dx.doi.org/10.1002/2013jg002392">doi:10.1002/2013jg002392</a></li>
-<li>LeBauer, D.S., D. Wang, K. Richter, C. Davidson, &amp; M.C. Dietze. (2013). Facilitating feedbacks between field measurements and ecosystem models. Ecological Monographs. <a href="http://dx.doi.org/10.1890/12-0137.1">doi:10.1890/12-0137.1</a></li>
-<li>Wang, D, D.S. LeBauer, and M.C. Dietze(2013) Predicting yields of short-rotation hybrid poplar (Populus spp.) for the contiguous US through model-data synthesis. Ecological Applications <a href="http://dx.doi.org/10.1890/12-0854.1">doi:10.1890/12-0854.1</a></li>
-<li>Dietze, M.C., D.S LeBauer, R. Kooper (2013) On improving the communication between models and data. Plant, Cell, &amp; Environment <a href="http://dx.doi.org/10.1111/pce.12043">doi:10.1111/pce.12043</a></li>
+<li>tests provide support for documentation - they define what a function is (and is not) expected to do</li>
+<li>all functions need tests to ensure basic functionality is maintained during development.</li>
+<li>all bugs should have a test that reproduces the bug, and the test should pass before bug is closed</li>
 </ul>
-<p><a href="https://scholar.google.com/scholar?start=0&amp;q=%22predictive+ecosystem+analyzer+PEcAn%22">Longer / auto-updated list of publications that mention PEcAn’s full name in Google Scholar</a></p>
+</div>
+<div id="dont-use-shortcuts" class="section level2">
+<h2><span class="header-section-number">36.4</span> Don’t use shortcuts</h2>
+<p>R provides many shortcuts that are useful when coding interactively, or for writing scripts. However, these can make code more difficult to read and can cause problems when written into packages.</p>
+<div id="function-names-verb.noun" class="section level3">
+<h3><span class="header-section-number">36.4.1</span> Function Names (<code>verb.noun</code>)</h3>
+<p>Following convention established in PEcAn 0.1, we use the all lowercase with periods to separate words. They should generally have a <code>verb.noun</code> format, such as <code>query.traits</code>, <code>get.samples</code>, etc.</p>
+</div>
+<div id="file-names" class="section level3">
+<h3><span class="header-section-number">36.4.2</span> File Names</h3>
+<p>File names should end in <code>.R</code>, <code>.Rdata</code>, <code>.Rscript</code> and should be meaningful, e.g. named after the primary functions that they contain. There should be a separate file for each major high-level function to aid in identifying the contents of files in a directory.</p>
+</div>
+<div id="use---as-an-assignment-operator" class="section level3">
+<h3><span class="header-section-number">36.4.3</span> Use “&lt;-” as an assignment operator</h3>
+<ul>
+<li>Because most R code uses &lt;- (except where = is required), we will use &lt;-</li>
+<li>“=” is used for function arguments</li>
+</ul>
+</div>
+<div id="use-spaces" class="section level3">
+<h3><span class="header-section-number">36.4.4</span> Use Spaces</h3>
+<ul>
+<li>around all binary operators (=, +, -, &lt;-, etc.).</li>
+<li>after but not before a comma</li>
+</ul>
+</div>
+<div id="use-curly-braces" class="section level3">
+<h3><span class="header-section-number">36.4.5</span> Use curly braces</h3>
+<p>The option to omit curly braces is another shortcut that makes code easier to write but harder to read and more prone to error.</p>
+</div>
+</div>
+<div id="package-dependencies" class="section level2">
+<h2><span class="header-section-number">36.5</span> Package Dependencies:</h2>
+<div id="library-vs-require" class="section level3">
+<h3><span class="header-section-number">36.5.1</span> library vs require</h3>
+<p>When another package is required by a function or script, it can be called in the following ways:</p>
+<p>(As a package dependency loads with the package, these should be the default approaches when writing functions in a package. There can be some exceptions, such as when a rarely-used or non-essential function requires an esoteric package.) 1. When using <code>library</code>, if dependency is not met, it will print an error and stop 2. When using <code>require</code>, it will print a warning and continue (but will throw an error when a function from the required package is called)</p>
+<p>Reference: Stack Overflow <a href="http://stackoverflow.com/questions/5595512/what-is-the-difference-between-require-and-library">“What is the difference between require and library?”</a></p>
+</div>
+<div id="depends-suggests-imports" class="section level3">
+<h3><span class="header-section-number">36.5.2</span> DEPENDS, SUGGESTS, IMPORTS</h3>
+<p>It is considered best practice to use DEPENDS and SUGGESTS in DESCRIPTION; SUGGESTS should be used for packages that are called infrequently, or only in examples and vignettes; suggested packages are called by require inside a function.</p>
+<p>Consider using IMPORTS instead of depends in the DESCRIPTION files. This will make loading packages faster by allowing it to have functions available without loading the hierarchy of dependencies, dependencies of dependencies, ad infinitum … From p. 6 of the “R extensions manual”:<a href="http://cran.r-project.org/doc/manuals/R-exts.html" class="uri">http://cran.r-project.org/doc/manuals/R-exts.html</a></p>
+<blockquote>
+<p>The <code>Suggests</code> field uses the same syntax as <code>Depends</code> and lists packages that are not necessarily needed. This includes packages used only in examples, tests or vignettes (see Section 1.4 [Writing package vignettes], page 26), and packages loaded in the body of functions. E.g., suppose an example from package foo uses a dataset from package bar. Then it is not necessary to have bar use foo unless one wants to execute all the examples/tests/vignettes: it is useful to have bar, but not necessary. Version requirements can be specified, and will be used by R CMD check.</p>
+</blockquote>
 
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="contributor-covenant-code-of-conduct.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="met-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="roxygen2.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="index.html">
-<link rel="next" href="contributor-covenant-code-of-conduct.html">
+<link rel="prev" href="preles.html">
+<link rel="next" href="model-output-variables.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -145,7 +145,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6" data-path="specific-model-configurations.html"><a href="specific-model-configurations.html"><i class="fa fa-check"></i><b>6</b> Specific Model Configurations</a></li>
 <li class="chapter" data-level="7" data-path="advanced-setup.html"><a href="advanced-setup.html"><i class="fa fa-check"></i><b>7</b> Advanced Setup</a></li>
 <li class="part"><span><b>III Advanced User Guide - Cmd Line</b></span><ul>
-<li class="chapter" data-level="7.1" data-path="book_intro/project_overview.html"><a href="#advanced-command-line-guide"><i class="fa fa-check"></i><b>7.1</b> Advanced Command Line Guide</a></li>
+<li class="chapter" data-level="7.1" data-path="models/sipnet.html"><a href="#advanced-command-line-guide"><i class="fa fa-check"></i><b>7.1</b> Advanced Command Line Guide</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="run-pecan-from-command-line.html"><a href="run-pecan-from-command-line.html"><i class="fa fa-check"></i><b>8</b> Run PEcAn from COmmand Line</a></li>
 <li class="chapter" data-level="9" data-path="working-with-the-vm.html"><a href="working-with-the-vm.html"><i class="fa fa-check"></i><b>9</b> Working with the VM</a></li>
@@ -530,41 +530,111 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="project-overview" class="section level1 unnumbered">
-<h1>Project Overview</h1>
-<p>The Predictive Ecosystem Analyzer (PEcAn) is an integrated informatics toolbox for ecosystem modeling (Dietze et al. 2013, LeBauer et al. 2013). PEcAn consists of:</p>
-<ol style="list-style-type: decimal">
-<li><p>An application program interface (API) that encapsulates an ecosystem model, providing a common interface, inputs, and output.</p></li>
-<li><p>Core utilities for handling and tracking model runs and the flows of information and uncertainties into and out of models and analyses</p></li>
-<li><p>An accessible web-based user interface and visualization tools</p></li>
-<li><p>An extensible collection of modules to handle specific types of analyses (sensitivity, uncertainty, ensemble), model-data syntheses (benchmarking, parameter data assimilation, state data assimilation), and data processing (model inputs and data constraints)</p></li>
-</ol>
-<p><img src="figures/PEcAn_Components.jpeg" width="335" style="display: block; margin: auto;" /></p>
-<p>This project is motivated by the fact that many of the most pressing questions about global change are limited by our ability to synthesize existing data and strategically prioritize the collection of new data. This project seeks to improve this ability by developing a framework for integrating multiple data sources in a sensible manner.</p>
-<p>The workflow system allows ecosystem modeling to be more reproducible, automated, and transparent in terms of operations applied to data, and thus ultimately more comprehensible to both peers and the public. It reduces the redundancy of effort among modeling groups, facilitate collaboration, and make models more accessible the rest of the research community.</p>
-<p>PEcAn is not itself an ecosystem model, and it can be used to with a variety of different ecosystem models; integrating a model involves writing a wrapper to convert inputs and outputs to and from the standards used by PEcAn. Currently, PEcAn supports multiple models listed <a href="pecan-models.html#pecan-models">PEcAn Models</a>.</p>
-<p><strong>Acknowledgements</strong></p>
-<p>This material is based upon work supported by the National Science Foundation under Grant No. 1062547, 1062204, 1241894, 1261582, 1318164, 1346748, 1458021, 1638577, the National Aeronautics and Space Administration (NASA) Grant No. 13-TE13-0060, and the Energy Biosciences Institute. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation or NASA. PEcAn is a collaboration among research groups at the Department of Earth And Environment at Boston University, the Energy Biosciences Institute at the University of Illinois, the Image Spatial Data Analysis group at NCSA, the Department of Atmospheric &amp; Oceanic Sciences at the University Wisconsin-Madison, and the Terrestrial Ecosystem Science &amp; Technology (TEST) Group at Brookhaven National Lab.</p>
-<p>BETY-db is a product of the Energy Biosciences Institute at the University of Illinois at Urbana-Champaign. We gratefully acknowledge the great effort of other researchers who generously made their own data available for further study.</p>
-<p><strong>PEcAn Publications</strong></p>
+<div id="sipnet" class="section level1">
+<h1><span class="header-section-number">24</span> Sipnet</h1>
+<table>
+<thead>
+<tr class="header">
+<th>Model Information</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Home Page</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Source Code</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>License</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Authors</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>PEcAn Integration</td>
+<td>Michael Dietze, Rob Kooper</td>
+</tr>
+</tbody>
+</table>
+<div id="introduction-9" class="section level2">
+<h2><span class="header-section-number">24.1</span> Introduction</h2>
+<p>Introduction about model</p>
+</div>
+<div id="pecan-configuration-file-additions-9" class="section level2">
+<h2><span class="header-section-number">24.2</span> PEcAn configuration file additions</h2>
+<p>Should list the model specific additions to the PEcAn file here</p>
+</div>
+<div id="model-specific-input-files-9" class="section level2">
+<h2><span class="header-section-number">24.3</span> Model specific input files</h2>
+<p>List of inputs required by model, such as met, etc.</p>
+</div>
+<div id="model-configuration-files-9" class="section level2">
+<h2><span class="header-section-number">24.4</span> Model configuration files</h2>
+<p>SIPNET is configured using 3 files which are placed in the run folder, as well as a symbolic link to the met file.</p>
 <ul>
-<li>Shiklomanov. A, MC Dietze, T Viskari, PA Townsend, SP Serbin. 2016 “Quantifying the influences of spectral resolution on uncertainty in leaf trait estimates through a Bayesian approach to RTM inversion” Remote Sensing of the Environment 183: 226-238</li>
-<li>Viskari et al. 2015 Model-data assimilation of multiple phenological observations to constrain and forecast leaf area index. Ecological Applications 25(2): 546-558</li>
-<li>Dietze, M. C., S. P. Serbin, C. Davidson, A. R. Desai, X. Feng, R. Kelly, R. Kooper, D. LeBauer, J. Mantooth, K. McHenry, and D. Wang (2014) A quantitative assessment of a terrestrial biosphere model’s data needs across North American biomes. Journal of Geophysical Research-Biogeosciences <a href="http://dx.doi.org/10.1002/2013jg002392">doi:10.1002/2013jg002392</a></li>
-<li>LeBauer, D.S., D. Wang, K. Richter, C. Davidson, &amp; M.C. Dietze. (2013). Facilitating feedbacks between field measurements and ecosystem models. Ecological Monographs. <a href="http://dx.doi.org/10.1890/12-0137.1">doi:10.1890/12-0137.1</a></li>
-<li>Wang, D, D.S. LeBauer, and M.C. Dietze(2013) Predicting yields of short-rotation hybrid poplar (Populus spp.) for the contiguous US through model-data synthesis. Ecological Applications <a href="http://dx.doi.org/10.1890/12-0854.1">doi:10.1890/12-0854.1</a></li>
-<li>Dietze, M.C., D.S LeBauer, R. Kooper (2013) On improving the communication between models and data. Plant, Cell, &amp; Environment <a href="http://dx.doi.org/10.1111/pce.12043">doi:10.1111/pce.12043</a></li>
+<li><strong>sipnet.in</strong> : template for this file is located at models/sipnet/inst/sipnet.in and is not modified.<br />
+</li>
+<li><strong>sipnet.param-spatial</strong> : template for this file is located at models/sipnet/inst/template.param-spatial and is not modified.<br />
+</li>
+<li><strong>sipnet.param</strong> : template for this file is in models/sipnet/inst/template.param or it is specified in the &lt;model&gt; section as &lt;default.param&gt;. The values in this template are replaced by those computed in the earlier stages of PEcAN.</li>
 </ul>
-<p><a href="https://scholar.google.com/scholar?start=0&amp;q=%22predictive+ecosystem+analyzer+PEcAn%22">Longer / auto-updated list of publications that mention PEcAn’s full name in Google Scholar</a></p>
+</div>
+<div id="installation-notes-9" class="section level2">
+<h2><span class="header-section-number">24.5</span> Installation notes</h2>
+<p>This section contains notes on how to compile the model. The notes for the VM might work on other machines or configurations as well.</p>
+<p>SIPNET version unk:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">if</span><span class="bu"> [</span> <span class="ot">!</span> <span class="ot">-e</span> <span class="va">${HOME}</span>/sipnet_unk<span class="bu"> ]</span>; <span class="kw">then</span>
+  <span class="bu">cd</span>
+  <span class="ex">curl</span> -o sipnet_unk.tar.gz http://isda.ncsa.illinois.edu/~kooper/PEcAn/models/sipnet_unk.tar.gz
+  <span class="fu">tar</span> zxf sipnet_unk.tar.gz
+  <span class="fu">rm</span> sipnet_unk.tar.gz
+<span class="kw">fi</span>
+<span class="bu">cd</span> <span class="va">${HOME}</span>/sipnet_unk/
+<span class="fu">make</span> clean
+<span class="fu">make</span>
+<span class="fu">sudo</span> cp sipnet /usr/local/bin/sipnet.runk
+<span class="fu">make</span> clean</code></pre></div>
+<p>SIPNET version 136:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">if</span><span class="bu"> [</span> <span class="ot">!</span> <span class="ot">-e</span> <span class="va">${HOME}</span>/sipnet_r136<span class="bu"> ]</span>; <span class="kw">then</span>
+  <span class="bu">cd</span>
+  <span class="ex">curl</span> -o sipnet_r136.tar.gz http://isda.ncsa.illinois.edu/~kooper/EBI/sipnet_r136.tar.gz
+  <span class="fu">tar</span> zxf sipnet_r136.tar.gz
+  <span class="fu">rm</span> sipnet_r136.tar.gz
+  <span class="fu">sed</span> -i <span class="st">&#39;s#$(LD) $(LIBLINKS) \(.*\)#$(LD) \1 $(LIBLINKS)#&#39;</span> <span class="va">${HOME}</span>/sipnet_r136/Makefile
+<span class="kw">fi</span>
+<span class="bu">cd</span> <span class="va">${HOME}</span>/sipnet_r136/
+<span class="fu">make</span> clean
+<span class="fu">make</span>
+<span class="fu">sudo</span> cp sipnet /usr/local/bin/sipnet.r136
+<span class="fu">make</span> clean</code></pre></div>
+<div id="vm-9" class="section level3">
+<h3><span class="header-section-number">24.5.1</span> VM</h3>
 
+<p>SIPNET is configured using 3 files which are placed in the run folder, as well as a symbolic link to the met file.</p>
+<ul>
+<li><strong>sipnet.in</strong> : template for this file is located at models/sipnet/inst/sipnet.in and is not modified.<br />
+</li>
+<li><strong>sipnet.param-spatial</strong> : template for this file is located at models/sipnet/inst/template.param-spatial and is not modified.<br />
+</li>
+<li><strong>sipnet.param</strong> : template for this file is in models/sipnet/inst/template.param or it is specified in the &lt;model&gt; section as &lt;default.param&gt;. The values in this template are replaced by those computed in the earlier stages of PEcAN.</li>
+</ul>
+
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="contributor-covenant-code-of-conduct.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="preles.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="model-output-variables.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

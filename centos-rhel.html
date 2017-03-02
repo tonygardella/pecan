@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="index.html">
-<link rel="next" href="contributor-covenant-code-of-conduct.html">
+<link rel="prev" href="centosredhat.html">
+<link rel="next" href="mac-osx.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -145,7 +145,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6" data-path="specific-model-configurations.html"><a href="specific-model-configurations.html"><i class="fa fa-check"></i><b>6</b> Specific Model Configurations</a></li>
 <li class="chapter" data-level="7" data-path="advanced-setup.html"><a href="advanced-setup.html"><i class="fa fa-check"></i><b>7</b> Advanced Setup</a></li>
 <li class="part"><span><b>III Advanced User Guide - Cmd Line</b></span><ul>
-<li class="chapter" data-level="7.1" data-path="book_intro/project_overview.html"><a href="#advanced-command-line-guide"><i class="fa fa-check"></i><b>7.1</b> Advanced Command Line Guide</a></li>
+<li class="chapter" data-level="7.1" data-path="installation/Installing-PEcAn-RedHat.html"><a href="#advanced-command-line-guide"><i class="fa fa-check"></i><b>7.1</b> Advanced Command Line Guide</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="run-pecan-from-command-line.html"><a href="run-pecan-from-command-line.html"><i class="fa fa-check"></i><b>8</b> Run PEcAn from COmmand Line</a></li>
 <li class="chapter" data-level="9" data-path="working-with-the-vm.html"><a href="working-with-the-vm.html"><i class="fa fa-check"></i><b>9</b> Working with the VM</a></li>
@@ -530,41 +530,85 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="project-overview" class="section level1 unnumbered">
-<h1>Project Overview</h1>
-<p>The Predictive Ecosystem Analyzer (PEcAn) is an integrated informatics toolbox for ecosystem modeling (Dietze et al. 2013, LeBauer et al. 2013). PEcAn consists of:</p>
-<ol style="list-style-type: decimal">
-<li><p>An application program interface (API) that encapsulates an ecosystem model, providing a common interface, inputs, and output.</p></li>
-<li><p>Core utilities for handling and tracking model runs and the flows of information and uncertainties into and out of models and analyses</p></li>
-<li><p>An accessible web-based user interface and visualization tools</p></li>
-<li><p>An extensible collection of modules to handle specific types of analyses (sensitivity, uncertainty, ensemble), model-data syntheses (benchmarking, parameter data assimilation, state data assimilation), and data processing (model inputs and data constraints)</p></li>
-</ol>
-<p><img src="figures/PEcAn_Components.jpeg" width="335" style="display: block; margin: auto;" /></p>
-<p>This project is motivated by the fact that many of the most pressing questions about global change are limited by our ability to synthesize existing data and strategically prioritize the collection of new data. This project seeks to improve this ability by developing a framework for integrating multiple data sources in a sensible manner.</p>
-<p>The workflow system allows ecosystem modeling to be more reproducible, automated, and transparent in terms of operations applied to data, and thus ultimately more comprehensible to both peers and the public. It reduces the redundancy of effort among modeling groups, facilitate collaboration, and make models more accessible the rest of the research community.</p>
-<p>PEcAn is not itself an ecosystem model, and it can be used to with a variety of different ecosystem models; integrating a model involves writing a wrapper to convert inputs and outputs to and from the standards used by PEcAn. Currently, PEcAn supports multiple models listed <a href="pecan-models.html#pecan-models">PEcAn Models</a>.</p>
-<p><strong>Acknowledgements</strong></p>
-<p>This material is based upon work supported by the National Science Foundation under Grant No. 1062547, 1062204, 1241894, 1261582, 1318164, 1346748, 1458021, 1638577, the National Aeronautics and Space Administration (NASA) Grant No. 13-TE13-0060, and the Energy Biosciences Institute. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation or NASA. PEcAn is a collaboration among research groups at the Department of Earth And Environment at Boston University, the Energy Biosciences Institute at the University of Illinois, the Image Spatial Data Analysis group at NCSA, the Department of Atmospheric &amp; Oceanic Sciences at the University Wisconsin-Madison, and the Terrestrial Ecosystem Science &amp; Technology (TEST) Group at Brookhaven National Lab.</p>
-<p>BETY-db is a product of the Energy Biosciences Institute at the University of Illinois at Urbana-Champaign. We gratefully acknowledge the great effort of other researchers who generously made their own data available for further study.</p>
-<p><strong>PEcAn Publications</strong></p>
-<ul>
-<li>Shiklomanov. A, MC Dietze, T Viskari, PA Townsend, SP Serbin. 2016 “Quantifying the influences of spectral resolution on uncertainty in leaf trait estimates through a Bayesian approach to RTM inversion” Remote Sensing of the Environment 183: 226-238</li>
-<li>Viskari et al. 2015 Model-data assimilation of multiple phenological observations to constrain and forecast leaf area index. Ecological Applications 25(2): 546-558</li>
-<li>Dietze, M. C., S. P. Serbin, C. Davidson, A. R. Desai, X. Feng, R. Kelly, R. Kooper, D. LeBauer, J. Mantooth, K. McHenry, and D. Wang (2014) A quantitative assessment of a terrestrial biosphere model’s data needs across North American biomes. Journal of Geophysical Research-Biogeosciences <a href="http://dx.doi.org/10.1002/2013jg002392">doi:10.1002/2013jg002392</a></li>
-<li>LeBauer, D.S., D. Wang, K. Richter, C. Davidson, &amp; M.C. Dietze. (2013). Facilitating feedbacks between field measurements and ecosystem models. Ecological Monographs. <a href="http://dx.doi.org/10.1890/12-0137.1">doi:10.1890/12-0137.1</a></li>
-<li>Wang, D, D.S. LeBauer, and M.C. Dietze(2013) Predicting yields of short-rotation hybrid poplar (Populus spp.) for the contiguous US through model-data synthesis. Ecological Applications <a href="http://dx.doi.org/10.1890/12-0854.1">doi:10.1890/12-0854.1</a></li>
-<li>Dietze, M.C., D.S LeBauer, R. Kooper (2013) On improving the communication between models and data. Plant, Cell, &amp; Environment <a href="http://dx.doi.org/10.1111/pce.12043">doi:10.1111/pce.12043</a></li>
-</ul>
-<p><a href="https://scholar.google.com/scholar?start=0&amp;q=%22predictive+ecosystem+analyzer+PEcAn%22">Longer / auto-updated list of publications that mention PEcAn’s full name in Google Scholar</a></p>
+<div id="centos-rhel" class="section level1">
+<h1><span class="header-section-number">43</span> CentOS / RHEL</h1>
+<p>These are specific notes for installing PEcAn on RedHat/CentOS and will be referenced from the main <a href="Installing-PEcAn">installing PEcAn</a> page. You will at least need to install the build environment and Postgres sections. If you want to access the database/PEcAn using a web browser you will need to install Apache. To access the database using the BETY interface, you will need to have Ruby installed.</p>
+<p>This document also contains information on how to install the Rstudio server edition as well as any other packages that can be helpful.</p>
+<div id="install-build-environment-1" class="section level2">
+<h2><span class="header-section-number">43.1</span> Install build environment</h2>
+<div id="install-and-configure-postgresql-udunits2-netcdf" class="section level4">
+<h4><span class="header-section-number">43.1.0.1</span> Install and configure PostgreSQL, udunits2, NetCDF</h4>
+<p><a href="http://www.postgresql.org/download/linux/redhat/">Reference: centoshelp.org</a></p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">yum</span> install -y epel-release 
+<span class="ex">yum</span> -y install http://yum.postgresql.org/9.4/redhat/rhel-7-x86_64/pgdg-centos94-9.4-1.noarch.rpm
+<span class="ex">yum</span> -y install git R postgresql94-server postgresql94-contrib postgis2_94 udunits2 netcdf
+<span class="ex">/usr/pgsql-9.4/bin/postgresql94-setup</span> initdb
+<span class="ex">systemctl</span> enable postgresql-9.4
+<span class="ex">systemctl</span> start postgresql-9.4</code></pre></div>
+</div>
+<div id="install-and-start-apache" class="section level4">
+<h4><span class="header-section-number">43.1.0.2</span> Install and start Apache</h4>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">yum</span> -y install httpd
+<span class="ex">systemctl</span> enable httpd
+<span class="ex">systemctl</span> start httpd</code></pre></div>
+</div>
+<div id="install-php" class="section level4">
+<h4><span class="header-section-number">43.1.0.3</span> Install PHP</h4>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">sudo</span> yum -y install php php-pgsql</code></pre></div>
+</div>
+<div id="install-ruby-netcdf-gem" class="section level4">
+<h4><span class="header-section-number">43.1.0.4</span> Install ruby-netcdf gem</h4>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="bu">cd</span> <span class="va">$RUBY_APPLICATION_HOME</span>
+<span class="bu">export</span> <span class="va">$NETCDF_URL=</span>http://www.gfd-dennou.org/arch/ruby/products/ruby-netcdf/release/ruby-netcdf-0.6.6.tar.gz
+<span class="bu">export</span> <span class="va">$NETCDF_DIR=</span>/usr/local/netcdf
+<span class="ex">gem</span> install narray
+<span class="bu">export</span> <span class="va">NARRAY_DIR=</span><span class="st">&quot;</span><span class="va">$(</span><span class="fu">ls</span> <span class="va">$GEM_HOME</span>/gems <span class="kw">|</span> <span class="fu">grep</span> <span class="st">&#39;narray-&#39;</span><span class="va">)</span><span class="st">&quot;</span>
+<span class="bu">export</span> <span class="va">NARRAY_PATH=</span><span class="st">&quot;</span><span class="va">$GEM_HOME</span><span class="st">/gems/</span><span class="va">$NARRAY_DIR</span><span class="st">&quot;</span>
+<span class="bu">cd</span> <span class="va">$MY_RUBY_HOME</span>/bin
+<span class="fu">wget</span> <span class="va">$NETCDF_URL</span> -O ruby-netcdf.tgz
+<span class="fu">tar</span> zxf ruby-netcdf.tgz <span class="kw">&amp;&amp;</span> <span class="bu">cd</span> ruby-netcdf-0.6.6/
+<span class="ex">ruby</span> -rubygems extconf.rb --with-narray-include=<span class="va">$NARRAY_PATH</span> --with-netcdf-dir=/usr/local/netcdf-4.3.0
+<span class="fu">sed</span> -i <span class="st">&#39;s|rb/$|rb|&#39;</span> Makefile
+<span class="fu">make</span>
+<span class="fu">make</span> install
+<span class="bu">cd</span> ../ <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> rm -rf ruby-netcdf*
 
+<span class="bu">cd</span> <span class="va">$RUBY_APPLICATION</span>
+<span class="ex">bundle</span> install --without development</code></pre></div>
+</div>
+</div>
+<div id="apache-configuration" class="section level2">
+<h2><span class="header-section-number">43.2</span> Apache Configuration</h2>
+</div>
+<div id="install-and-configure-rstudio-server" class="section level2">
+<h2><span class="header-section-number">43.3</span> Install and configure Rstudio-server</h2>
+<p>based on <a href="http://www.rstudio.com/ide/docs/server/getting_started">Rstudio Server documentation</a></p>
+<ul>
+<li><p>add <code>PATH=$PATH:/usr/sbin:/sbin</code> to <code>/etc/profile</code></p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">   <span class="fu">cat</span> <span class="st">&quot;PATH=</span><span class="va">$PATH</span><span class="st">:/usr/sbin:/sbin; export PATH&quot;</span> <span class="op">&gt;&gt;</span> /etc/profile</code></pre></div></li>
+<li><p>add <a href="https://gist.github.com/dlebauer/6921889">rstudio.conf</a> to /etc/httpd/conf.d/</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">   <span class="fu">wget</span> https://gist.github.com/dlebauer/6921889/raw/d1e0f945228e5519afa6223d6f49d6e0617262bd/rstudio.conf
+   <span class="fu">sudo</span> mv rstudio.conf /httpd/conf.d/</code></pre></div></li>
+<li><p>download and install server:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">   <span class="fu">wget</span> http://download2.rstudio.org/rstudio-server-0.97.551-i686.rpm
+   <span class="fu">sudo</span> yum install --nogpgcheck rstudio-server-0.97.551-i686.rpm</code></pre></div></li>
+<li>restart server <code>sudo httpd restart</code></li>
+<li><p>now you should be able to access <code>http://&lt;server&gt;/rstudio</code></p></li>
+</ul>
+</div>
+<div id="install-postgres-2" class="section level2">
+<h2><span class="header-section-number">43.4</span> Install Postgres</h2>
+<p>See <a href="https://github.com/PecanProject/bety/wiki/Installing-Postgresql">documentation under the BETYdb Wiki</a></p>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="contributor-covenant-code-of-conduct.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="centosredhat.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="mac-osx.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

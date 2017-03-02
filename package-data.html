@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="index.html">
-<link rel="next" href="contributor-covenant-code-of-conduct.html">
+<link rel="prev" href="testing.html">
+<link rel="next" href="logging.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -145,7 +145,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6" data-path="specific-model-configurations.html"><a href="specific-model-configurations.html"><i class="fa fa-check"></i><b>6</b> Specific Model Configurations</a></li>
 <li class="chapter" data-level="7" data-path="advanced-setup.html"><a href="advanced-setup.html"><i class="fa fa-check"></i><b>7</b> Advanced Setup</a></li>
 <li class="part"><span><b>III Advanced User Guide - Cmd Line</b></span><ul>
-<li class="chapter" data-level="7.1" data-path="book_intro/project_overview.html"><a href="#advanced-command-line-guide"><i class="fa fa-check"></i><b>7.1</b> Advanced Command Line Guide</a></li>
+<li class="chapter" data-level="7.1" data-path="developers_guide/Package-data.html"><a href="#advanced-command-line-guide"><i class="fa fa-check"></i><b>7.1</b> Advanced Command Line Guide</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="run-pecan-from-command-line.html"><a href="run-pecan-from-command-line.html"><i class="fa fa-check"></i><b>8</b> Run PEcAn from COmmand Line</a></li>
 <li class="chapter" data-level="9" data-path="working-with-the-vm.html"><a href="working-with-the-vm.html"><i class="fa fa-check"></i><b>9</b> Working with the VM</a></li>
@@ -530,41 +530,97 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="project-overview" class="section level1 unnumbered">
-<h1>Project Overview</h1>
-<p>The Predictive Ecosystem Analyzer (PEcAn) is an integrated informatics toolbox for ecosystem modeling (Dietze et al. 2013, LeBauer et al. 2013). PEcAn consists of:</p>
-<ol style="list-style-type: decimal">
-<li><p>An application program interface (API) that encapsulates an ecosystem model, providing a common interface, inputs, and output.</p></li>
-<li><p>Core utilities for handling and tracking model runs and the flows of information and uncertainties into and out of models and analyses</p></li>
-<li><p>An accessible web-based user interface and visualization tools</p></li>
-<li><p>An extensible collection of modules to handle specific types of analyses (sensitivity, uncertainty, ensemble), model-data syntheses (benchmarking, parameter data assimilation, state data assimilation), and data processing (model inputs and data constraints)</p></li>
-</ol>
-<p><img src="figures/PEcAn_Components.jpeg" width="335" style="display: block; margin: auto;" /></p>
-<p>This project is motivated by the fact that many of the most pressing questions about global change are limited by our ability to synthesize existing data and strategically prioritize the collection of new data. This project seeks to improve this ability by developing a framework for integrating multiple data sources in a sensible manner.</p>
-<p>The workflow system allows ecosystem modeling to be more reproducible, automated, and transparent in terms of operations applied to data, and thus ultimately more comprehensible to both peers and the public. It reduces the redundancy of effort among modeling groups, facilitate collaboration, and make models more accessible the rest of the research community.</p>
-<p>PEcAn is not itself an ecosystem model, and it can be used to with a variety of different ecosystem models; integrating a model involves writing a wrapper to convert inputs and outputs to and from the standards used by PEcAn. Currently, PEcAn supports multiple models listed <a href="pecan-models.html#pecan-models">PEcAn Models</a>.</p>
-<p><strong>Acknowledgements</strong></p>
-<p>This material is based upon work supported by the National Science Foundation under Grant No. 1062547, 1062204, 1241894, 1261582, 1318164, 1346748, 1458021, 1638577, the National Aeronautics and Space Administration (NASA) Grant No. 13-TE13-0060, and the Energy Biosciences Institute. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation or NASA. PEcAn is a collaboration among research groups at the Department of Earth And Environment at Boston University, the Energy Biosciences Institute at the University of Illinois, the Image Spatial Data Analysis group at NCSA, the Department of Atmospheric &amp; Oceanic Sciences at the University Wisconsin-Madison, and the Terrestrial Ecosystem Science &amp; Technology (TEST) Group at Brookhaven National Lab.</p>
-<p>BETY-db is a product of the Energy Biosciences Institute at the University of Illinois at Urbana-Champaign. We gratefully acknowledge the great effort of other researchers who generously made their own data available for further study.</p>
-<p><strong>PEcAn Publications</strong></p>
+<div id="package-data" class="section level1">
+<h1><span class="header-section-number">39</span> Package Data</h1>
+<div id="summary" class="section level2">
+<h2><span class="header-section-number">39.1</span> Summary:</h2>
+<p>Files with the following extensions will be read by R as data:</p>
 <ul>
-<li>Shiklomanov. A, MC Dietze, T Viskari, PA Townsend, SP Serbin. 2016 “Quantifying the influences of spectral resolution on uncertainty in leaf trait estimates through a Bayesian approach to RTM inversion” Remote Sensing of the Environment 183: 226-238</li>
-<li>Viskari et al. 2015 Model-data assimilation of multiple phenological observations to constrain and forecast leaf area index. Ecological Applications 25(2): 546-558</li>
-<li>Dietze, M. C., S. P. Serbin, C. Davidson, A. R. Desai, X. Feng, R. Kelly, R. Kooper, D. LeBauer, J. Mantooth, K. McHenry, and D. Wang (2014) A quantitative assessment of a terrestrial biosphere model’s data needs across North American biomes. Journal of Geophysical Research-Biogeosciences <a href="http://dx.doi.org/10.1002/2013jg002392">doi:10.1002/2013jg002392</a></li>
-<li>LeBauer, D.S., D. Wang, K. Richter, C. Davidson, &amp; M.C. Dietze. (2013). Facilitating feedbacks between field measurements and ecosystem models. Ecological Monographs. <a href="http://dx.doi.org/10.1890/12-0137.1">doi:10.1890/12-0137.1</a></li>
-<li>Wang, D, D.S. LeBauer, and M.C. Dietze(2013) Predicting yields of short-rotation hybrid poplar (Populus spp.) for the contiguous US through model-data synthesis. Ecological Applications <a href="http://dx.doi.org/10.1890/12-0854.1">doi:10.1890/12-0854.1</a></li>
-<li>Dietze, M.C., D.S LeBauer, R. Kooper (2013) On improving the communication between models and data. Plant, Cell, &amp; Environment <a href="http://dx.doi.org/10.1111/pce.12043">doi:10.1111/pce.12043</a></li>
+<li>plain R code in .R and .r files are sourced using <code>source()</code></li>
+<li>text tables in .tab, .txt, .csv files are read using <code>read()</code> ** objects in R image files: .RData, .rda are loaded using <code>load()</code></li>
+<li>capitalization matters</li>
+<li>all objects in foo.RData are loaded into environment</li>
+<li>pro: easiset way to store objects in R format</li>
+<li>con: format is application (R) specific (<a href="https://ebi-forecast.igb.illinois.edu/redmine/issues/318">discussed in #318</a>)</li>
 </ul>
-<p><a href="https://scholar.google.com/scholar?start=0&amp;q=%22predictive+ecosystem+analyzer+PEcAn%22">Longer / auto-updated list of publications that mention PEcAn’s full name in Google Scholar</a></p>
+<p>Details are in <code>?data</code>, which is mostly a copy of <a href="http://cran.r-project.org/doc/manuals/R-exts.html#Data-in-packages">Data section of Writing R Extensions</a>.</p>
+</div>
+<div id="accessing-data" class="section level2">
+<h2><span class="header-section-number">39.2</span> Accessing data</h2>
+<p>Data in the [data] directory will be accessed in the following ways,</p>
+<ul>
+<li>efficient way: (especially for large data sets) using the <code>data</code> function:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(foo) <span class="co"># accesses data with, e.g. load(foo.RData), read(foo.csv), or source(foo.R) </span></code></pre></div>
+<ul>
+<li><p>easy way: by adding the following line to the package DESCRIPTION: <em>note:</em> this should be used with caution or it can cause difficulty as discussed in redmine issue #1118</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">LazyData<span class="op">:</span><span class="st"> </span><span class="ot">TRUE</span></code></pre></div>
+<p>From the R help page:</p></li>
+</ul>
+<p>Currently, a limited number of data formats can be accessed using the <code>data</code> function by placing one of the following filetypes in a packages’ <code>data</code> directory: * files ending <code>.R</code> or <code>.r</code> are <code>source()</code>d in, with the R working directory changed temporarily to the directory containing the respective file. (<code>data</code> ensures that the <code>utils</code> package is attached, in case it had been run <em>via</em> <code>utils::data</code>.) * files ending <code>.RData</code> or <code>.rda</code> are <code>load()</code>ed. * files ending <code>.tab</code>, <code>.txt</code> or <code>.TXT</code> are read using <code>read.table(..., header = TRUE)</code>, and hence result in a data frame. * files ending <code>.csv</code> or <code>.CSV</code> are read using <code>read.table(..., header = TRUE, sep = ';')</code>, and also result in a data frame.</p>
+<p>If your data does not fall in those 4 categories, or you can use the <code>system.file</code> function to get access to the data:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.file</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;ed.trait.dictionary.csv&quot;</span>, <span class="dt">package=</span><span class="st">&quot;PEcAn.utils&quot;</span>)
+[<span class="dv">1</span>] <span class="st">&quot;/home/kooper/R/x86_64-pc-linux-gnu-library/2.15/PEcAn.utils/data/ed.trait.dictionary.csv&quot;</span></code></pre></div>
+<p>The arguments are folder, filename(s) and then package. It will return the fully qualified path name to a file in a package, in this case it points to the trait data. This is almost the same as the data function, however we can now use any function to read the file, such as read.csv instead of read.csv2 which seems to be the default of data. This also allows us to store arbitrary files in the data folder, such as the the bug file and load it when we need it.</p>
+<div id="examples-of-data-in-pecan-packages" class="section level4">
+<h4><span class="header-section-number">39.2.0.1</span> Examples of data in PEcAn packages</h4>
+<ul>
+<li><a href="https://ebi-forecast.igb.illinois.edu/redmine/issues/1060">Redmine issue #1060</a> added time constants in <code>source:utils/data/time.constants.RData</code></li>
+<li>outputs: [/modules/uncertainties/data/output.RData]</li>
+<li>parameter samples [/modules/uncertainties/data/samples.RData]</li>
+</ul>
+</div>
+</div>
+<div id="packages-used-in-development" class="section level2">
+<h2><span class="header-section-number">39.3</span> Packages used in development</h2>
+<div id="roxygen2-1" class="section level3">
+<h3><span class="header-section-number">39.3.1</span> roxygen2</h3>
+<p>Used to document code. See instructions under [[R#Coding_Style|Coding Style]]</p>
+</div>
+<div id="devtools" class="section level3">
+<h3><span class="header-section-number">39.3.2</span> devtools</h3>
+<p>Provides functions to simplify development</p>
+<p>Documentation: <a href="https://github.com/hadley/devtools">The R devtools packate</a></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load_all</span>(<span class="st">&quot;pkg&quot;</span>)
+<span class="kw">document</span>(<span class="st">&quot;pkg&quot;</span>)
+<span class="kw">test</span>(<span class="st">&quot;pkg&quot;</span>)
+<span class="kw">install</span>(<span class="st">&quot;pkg&quot;</span>)
+<span class="kw">build</span>(<span class="st">&quot;pkg&quot;</span>)</code></pre></div>
+<p>other tips for devtools (from the documentation):</p>
+<ul>
+<li><p>Adding the following to your <code>~/.Rprofile</code> will load devtools when running R in interactive mode:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># load devtools by default</span>
+<span class="cf">if</span> (<span class="kw">interactive</span>()) {
+  <span class="kw">suppressMessages</span>(<span class="kw">require</span>(devtools))
+}</code></pre></div></li>
+<li><p>Adding the following to your .Rpackages will allow devtools to recognize package by folder name, rather than directory path</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># in this example, devhome is the pecan trunk directory </span>
+devhome &lt;-<span class="st"> &quot;/home/dlebauer/R-dev/pecandev/&quot;</span>
+<span class="kw">list</span>(
+<span class="dt">default =</span> <span class="cf">function</span>(x) {
+  <span class="kw">file.path</span>(devhome, x, x)
+}, 
+  <span class="st">&quot;utils&quot;</span> =<span class="st"> </span><span class="kw">paste</span>(devhome, <span class="st">&quot;pecandev/utils&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)
+  <span class="st">&quot;common&quot;</span> =<span class="st"> </span><span class="kw">paste</span>(devhome, <span class="st">&quot;pecandev/common&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)
+  <span class="st">&quot;all&quot;</span> =<span class="st"> </span><span class="kw">paste</span>(devhome, <span class="st">&quot;pecandev/all&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)
+  <span class="st">&quot;ed&quot;</span> =<span class="st"> </span><span class="kw">paste</span>(devhome, <span class="st">&quot;pecandev/models/ed&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)
+  <span class="st">&quot;uncertainty&quot;</span> =<span class="st"> </span><span class="kw">paste</span>(devhome, <span class="st">&quot;modules/uncertainty&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)
+  <span class="st">&quot;meta.analysis&quot;</span> =<span class="st"> </span><span class="kw">paste</span>(devhome, <span class="st">&quot;modules/meta.analysis&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)
+  <span class="st">&quot;db&quot;</span> =<span class="st"> </span><span class="kw">paste</span>(devhome, <span class="st">&quot;db&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)
+)</code></pre></div></li>
+</ul>
+<p>Now, devtools can take <code>pkg</code> as an argument instead of <code>/path/to/pkg/</code>, e.g. so you can use <code>build(&quot;pkg&quot;)</code> instead of <code>build(&quot;/path/to/pkg/&quot;)</code></p>
 
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="contributor-covenant-code-of-conduct.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="testing.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="logging.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

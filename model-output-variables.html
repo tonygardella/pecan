@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="index.html">
-<link rel="next" href="contributor-covenant-code-of-conduct.html">
+<link rel="prev" href="sipnet.html">
+<link rel="next" href="available-meteorological-drivers.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -145,7 +145,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6" data-path="specific-model-configurations.html"><a href="specific-model-configurations.html"><i class="fa fa-check"></i><b>6</b> Specific Model Configurations</a></li>
 <li class="chapter" data-level="7" data-path="advanced-setup.html"><a href="advanced-setup.html"><i class="fa fa-check"></i><b>7</b> Advanced Setup</a></li>
 <li class="part"><span><b>III Advanced User Guide - Cmd Line</b></span><ul>
-<li class="chapter" data-level="7.1" data-path="book_intro/project_overview.html"><a href="#advanced-command-line-guide"><i class="fa fa-check"></i><b>7.1</b> Advanced Command Line Guide</a></li>
+<li class="chapter" data-level="7.1" data-path="models/variables.html"><a href="#advanced-command-line-guide"><i class="fa fa-check"></i><b>7.1</b> Advanced Command Line Guide</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="run-pecan-from-command-line.html"><a href="run-pecan-from-command-line.html"><i class="fa fa-check"></i><b>8</b> Run PEcAn from COmmand Line</a></li>
 <li class="chapter" data-level="9" data-path="working-with-the-vm.html"><a href="working-with-the-vm.html"><i class="fa fa-check"></i><b>9</b> Working with the VM</a></li>
@@ -530,32 +530,1254 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="project-overview" class="section level1 unnumbered">
-<h1>Project Overview</h1>
-<p>The Predictive Ecosystem Analyzer (PEcAn) is an integrated informatics toolbox for ecosystem modeling (Dietze et al. 2013, LeBauer et al. 2013). PEcAn consists of:</p>
-<ol style="list-style-type: decimal">
-<li><p>An application program interface (API) that encapsulates an ecosystem model, providing a common interface, inputs, and output.</p></li>
-<li><p>Core utilities for handling and tracking model runs and the flows of information and uncertainties into and out of models and analyses</p></li>
-<li><p>An accessible web-based user interface and visualization tools</p></li>
-<li><p>An extensible collection of modules to handle specific types of analyses (sensitivity, uncertainty, ensemble), model-data syntheses (benchmarking, parameter data assimilation, state data assimilation), and data processing (model inputs and data constraints)</p></li>
-</ol>
-<p><img src="figures/PEcAn_Components.jpeg" width="335" style="display: block; margin: auto;" /></p>
-<p>This project is motivated by the fact that many of the most pressing questions about global change are limited by our ability to synthesize existing data and strategically prioritize the collection of new data. This project seeks to improve this ability by developing a framework for integrating multiple data sources in a sensible manner.</p>
-<p>The workflow system allows ecosystem modeling to be more reproducible, automated, and transparent in terms of operations applied to data, and thus ultimately more comprehensible to both peers and the public. It reduces the redundancy of effort among modeling groups, facilitate collaboration, and make models more accessible the rest of the research community.</p>
-<p>PEcAn is not itself an ecosystem model, and it can be used to with a variety of different ecosystem models; integrating a model involves writing a wrapper to convert inputs and outputs to and from the standards used by PEcAn. Currently, PEcAn supports multiple models listed <a href="pecan-models.html#pecan-models">PEcAn Models</a>.</p>
-<p><strong>Acknowledgements</strong></p>
-<p>This material is based upon work supported by the National Science Foundation under Grant No. 1062547, 1062204, 1241894, 1261582, 1318164, 1346748, 1458021, 1638577, the National Aeronautics and Space Administration (NASA) Grant No. 13-TE13-0060, and the Energy Biosciences Institute. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation or NASA. PEcAn is a collaboration among research groups at the Department of Earth And Environment at Boston University, the Energy Biosciences Institute at the University of Illinois, the Image Spatial Data Analysis group at NCSA, the Department of Atmospheric &amp; Oceanic Sciences at the University Wisconsin-Madison, and the Terrestrial Ecosystem Science &amp; Technology (TEST) Group at Brookhaven National Lab.</p>
-<p>BETY-db is a product of the Energy Biosciences Institute at the University of Illinois at Urbana-Champaign. We gratefully acknowledge the great effort of other researchers who generously made their own data available for further study.</p>
-<p><strong>PEcAn Publications</strong></p>
-<ul>
-<li>Shiklomanov. A, MC Dietze, T Viskari, PA Townsend, SP Serbin. 2016 “Quantifying the influences of spectral resolution on uncertainty in leaf trait estimates through a Bayesian approach to RTM inversion” Remote Sensing of the Environment 183: 226-238</li>
-<li>Viskari et al. 2015 Model-data assimilation of multiple phenological observations to constrain and forecast leaf area index. Ecological Applications 25(2): 546-558</li>
-<li>Dietze, M. C., S. P. Serbin, C. Davidson, A. R. Desai, X. Feng, R. Kelly, R. Kooper, D. LeBauer, J. Mantooth, K. McHenry, and D. Wang (2014) A quantitative assessment of a terrestrial biosphere model’s data needs across North American biomes. Journal of Geophysical Research-Biogeosciences <a href="http://dx.doi.org/10.1002/2013jg002392">doi:10.1002/2013jg002392</a></li>
-<li>LeBauer, D.S., D. Wang, K. Richter, C. Davidson, &amp; M.C. Dietze. (2013). Facilitating feedbacks between field measurements and ecosystem models. Ecological Monographs. <a href="http://dx.doi.org/10.1890/12-0137.1">doi:10.1890/12-0137.1</a></li>
-<li>Wang, D, D.S. LeBauer, and M.C. Dietze(2013) Predicting yields of short-rotation hybrid poplar (Populus spp.) for the contiguous US through model-data synthesis. Ecological Applications <a href="http://dx.doi.org/10.1890/12-0854.1">doi:10.1890/12-0854.1</a></li>
-<li>Dietze, M.C., D.S LeBauer, R. Kooper (2013) On improving the communication between models and data. Plant, Cell, &amp; Environment <a href="http://dx.doi.org/10.1111/pce.12043">doi:10.1111/pce.12043</a></li>
-</ul>
-<p><a href="https://scholar.google.com/scholar?start=0&amp;q=%22predictive+ecosystem+analyzer+PEcAn%22">Longer / auto-updated list of publications that mention PEcAn’s full name in Google Scholar</a></p>
+<div id="model-output-variables" class="section level1">
+<h1><span class="header-section-number">25</span> Model Output Variables</h1>
+<p>Note: initial table derived from <a href="http://nacp.ornl.gov/MsTMIP_variables.shtml">MsTMIP</a></p>
+<table>
+<colgroup>
+<col width="1%" />
+<col width="2%" />
+<col width="2%" />
+<col width="2%" />
+<col width="4%" />
+<col width="9%" />
+<col width="11%" />
+<col width="2%" />
+<col width="5%" />
+<col width="2%" />
+<col width="2%" />
+<col width="3%" />
+<col width="1%" />
+<col width="2%" />
+<col width="2%" />
+<col width="2%" />
+<col width="1%" />
+<col width="31%" />
+<col width="8%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Num</th>
+<th>Group</th>
+<th>order</th>
+<th>Saveit</th>
+<th>Variable Name</th>
+<th>Units</th>
+<th>Long name</th>
+<th>Priority</th>
+<th>Category</th>
+<th>3-hourly</th>
+<th>Monthly</th>
+<th>var_type</th>
+<th>ndim</th>
+<th>dim1</th>
+<th>dim2</th>
+<th>dim3</th>
+<th>dim4</th>
+<th>Description</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>Yes</td>
+<td>lon</td>
+<td>degrees_east</td>
+<td>Longitude</td>
+<td>0</td>
+<td>Grid</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>real</td>
+<td>1</td>
+<td>lon</td>
+<td>na</td>
+<td>na</td>
+<td>na</td>
+<td>longitude at center of each grid cell</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>1</td>
+<td>2</td>
+<td>Yes</td>
+<td>lat</td>
+<td>degrees_north</td>
+<td>Latitude</td>
+<td>0</td>
+<td>Grid</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>real</td>
+<td>1</td>
+<td>lat</td>
+<td>na</td>
+<td>na</td>
+<td>na</td>
+<td>latitude at center of each grid cell</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>1</td>
+<td>3</td>
+<td>Yes</td>
+<td>lon_bnds</td>
+<td>degrees_east</td>
+<td>Longitude west-east bounds</td>
+<td>0</td>
+<td>Grid</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>real</td>
+<td>2</td>
+<td>nbnds</td>
+<td>lon</td>
+<td>na</td>
+<td>na</td>
+<td>(west boundary of grid cell, east boundary of grid cell)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>1</td>
+<td>4</td>
+<td>Yes</td>
+<td>lat_bnds</td>
+<td>degrees_north</td>
+<td>Latitude south-north bounds</td>
+<td>0</td>
+<td>Grid</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>real</td>
+<td>2</td>
+<td>nbnds</td>
+<td>lat</td>
+<td>na</td>
+<td>na</td>
+<td>(south boundary of grid cell, north boundary of grid cell)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>2</td>
+<td>1</td>
+<td>Yes</td>
+<td>time</td>
+<td>days since 1700-01-01 00:00:00 UTC</td>
+<td>Time middle averaging period</td>
+<td>0</td>
+<td>Time</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>double</td>
+<td>1</td>
+<td>time</td>
+<td>na</td>
+<td>na</td>
+<td>na</td>
+<td>julian days days since 1700-01-01 00:00:00 UTC for middle of time averaging period Proleptic_Gregorianc calendar</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>2</td>
+<td>2</td>
+<td>Yes</td>
+<td>time_bnds</td>
+<td>days since 1700-01-01 00:00:00 UTC</td>
+<td>Time beginning-end bounds</td>
+<td>0</td>
+<td>Time</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>double</td>
+<td>2</td>
+<td>nbnds</td>
+<td>time</td>
+<td>na</td>
+<td>na</td>
+<td>(julian days days since 1700-01-01 beginning time ave period, julian days days since 1700-01-01 end time ave period)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>2</td>
+<td>3</td>
+<td>Yes</td>
+<td>dec_date</td>
+<td>yr</td>
+<td>Decimal date middle averaging period</td>
+<td>0</td>
+<td>Time</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>double</td>
+<td>1</td>
+<td>time</td>
+<td>na</td>
+<td>na</td>
+<td>na</td>
+<td>decimal date in fractional years for middle of time averaging period</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>2</td>
+<td>4</td>
+<td>Yes</td>
+<td>dec_date_bnds</td>
+<td>yr</td>
+<td>Decimal date beginning-end bounds</td>
+<td>0</td>
+<td>Time</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>double</td>
+<td>2</td>
+<td>nbnds</td>
+<td>time</td>
+<td>na</td>
+<td>na</td>
+<td>(decimal date beginningĘĘtime ave period, decimal date end time ave period)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>2</td>
+<td>5</td>
+<td>Yes</td>
+<td>cal_date_mid</td>
+<td>yr, mon, day, hr, min, sec</td>
+<td>Calender date middle averaging period</td>
+<td>0</td>
+<td>Time</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>integer</td>
+<td>2</td>
+<td>ncal</td>
+<td>time</td>
+<td>na</td>
+<td>na</td>
+<td>calender date middle of time ave period: year, month, day, hour, minute, second for UTC time zone</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>2</td>
+<td>6</td>
+<td>Yes</td>
+<td>cal_date_beg</td>
+<td>yr, mon, day, hr, min, sec</td>
+<td>Calender date beginning averaging period</td>
+<td>0</td>
+<td>Time</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>integer</td>
+<td>2</td>
+<td>ncal</td>
+<td>time</td>
+<td>na</td>
+<td>na</td>
+<td>calender date beginning of time ave period: year, month, day, hour, minute, second for UTC time zone</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>2</td>
+<td>7</td>
+<td>Yes</td>
+<td>cal_date_end</td>
+<td>yr, mon, day, hr, min, sec</td>
+<td>Calender date end averaging period</td>
+<td>0</td>
+<td>Time</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>integer</td>
+<td>2</td>
+<td>ncal</td>
+<td>time</td>
+<td>na</td>
+<td>na</td>
+<td>calender date end of time ave period: year, month, day, hour, minute, second for UTC time zone</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>3</td>
+<td>1</td>
+<td>Yes</td>
+<td>GPP</td>
+<td>kg C m-2 s-1</td>
+<td>Gross Primary Productivity</td>
+<td>1</td>
+<td>Carbon Fluxes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>real</td>
+<td>3</td>
+<td>lon</td>
+<td>lat</td>
+<td>time</td>
+<td>na</td>
+<td>Rate of photosynthesis (always positive)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>13</td>
+<td>3</td>
+<td>2</td>
+<td>Yes</td>
+<td>NPP</td>
+<td>kg C m-2 s-1</td>
+<td>Net Primary Productivity</td>
+<td>1</td>
+<td>Carbon Fluxes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>real</td>
+<td>3</td>
+<td>lon</td>
+<td>lat</td>
+<td>time</td>
+<td>na</td>
+<td>Net Primary Productivity (NPP=GPP-AutoResp, positive into plants)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>14</td>
+<td>3</td>
+<td>3</td>
+<td>Yes</td>
+<td>TotalResp</td>
+<td>kg C m-2 s-1</td>
+<td>Total Respiration</td>
+<td>1</td>
+<td>Carbon Fluxes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>real</td>
+<td>3</td>
+<td>lon</td>
+<td>lat</td>
+<td>time</td>
+<td>na</td>
+<td>Total respiration (TotalResp=AutoResp+heteroResp, always positive)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>15</td>
+<td>3</td>
+<td>4</td>
+<td>Yes</td>
+<td>AutoResp</td>
+<td>kg C m-2 s-1</td>
+<td>Autotrophic Respiration</td>
+<td>1</td>
+<td>Carbon Fluxes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>real</td>
+<td>3</td>
+<td>lon</td>
+<td>lat</td>
+<td>time</td>
+<td>na</td>
+<td>Autotrophic respiration rate (always positive)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>16</td>
+<td>3</td>
+<td>5</td>
+<td>Yes</td>
+<td>HeteroResp</td>
+<td>kg C m-2 s-1</td>
+<td>Heterotrophic Respiration</td>
+<td>1</td>
+<td>Carbon Fluxes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>real</td>
+<td>3</td>
+<td>lon</td>
+<td>lat</td>
+<td>time</td>
+<td>na</td>
+<td>Heterotrophic respiration rate (always positive)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>17</td>
+<td>3</td>
+<td>6</td>
+<td>Yes</td>
+<td>DOC_flux</td>
+<td>kg C m-2 s-1</td>
+<td>Dissolved Organic Carbon flux</td>
+<td>1</td>
+<td>Carbon Fluxes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>real</td>
+<td>3</td>
+<td>lon</td>
+<td>lat</td>
+<td>time</td>
+<td>na</td>
+<td>Loss of organic carbon dissolved in ground water or rivers (positive out of grid cell)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>18</td>
+<td>3</td>
+<td>7</td>
+<td>Yes</td>
+<td>Fire_flux</td>
+<td>kg C m-2 s-1</td>
+<td>Fire emissions</td>
+<td>1</td>
+<td>Carbon Fluxes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>real</td>
+<td>3</td>
+<td>lon</td>
+<td>lat</td>
+<td>time</td>
+<td>na</td>
+<td>Flux of carbon due to fires (always positive)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>19</td>
+<td>3</td>
+<td>8</td>
+<td>Yes</td>
+<td>NEE</td>
+<td>kg C m-2 s-1</td>
+<td>Net Ecosystem Exchange</td>
+<td>1</td>
+<td>Carbon Fluxes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>real</td>
+<td>3</td>
+<td>lon</td>
+<td>lat</td>
+<td>time</td>
+<td>na</td>
+<td>Net Ecosystem Exchange (NEE=HeteroResp+AutoResp-GPP, positive into atmosphere)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>21</td>
+<td>4</td>
+<td>2</td>
+<td>Yes</td>
+<td>poolname</td>
+<td>(-)</td>
+<td>Name of each Carbon Pool</td>
+<td>1</td>
+<td>Carbon Pools</td>
+<td>No</td>
+<td>Yes</td>
+<td>character</td>
+<td>2</td>
+<td>nchar</td>
+<td>npool</td>
+<td>na</td>
+<td>na</td>
+<td>Name of each carbon pool (i.e., “wood</td>
+<td>or “”Coarse Woody Debris“”)“</td>
+</tr>
+<tr class="odd">
+<td>22</td>
+<td>4</td>
+<td>3</td>
+<td>Yes</td>
+<td>CarbPools</td>
+<td>kg C m-2</td>
+<td>Size of each carbon pool</td>
+<td>1</td>
+<td>Carbon Pools</td>
+<td>No</td>
+<td>Yes</td>
+<td>real</td>
+<td>4</td>
+<td>lon</td>
+<td>lat</td>
+<td>npool</td>
+<td>time</td>
+<td>Total size of each carbon pool vertically integrated over the entire soil column</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>23</td>
+<td>4</td>
+<td>4</td>
+<td>Yes</td>
+<td>AbvGrndWood</td>
+<td>kg C m-2</td>
+<td>Above ground woody biomass</td>
+<td>1</td>
+<td>Carbon Pools</td>
+<td>No</td>
+<td>Yes</td>
+<td>real</td>
+<td>3</td>
+<td>lon</td>
+<td>lat</td>
+<td>time</td>
+<td>na</td>
+<td>Total above ground wood biomass</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>24</td>
+<td>4</td>
+<td>5</td>
+<td>Yes</td>
+<td>TotLivBiom</td>
+<td>kg C m-2</td>
+<td>Total living biomass</td>
+<td>1</td>
+<td>Carbon Pools</td>
+<td>No</td>
+<td>Yes</td>
+<td>real</td>
+<td>3</td>
+<td>lon</td>
+<td>lat</td>
+<td>time</td>
+<td>na</td>
+<td>Total carbon content of the living biomass (leaves+roots+wood)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>25</td>
+<td>4</td>
+<td>6</td>
+<td>Yes</td>
+<td>TotSoilCarb</td>
+<td>kg C m-2</td>
+<td>Total Soil Carbon</td>
+<td>1</td>
+<td>Carbon Pools</td>
+<td>No</td>
+<td>Yes</td>
+<td>real</td>
+<td>3</td>
+<td>lon</td>
+<td>lat</td>
+<td>time</td>
+<td>na</td>
+<td>Total soil and litter carbon content vertically integrated over the enire soil column</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>26</td>
+<td>4</td>
+<td>7</td>
+<td>Yes</td>
+<td>LAI</td>
+<td>m2 m-2</td>
+<td>Leaf Area Index</td>
+<td>1</td>
+<td>Carbon Pools</td>
+<td>No</td>
+<td>Yes</td>
+<td>real</td>
+<td>3</td>
+<td>lon</td>
+<td>lat</td>
+<td>time</td>
+<td>na</td>
+<td>Area of leaves per area ground</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>27</td>
+<td>5</td>
+<td>1</td>
+<td>Yes</td>
+<td>Qh</td>
+<td>W m-2</td>
+<td>Sensible heat</td>
+<td>1</td>
+<td>Energy Fluxes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>real</td>
+<td>3</td>
+<td>lon</td>
+<td>lat</td>
+<td>time</td>
+<td>na</td>
+<td>Sensible heat flux into the boundary layer (positive into atmosphere)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>28</td>
+<td>5</td>
+<td>2</td>
+<td>Yes</td>
+<td>Qle</td>
+<td>W m-2</td>
+<td>Latent heat</td>
+<td>1</td>
+<td>Energy Fluxes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>real</td>
+<td>3</td>
+<td>lon</td>
+<td>lat</td>
+<td>time</td>
+<td>na</td>
+<td>Latent heat flux into the boundary layer (positive into atmosphere)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>29</td>
+<td>5</td>
+<td>3</td>
+<td>Yes</td>
+<td>Evap</td>
+<td>kg m-2 s-1</td>
+<td>Total Evaporation</td>
+<td>1</td>
+<td>Energy Fluxes</td>
+<td>No</td>
+<td>Yes</td>
+<td>real</td>
+<td>3</td>
+<td>lon</td>
+<td>lat</td>
+<td>time</td>
+<td>na</td>
+<td>Sum of all evaporation sources (positive into atmosphere)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>30</td>
+<td>5</td>
+<td>4</td>
+<td>Yes</td>
+<td>TVeg</td>
+<td>kg m-2 s-1</td>
+<td>Transpiration</td>
+<td>1</td>
+<td>Energy Fluxes</td>
+<td>No</td>
+<td>Yes</td>
+<td>real</td>
+<td>3</td>
+<td>lon</td>
+<td>lat</td>
+<td>time</td>
+<td>na</td>
+<td>Total Plant transpiration (always positive)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>31</td>
+<td>5</td>
+<td>5</td>
+<td>Yes</td>
+<td>LW_albedo</td>
+<td>(-)</td>
+<td>Longwave Albedo</td>
+<td>1</td>
+<td>Energy Fluxes</td>
+<td>No</td>
+<td>Yes</td>
+<td>real</td>
+<td>3</td>
+<td>lon</td>
+<td>lat</td>
+<td>time</td>
+<td>na</td>
+<td>Longwave Albedo</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>32</td>
+<td>5</td>
+<td>6</td>
+<td>Yes</td>
+<td>SW_albedo</td>
+<td>(-)</td>
+<td>Shortwave Albedo</td>
+<td>1</td>
+<td>Energy Fluxes</td>
+<td>No</td>
+<td>Yes</td>
+<td>real</td>
+<td>3</td>
+<td>lon</td>
+<td>lat</td>
+<td>time</td>
+<td>na</td>
+<td>Shortwave albedo</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>33</td>
+<td>5</td>
+<td>7</td>
+<td>Yes</td>
+<td>Lwnet</td>
+<td>W m-2</td>
+<td>Net Longwave Radiation</td>
+<td>1</td>
+<td>Energy Fluxes</td>
+<td>No</td>
+<td>Yes</td>
+<td>real</td>
+<td>3</td>
+<td>lon</td>
+<td>lat</td>
+<td>time</td>
+<td>na</td>
+<td>Incident longwave radiation minus simulated outgoing longwave radiation (positive into grnd)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>34</td>
+<td>5</td>
+<td>8</td>
+<td>Yes</td>
+<td>SWnet</td>
+<td>W m-2</td>
+<td>Net shortwave radiation</td>
+<td>1</td>
+<td>Energy Fluxes</td>
+<td>No</td>
+<td>Yes</td>
+<td>real</td>
+<td>3</td>
+<td>lon</td>
+<td>lat</td>
+<td>time</td>
+<td>na</td>
+<td>Incident shortwave radiation minus simulated outgoing shortwave radiation (positive into grnd)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>35</td>
+<td>5</td>
+<td>9</td>
+<td>Yes</td>
+<td>fPAR</td>
+<td>(-)</td>
+<td>Absorbed fraction incoming PAR</td>
+<td>1</td>
+<td>Energy Fluxes</td>
+<td>No</td>
+<td>Yes</td>
+<td>real</td>
+<td>3</td>
+<td>lon</td>
+<td>lat</td>
+<td>time</td>
+<td>na</td>
+<td>absorbed fraction incoming photosyntetically active radiation</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>37</td>
+<td>6</td>
+<td>2</td>
+<td>Yes</td>
+<td>z_top</td>
+<td>m</td>
+<td>Soil Layer Top Depth</td>
+<td>1</td>
+<td>Physical Variables</td>
+<td>No</td>
+<td>Yes</td>
+<td>real</td>
+<td>1</td>
+<td>nsoil</td>
+<td>na</td>
+<td>na</td>
+<td>na</td>
+<td>Depth from soil surface to top of soil layer</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>38</td>
+<td>6</td>
+<td>3</td>
+<td>Yes</td>
+<td>z_node</td>
+<td>m</td>
+<td>Soil Layer Node Depth</td>
+<td>1</td>
+<td>Physical Variables</td>
+<td>No</td>
+<td>Yes</td>
+<td>real</td>
+<td>1</td>
+<td>nsoil</td>
+<td>na</td>
+<td>na</td>
+<td>na</td>
+<td>Depth from soil surface to layer prognostic variables; typically center of soil layer</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>39</td>
+<td>6</td>
+<td>4</td>
+<td>Yes</td>
+<td>z_bottom</td>
+<td>m</td>
+<td>Soil Layer Bottom Depth</td>
+<td>1</td>
+<td>Physical Variables</td>
+<td>No</td>
+<td>Yes</td>
+<td>real</td>
+<td>1</td>
+<td>nsoil</td>
+<td>na</td>
+<td>na</td>
+<td>na</td>
+<td>Depth from soil surface to bottom of soil layer</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>40</td>
+<td>6</td>
+<td>5</td>
+<td>Yes</td>
+<td>SoilMoist</td>
+<td>kg m-2</td>
+<td>Average Layer Soil Moisture</td>
+<td>1</td>
+<td>Physical Variables</td>
+<td>No</td>
+<td>Yes</td>
+<td>real</td>
+<td>4</td>
+<td>lon</td>
+<td>lat</td>
+<td>nsoil</td>
+<td>time</td>
+<td>Soil water content in each soil layer, including liquid, vapor and ice</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>41</td>
+<td>6</td>
+<td>5</td>
+<td>Yes</td>
+<td>SoilMoistFrac</td>
+<td>(-)</td>
+<td>Average Layer Fraction of Saturation</td>
+<td>1</td>
+<td>Physical Variables</td>
+<td>No</td>
+<td>Yes</td>
+<td>real</td>
+<td>4</td>
+<td>lon</td>
+<td>lat</td>
+<td>nsoil</td>
+<td>time</td>
+<td>Fraction of saturation of soil water in each soil layer, including liquid and ice</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>42</td>
+<td>6</td>
+<td>6</td>
+<td>Yes</td>
+<td>SoilWet</td>
+<td>(-)</td>
+<td>Total Soil Wetness</td>
+<td>1</td>
+<td>Physical Variables</td>
+<td>No</td>
+<td>Yes</td>
+<td>real</td>
+<td>3</td>
+<td>lon</td>
+<td>lat</td>
+<td>time</td>
+<td>na</td>
+<td>Vertically integrated soil moisture divided by maximum allowable soil moisture above wilting point</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>43</td>
+<td>6</td>
+<td>7</td>
+<td>Yes</td>
+<td>Qs</td>
+<td>kg m-2 s-1</td>
+<td>Surface runoff</td>
+<td>1</td>
+<td>Physical Variables</td>
+<td>No</td>
+<td>Yes</td>
+<td>real</td>
+<td>3</td>
+<td>lon</td>
+<td>lat</td>
+<td>time</td>
+<td>na</td>
+<td>Runoff from the landsurface and/or subsurface stormflow</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>44</td>
+<td>6</td>
+<td>8</td>
+<td>Yes</td>
+<td>Qsb</td>
+<td>kg m-2 s-1</td>
+<td>Subsurface runoff</td>
+<td>1</td>
+<td>Physical Variables</td>
+<td>No</td>
+<td>Yes</td>
+<td>real</td>
+<td>3</td>
+<td>lon</td>
+<td>lat</td>
+<td>time</td>
+<td>na</td>
+<td>Gravity soil water drainage and/or soil water lateral flow</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>45</td>
+<td>6</td>
+<td>9</td>
+<td>Yes</td>
+<td>SoilTemp</td>
+<td>K</td>
+<td>Average Layer Soil Temperature</td>
+<td>1</td>
+<td>Physical Variables</td>
+<td>No</td>
+<td>Yes</td>
+<td>real</td>
+<td>4</td>
+<td>lon</td>
+<td>lat</td>
+<td>nsoil</td>
+<td>time</td>
+<td>Average soil temperature in each soil layer</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>46</td>
+<td>6</td>
+<td>10</td>
+<td>Yes</td>
+<td>Tdepth</td>
+<td>m</td>
+<td>Active Layer Thickness</td>
+<td>1</td>
+<td>Physical Variables</td>
+<td>No</td>
+<td>Yes</td>
+<td>real</td>
+<td>3</td>
+<td>lon</td>
+<td>lat</td>
+<td>time</td>
+<td>na</td>
+<td>Thaw depth; depth to zero centigrade isotherm in permafrost</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>47</td>
+<td>6</td>
+<td>11</td>
+<td>Yes</td>
+<td>Fdepth</td>
+<td>m</td>
+<td>Frozen Layer Thickness</td>
+<td>1</td>
+<td>Physical Variables</td>
+<td>No</td>
+<td>Yes</td>
+<td>real</td>
+<td>3</td>
+<td>lon</td>
+<td>lat</td>
+<td>time</td>
+<td>na</td>
+<td>Freeze depth; depth to zero centigrade isotherm in non-permafrost</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>48</td>
+<td>6</td>
+<td>12</td>
+<td>Yes</td>
+<td>Tcan</td>
+<td>K</td>
+<td>Canopy Temperature</td>
+<td>1</td>
+<td>Physical Variables</td>
+<td>No</td>
+<td>Yes</td>
+<td>real</td>
+<td>3</td>
+<td>lon</td>
+<td>lat</td>
+<td>time</td>
+<td>na</td>
+<td>Canopy or vegetation temperature (or temperature used in photosynthesis calculations)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>49</td>
+<td>6</td>
+<td>13</td>
+<td>Yes</td>
+<td>SWE</td>
+<td>kg m-2</td>
+<td>Snow Water Equivalent</td>
+<td>1</td>
+<td>Physical Variables</td>
+<td>No</td>
+<td>Yes</td>
+<td>real</td>
+<td>3</td>
+<td>lon</td>
+<td>lat</td>
+<td>time</td>
+<td>na</td>
+<td>Total water mass of snow pack, including ice and liquid water</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>50</td>
+<td>6</td>
+<td>14</td>
+<td>Yes</td>
+<td>SnowDen</td>
+<td>kg m-3</td>
+<td>Bulk Snow Density</td>
+<td>1</td>
+<td>Physical Variables</td>
+<td>No</td>
+<td>Yes</td>
+<td>real</td>
+<td>3</td>
+<td>lon</td>
+<td>lat</td>
+<td>time</td>
+<td>na</td>
+<td>Overall bulk density of the snow pack, including ice and liquid water</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>51</td>
+<td>6</td>
+<td>15</td>
+<td>Yes</td>
+<td>SnowDepth</td>
+<td>m</td>
+<td>Total snow depth</td>
+<td>1</td>
+<td>Physical Variables</td>
+<td>No</td>
+<td>Yes</td>
+<td>real</td>
+<td>3</td>
+<td>lon</td>
+<td>lat</td>
+<td>time</td>
+<td>na</td>
+<td>Total snow depth</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>52</td>
+<td>7</td>
+<td>1</td>
+<td>Yes</td>
+<td>CO2air</td>
+<td>micromol mol-1</td>
+<td>Near surface CO2 concentration</td>
+<td>1</td>
+<td>Driver</td>
+<td>No</td>
+<td>Yes</td>
+<td>real</td>
+<td>3</td>
+<td>lon</td>
+<td>lat</td>
+<td>time</td>
+<td>na</td>
+<td>Near surface dry air CO2 mole fraction</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>53</td>
+<td>7</td>
+<td>2</td>
+<td>Yes</td>
+<td>LWdown</td>
+<td>W/m2</td>
+<td>Surface incident longwave radiation</td>
+<td>1</td>
+<td>Driver</td>
+<td>No</td>
+<td>Yes</td>
+<td>real</td>
+<td>3</td>
+<td>lon</td>
+<td>lat</td>
+<td>time</td>
+<td>na</td>
+<td>Surface incident longwave radiation</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>54</td>
+<td>7</td>
+<td>3</td>
+<td>Yes</td>
+<td>Psurf</td>
+<td>Pa</td>
+<td>Surface pressure</td>
+<td>1</td>
+<td>Driver</td>
+<td>No</td>
+<td>Yes</td>
+<td>real</td>
+<td>3</td>
+<td>lon</td>
+<td>lat</td>
+<td>time</td>
+<td>na</td>
+<td>Surface pressure</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>55</td>
+<td>7</td>
+<td>4</td>
+<td>Yes</td>
+<td>Qair</td>
+<td>kg kg-1</td>
+<td>Near surface specific humidity</td>
+<td>1</td>
+<td>Driver</td>
+<td>No</td>
+<td>Yes</td>
+<td>real</td>
+<td>3</td>
+<td>lon</td>
+<td>lat</td>
+<td>time</td>
+<td>na</td>
+<td>Near surface specific humidity</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>56</td>
+<td>7</td>
+<td>5</td>
+<td>Yes</td>
+<td>Rainf</td>
+<td>kg m-2 s-1</td>
+<td>Rainfall rate</td>
+<td>1</td>
+<td>Driver</td>
+<td>No</td>
+<td>Yes</td>
+<td>real</td>
+<td>3</td>
+<td>lon</td>
+<td>lat</td>
+<td>time</td>
+<td>na</td>
+<td>Rainfall rate</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>57</td>
+<td>7</td>
+<td>6</td>
+<td>Yes</td>
+<td>SWdown</td>
+<td>W m-2</td>
+<td>Surface incident shortwave radiation</td>
+<td>1</td>
+<td>Driver</td>
+<td>No</td>
+<td>Yes</td>
+<td>real</td>
+<td>3</td>
+<td>lon</td>
+<td>lat</td>
+<td>time</td>
+<td>na</td>
+<td>Surface incident shortwave radiation</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>58</td>
+<td>7</td>
+<td>7</td>
+<td>Yes</td>
+<td>Tair</td>
+<td>K</td>
+<td>Near surface air temperature</td>
+<td>1</td>
+<td>Driver</td>
+<td>No</td>
+<td>Yes</td>
+<td>real</td>
+<td>3</td>
+<td>lon</td>
+<td>lat</td>
+<td>time</td>
+<td>na</td>
+<td>Near surface air temperature</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>59</td>
+<td>7</td>
+<td>8</td>
+<td>Yes</td>
+<td>Wind</td>
+<td>m s-1</td>
+<td>Near surface module of the wind</td>
+<td>1</td>
+<td>Driver</td>
+<td>No</td>
+<td>Yes</td>
+<td>real</td>
+<td>3</td>
+<td>lon</td>
+<td>lat</td>
+<td>time</td>
+<td>na</td>
+<td>Near surface wind magnitude</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 
 </div>
             </section>
@@ -563,8 +1785,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="contributor-covenant-code-of-conduct.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="sipnet.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="available-meteorological-drivers.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

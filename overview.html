@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="index.html">
-<link rel="next" href="contributor-covenant-code-of-conduct.html">
+<link rel="prev" href="development-guide-introduction.html">
+<link rel="next" href="using-git.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -145,7 +145,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6" data-path="specific-model-configurations.html"><a href="specific-model-configurations.html"><i class="fa fa-check"></i><b>6</b> Specific Model Configurations</a></li>
 <li class="chapter" data-level="7" data-path="advanced-setup.html"><a href="advanced-setup.html"><i class="fa fa-check"></i><b>7</b> Advanced Setup</a></li>
 <li class="part"><span><b>III Advanced User Guide - Cmd Line</b></span><ul>
-<li class="chapter" data-level="7.1" data-path="book_intro/project_overview.html"><a href="#advanced-command-line-guide"><i class="fa fa-check"></i><b>7.1</b> Advanced Command Line Guide</a></li>
+<li class="chapter" data-level="7.1" data-path="developers_guide/Github-issues.html"><a href="#advanced-command-line-guide"><i class="fa fa-check"></i><b>7.1</b> Advanced Command Line Guide</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="run-pecan-from-command-line.html"><a href="run-pecan-from-command-line.html"><i class="fa fa-check"></i><b>8</b> Run PEcAn from COmmand Line</a></li>
 <li class="chapter" data-level="9" data-path="working-with-the-vm.html"><a href="working-with-the-vm.html"><i class="fa fa-check"></i><b>9</b> Working with the VM</a></li>
@@ -530,41 +530,147 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="project-overview" class="section level1 unnumbered">
-<h1>Project Overview</h1>
-<p>The Predictive Ecosystem Analyzer (PEcAn) is an integrated informatics toolbox for ecosystem modeling (Dietze et al. 2013, LeBauer et al. 2013). PEcAn consists of:</p>
-<ol style="list-style-type: decimal">
-<li><p>An application program interface (API) that encapsulates an ecosystem model, providing a common interface, inputs, and output.</p></li>
-<li><p>Core utilities for handling and tracking model runs and the flows of information and uncertainties into and out of models and analyses</p></li>
-<li><p>An accessible web-based user interface and visualization tools</p></li>
-<li><p>An extensible collection of modules to handle specific types of analyses (sensitivity, uncertainty, ensemble), model-data syntheses (benchmarking, parameter data assimilation, state data assimilation), and data processing (model inputs and data constraints)</p></li>
-</ol>
-<p><img src="figures/PEcAn_Components.jpeg" width="335" style="display: block; margin: auto;" /></p>
-<p>This project is motivated by the fact that many of the most pressing questions about global change are limited by our ability to synthesize existing data and strategically prioritize the collection of new data. This project seeks to improve this ability by developing a framework for integrating multiple data sources in a sensible manner.</p>
-<p>The workflow system allows ecosystem modeling to be more reproducible, automated, and transparent in terms of operations applied to data, and thus ultimately more comprehensible to both peers and the public. It reduces the redundancy of effort among modeling groups, facilitate collaboration, and make models more accessible the rest of the research community.</p>
-<p>PEcAn is not itself an ecosystem model, and it can be used to with a variety of different ecosystem models; integrating a model involves writing a wrapper to convert inputs and outputs to and from the standards used by PEcAn. Currently, PEcAn supports multiple models listed <a href="pecan-models.html#pecan-models">PEcAn Models</a>.</p>
-<p><strong>Acknowledgements</strong></p>
-<p>This material is based upon work supported by the National Science Foundation under Grant No. 1062547, 1062204, 1241894, 1261582, 1318164, 1346748, 1458021, 1638577, the National Aeronautics and Space Administration (NASA) Grant No. 13-TE13-0060, and the Energy Biosciences Institute. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation or NASA. PEcAn is a collaboration among research groups at the Department of Earth And Environment at Boston University, the Energy Biosciences Institute at the University of Illinois, the Image Spatial Data Analysis group at NCSA, the Department of Atmospheric &amp; Oceanic Sciences at the University Wisconsin-Madison, and the Terrestrial Ecosystem Science &amp; Technology (TEST) Group at Brookhaven National Lab.</p>
-<p>BETY-db is a product of the Energy Biosciences Institute at the University of Illinois at Urbana-Champaign. We gratefully acknowledge the great effort of other researchers who generously made their own data available for further study.</p>
-<p><strong>PEcAn Publications</strong></p>
+<div id="overview" class="section level1">
+<h1><span class="header-section-number">31</span> Overview</h1>
+<p>We use GitHub to track development.</p>
+<p>To learn about GitHub, it is worth taking some time to read through the <a href="https://help.github.com/">FAQ</a>. When in doubt, the first step is to click the “Help” button at the top of the page.</p>
 <ul>
-<li>Shiklomanov. A, MC Dietze, T Viskari, PA Townsend, SP Serbin. 2016 “Quantifying the influences of spectral resolution on uncertainty in leaf trait estimates through a Bayesian approach to RTM inversion” Remote Sensing of the Environment 183: 226-238</li>
-<li>Viskari et al. 2015 Model-data assimilation of multiple phenological observations to constrain and forecast leaf area index. Ecological Applications 25(2): 546-558</li>
-<li>Dietze, M. C., S. P. Serbin, C. Davidson, A. R. Desai, X. Feng, R. Kelly, R. Kooper, D. LeBauer, J. Mantooth, K. McHenry, and D. Wang (2014) A quantitative assessment of a terrestrial biosphere model’s data needs across North American biomes. Journal of Geophysical Research-Biogeosciences <a href="http://dx.doi.org/10.1002/2013jg002392">doi:10.1002/2013jg002392</a></li>
-<li>LeBauer, D.S., D. Wang, K. Richter, C. Davidson, &amp; M.C. Dietze. (2013). Facilitating feedbacks between field measurements and ecosystem models. Ecological Monographs. <a href="http://dx.doi.org/10.1890/12-0137.1">doi:10.1890/12-0137.1</a></li>
-<li>Wang, D, D.S. LeBauer, and M.C. Dietze(2013) Predicting yields of short-rotation hybrid poplar (Populus spp.) for the contiguous US through model-data synthesis. Ecological Applications <a href="http://dx.doi.org/10.1890/12-0854.1">doi:10.1890/12-0854.1</a></li>
-<li>Dietze, M.C., D.S LeBauer, R. Kooper (2013) On improving the communication between models and data. Plant, Cell, &amp; Environment <a href="http://dx.doi.org/10.1111/pce.12043">doi:10.1111/pce.12043</a></li>
+<li><strong>To address specific people</strong>, use a github feature called “<span class="citation">@mentions</span>” e.g. write <span class="citation">@dlebauer</span>, <span class="citation">@robkooper</span>, <span class="citation">@mdietze</span>, or <span class="citation">@serbinsh</span> … in the issue to alert the user as described in the <a href="https://help.github.com/articles/notifications">GitHub documentation on notifications</a></li>
 </ul>
-<p><a href="https://scholar.google.com/scholar?start=0&amp;q=%22predictive+ecosystem+analyzer+PEcAn%22">Longer / auto-updated list of publications that mention PEcAn’s full name in Google Scholar</a></p>
+<div id="bugs-issues-features-etc." class="section level2">
+<h2><span class="header-section-number">31.1</span> Bugs, Issues, Features, etc.</h2>
+<div id="reporting-a-bug" class="section level3">
+<h3><span class="header-section-number">31.1.1</span> Reporting a bug</h3>
+<ol style="list-style-type: decimal">
+<li>(For developers) work through debugging (see <a href="debugging.md">debugging</a> wiki).</li>
+<li>Once you have identified a problem, that you can not resolve, you can write a bug report</li>
+<li>Write a bug report</li>
+<li>submit the bug report</li>
+<li>If you do find the answer, explain the resolution (in the issue) and close the issue</li>
+</ol>
+</div>
+<div id="required-content" class="section level3">
+<h3><span class="header-section-number">31.1.2</span> Required content</h3>
+<p>Note:</p>
+<ul>
+<li><strong>a bug is only a bug if it is reproducible</strong></li>
+<li><strong>clear bug reports save time</strong></li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Clear, specific title</li>
+<li>Description -</li>
+</ol>
+<ul>
+<li>What you did</li>
+<li>What you expected to happen</li>
+<li>What actually happened</li>
+<li>What does work, under what conditions does it fail?</li>
+<li>Reproduction steps - minimum steps required to reproduce the bug</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>additional materials that could help identify the cause:</li>
+</ol>
+<ul>
+<li>screen shots</li>
+<li>stack traces, logs, scripts, output</li>
+<li>specific code and data / settings / configuration files required to reproduce the bug</li>
+<li>environment (operating system, browser, hardware)</li>
+</ul>
+</div>
+</div>
+<div id="requesting-a-feature" class="section level2">
+<h2><span class="header-section-number">31.2</span> Requesting a feature</h2>
+<p>(from The Pragmatic Programmer, available as <a href="http://proquestcombo.safaribooksonline.com/0-201-61622-X/223">ebook</a> through UI libraries, hardcopy on David’s bookshelf)<br />
+* focus on “user stories”, e.g. specific use cases * Be as specific as possible,</p>
+<ul>
+<li>Here is an example:</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Bob is at www.mysite.edu/maps</li>
+<li>map of the the region (based on user location, e.g. US, Asia, etc)</li>
+<li>option to “use current location” is provided, if clicked, map zooms in to, e.g. state or county level
+<ol start="4" style="list-style-type: decimal">
+<li>for site run:
+<ol style="list-style-type: decimal">
+<li>option to select existing site or specify point by lat/lon</li>
+<li>option to specify a bounding box and grid resolution in either lat/lon or polar stereographic.</li>
+</ol></li>
+<li>asked to specify start and end times in terms of year, month, day, hour, minute. Time is recorded in UTC not local time, this should be indicated</li>
+</ol></li>
+</ol>
+</div>
+<div id="closing-an-issue" class="section level2">
+<h2><span class="header-section-number">31.3</span> Closing an issue</h2>
+<ol style="list-style-type: decimal">
+<li>Definition of “Done”</li>
+</ol>
+<ul>
+<li>test</li>
+<li>documentation</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>when issue is resolved:</li>
+</ol>
+<ul>
+<li>status is changed to “resolved”</li>
+<li>assignee is changed to original author</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>if original author agrees that issue has been resolved</li>
+</ol>
+<ul>
+<li>original author changes status to “closed”</li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li>except for trivial issues, issues are only closed by the author</li>
+</ol>
+</div>
+<div id="when-to-submit-an-issue" class="section level2">
+<h2><span class="header-section-number">31.4</span> When to submit an issue?</h2>
+<div id="ideally-non-trivial-code-changes-will-be-linked-to-an-issue-and-a-commit." class="section level3">
+<h3><span class="header-section-number">31.4.1</span> Ideally, non-trivial code changes will be linked to an issue and a commit.</h3>
+<p>This requires creating issues for each task, making small commits, and referencing the issue within your commit message. Issues can be created <a href="https://github.com/PecanProject/pecan/issues/new">on GitHub</a>. These issues can be linked to commits by adding text such as <code>fixes gh-5</code> (see [[Using Git During Development|Using-Git#during-development]]).</p>
+<p>Rationale: This workflow is a small upfront investment that reduces error and time spent re-creating and debugging errors. Associating issues and commits, makes it easier to identify why a change was made, and potential bugs that could arise when the code is changed. In addition, knowing which issue you are working on clarifies the scope and objectives of your current task.</p>
+</div>
+</div>
+<div id="label-categories" class="section level2">
+<h2><span class="header-section-number">31.5</span> Label Categories</h2>
+<table border="1">
+<tr>
+<pre><code>&lt;th&gt;Type&lt;/th&gt;
+&lt;th&gt;Status&lt;/th&gt;
+&lt;th&gt;Priority&lt;/th&gt;</code></pre>
+</tr>
+<tr>
+<pre><code>&lt;td&gt;BETY, BioCro, BrownDog, CLM, DALEC, ED, LINKAGES, SIPNET&lt;/td&gt;
+&lt;td&gt;0-Backlog&lt;/td&gt;
+&lt;td&gt;pri:Critical&lt;/td&gt;</code></pre>
+</tr>
+<tr>
+<pre><code>&lt;td&gt;VM, Web, HPC&lt;/td&gt;
+&lt;td&gt;1-Ready&lt;/td&gt;
+&lt;td&gt;pri:Normal&lt;/td&gt;</code></pre>
+</tr>
+<tr>
+<pre><code>&lt;td&gt;Documentation, Question, Discussion, Enhancement, Feature&lt;/td&gt;
+&lt;td&gt;2-Working&lt;/td&gt;
+&lt;td&gt;pri:Low&lt;/td&gt;</code></pre>
+</tr>
+<tr>
+<pre><code>&lt;td&gt;Bug&lt;/td&gt;
+&lt;td&gt;3-Done&lt;/td&gt;</code></pre>
+</tr>
+</table>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="contributor-covenant-code-of-conduct.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="development-guide-introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="using-git.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

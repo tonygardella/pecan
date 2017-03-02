@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="index.html">
-<link rel="next" href="contributor-covenant-code-of-conduct.html">
+<link rel="prev" href="adding-an-ecosystem-model.html">
+<link rel="next" href="coding-style.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -145,7 +145,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6" data-path="specific-model-configurations.html"><a href="specific-model-configurations.html"><i class="fa fa-check"></i><b>6</b> Specific Model Configurations</a></li>
 <li class="chapter" data-level="7" data-path="advanced-setup.html"><a href="advanced-setup.html"><i class="fa fa-check"></i><b>7</b> Advanced Setup</a></li>
 <li class="part"><span><b>III Advanced User Guide - Cmd Line</b></span><ul>
-<li class="chapter" data-level="7.1" data-path="book_intro/project_overview.html"><a href="#advanced-command-line-guide"><i class="fa fa-check"></i><b>7.1</b> Advanced Command Line Guide</a></li>
+<li class="chapter" data-level="7.1" data-path="developers_guide/Adding-an-Input-Converter.html"><a href="#advanced-command-line-guide"><i class="fa fa-check"></i><b>7.1</b> Advanced Command Line Guide</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="run-pecan-from-command-line.html"><a href="run-pecan-from-command-line.html"><i class="fa fa-check"></i><b>8</b> Run PEcAn from COmmand Line</a></li>
 <li class="chapter" data-level="9" data-path="working-with-the-vm.html"><a href="working-with-the-vm.html"><i class="fa fa-check"></i><b>9</b> Working with the VM</a></li>
@@ -530,41 +530,324 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="project-overview" class="section level1 unnumbered">
-<h1>Project Overview</h1>
-<p>The Predictive Ecosystem Analyzer (PEcAn) is an integrated informatics toolbox for ecosystem modeling (Dietze et al. 2013, LeBauer et al. 2013). PEcAn consists of:</p>
-<ol style="list-style-type: decimal">
-<li><p>An application program interface (API) that encapsulates an ecosystem model, providing a common interface, inputs, and output.</p></li>
-<li><p>Core utilities for handling and tracking model runs and the flows of information and uncertainties into and out of models and analyses</p></li>
-<li><p>An accessible web-based user interface and visualization tools</p></li>
-<li><p>An extensible collection of modules to handle specific types of analyses (sensitivity, uncertainty, ensemble), model-data syntheses (benchmarking, parameter data assimilation, state data assimilation), and data processing (model inputs and data constraints)</p></li>
-</ol>
-<p><img src="figures/PEcAn_Components.jpeg" width="335" style="display: block; margin: auto;" /></p>
-<p>This project is motivated by the fact that many of the most pressing questions about global change are limited by our ability to synthesize existing data and strategically prioritize the collection of new data. This project seeks to improve this ability by developing a framework for integrating multiple data sources in a sensible manner.</p>
-<p>The workflow system allows ecosystem modeling to be more reproducible, automated, and transparent in terms of operations applied to data, and thus ultimately more comprehensible to both peers and the public. It reduces the redundancy of effort among modeling groups, facilitate collaboration, and make models more accessible the rest of the research community.</p>
-<p>PEcAn is not itself an ecosystem model, and it can be used to with a variety of different ecosystem models; integrating a model involves writing a wrapper to convert inputs and outputs to and from the standards used by PEcAn. Currently, PEcAn supports multiple models listed <a href="pecan-models.html#pecan-models">PEcAn Models</a>.</p>
-<p><strong>Acknowledgements</strong></p>
-<p>This material is based upon work supported by the National Science Foundation under Grant No. 1062547, 1062204, 1241894, 1261582, 1318164, 1346748, 1458021, 1638577, the National Aeronautics and Space Administration (NASA) Grant No. 13-TE13-0060, and the Energy Biosciences Institute. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation or NASA. PEcAn is a collaboration among research groups at the Department of Earth And Environment at Boston University, the Energy Biosciences Institute at the University of Illinois, the Image Spatial Data Analysis group at NCSA, the Department of Atmospheric &amp; Oceanic Sciences at the University Wisconsin-Madison, and the Terrestrial Ecosystem Science &amp; Technology (TEST) Group at Brookhaven National Lab.</p>
-<p>BETY-db is a product of the Energy Biosciences Institute at the University of Illinois at Urbana-Champaign. We gratefully acknowledge the great effort of other researchers who generously made their own data available for further study.</p>
-<p><strong>PEcAn Publications</strong></p>
+<div id="met-data" class="section level1">
+<h1><span class="header-section-number">35</span> Met Data</h1>
+<p>The standard met data inputs should be of the form:</p>
+<p>Converters from a raw to standard format go in <code>/modules/data.atmosphere/R</code>; converters from standard to model-specific go in <code>models/&lt;mymodel&gt;/R</code>.</p>
 <ul>
-<li>Shiklomanov. A, MC Dietze, T Viskari, PA Townsend, SP Serbin. 2016 “Quantifying the influences of spectral resolution on uncertainty in leaf trait estimates through a Bayesian approach to RTM inversion” Remote Sensing of the Environment 183: 226-238</li>
-<li>Viskari et al. 2015 Model-data assimilation of multiple phenological observations to constrain and forecast leaf area index. Ecological Applications 25(2): 546-558</li>
-<li>Dietze, M. C., S. P. Serbin, C. Davidson, A. R. Desai, X. Feng, R. Kelly, R. Kooper, D. LeBauer, J. Mantooth, K. McHenry, and D. Wang (2014) A quantitative assessment of a terrestrial biosphere model’s data needs across North American biomes. Journal of Geophysical Research-Biogeosciences <a href="http://dx.doi.org/10.1002/2013jg002392">doi:10.1002/2013jg002392</a></li>
-<li>LeBauer, D.S., D. Wang, K. Richter, C. Davidson, &amp; M.C. Dietze. (2013). Facilitating feedbacks between field measurements and ecosystem models. Ecological Monographs. <a href="http://dx.doi.org/10.1890/12-0137.1">doi:10.1890/12-0137.1</a></li>
-<li>Wang, D, D.S. LeBauer, and M.C. Dietze(2013) Predicting yields of short-rotation hybrid poplar (Populus spp.) for the contiguous US through model-data synthesis. Ecological Applications <a href="http://dx.doi.org/10.1890/12-0854.1">doi:10.1890/12-0854.1</a></li>
-<li>Dietze, M.C., D.S LeBauer, R. Kooper (2013) On improving the communication between models and data. Plant, Cell, &amp; Environment <a href="http://dx.doi.org/10.1111/pce.12043">doi:10.1111/pce.12043</a></li>
+<li>For a number of common gridded products (NARR, CRUNCEP, ISIMIP), there are bash scripts for converting and rechunking in this repository: <a href="https://github.com/ebimodeling/model-drivers" class="uri">https://github.com/ebimodeling/model-drivers</a>; these are not generalized, but may be merged into PEcAn at some point.</li>
 </ul>
-<p><a href="https://scholar.google.com/scholar?start=0&amp;q=%22predictive+ecosystem+analyzer+PEcAn%22">Longer / auto-updated list of publications that mention PEcAn’s full name in Google Scholar</a></p>
+<p>Examples: * NARR: * CRUNCEP: * ISIMIP:</p>
+<p>Names should be <code>met2CF.&lt;sourcename&gt;</code> and <code>met2model.&lt;modelname&gt;</code>.</p>
+<div id="dimensions" class="section level2">
+<h2><span class="header-section-number">35.1</span> Dimensions:</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">CF standard-name</th>
+<th align="left">units</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">time</td>
+<td align="left">days since 1700-01-01 00:00:00 UTC</td>
+</tr>
+<tr class="even">
+<td align="left">longitude</td>
+<td align="left">degrees_east</td>
+</tr>
+<tr class="odd">
+<td align="left">latitude</td>
+<td align="left">degrees_north</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="the-variable-names-should-be-standard_name" class="section level2">
+<h2><span class="header-section-number">35.2</span> The variable names should be <code>standard_name</code></h2>
+<table style="width:100%;">
+<colgroup>
+<col width="39%" />
+<col width="7%" />
+<col width="13%" />
+<col width="13%" />
+<col width="8%" />
+<col width="7%" />
+<col width="10%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">CF standard-name</th>
+<th align="left">units</th>
+<th align="left">bety</th>
+<th align="left">isimip</th>
+<th align="left">cruncep</th>
+<th align="left">narr</th>
+<th align="left">ameriflux</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>air_temperature</strong></td>
+<td align="left">K</td>
+<td align="left">airT</td>
+<td align="left">tasAdjust</td>
+<td align="left">tair</td>
+<td align="left">air</td>
+<td align="left">TA (C)</td>
+</tr>
+<tr class="even">
+<td align="left">air_temperature_max</td>
+<td align="left">K</td>
+<td align="left"></td>
+<td align="left">tasmaxAdjust</td>
+<td align="left">NA</td>
+<td align="left">tmax</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">air_temperature_min</td>
+<td align="left">K</td>
+<td align="left"></td>
+<td align="left">tasminAdjust</td>
+<td align="left">NA</td>
+<td align="left">tmin</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"><strong>air_pressure</strong></td>
+<td align="left">Pa</td>
+<td align="left">air_pressure</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">PRESS (KPa)</td>
+</tr>
+<tr class="odd">
+<td align="left">mole_fraction_of_carbon_dioxide_in_air</td>
+<td align="left">mol/mol</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">CO2</td>
+</tr>
+<tr class="even">
+<td align="left">moisture_content_of_soil_layer</td>
+<td align="left">kg m-2</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">soil_temperature</td>
+<td align="left">K</td>
+<td align="left">soilT</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">TS1 <em>(NOT DONE)</em></td>
+</tr>
+<tr class="even">
+<td align="left">relative_humidity</td>
+<td align="left">%</td>
+<td align="left">relative_humidity</td>
+<td align="left">rhurs</td>
+<td align="left">NA</td>
+<td align="left">rhum</td>
+<td align="left">RH</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>specific_humidity</strong></td>
+<td align="left">1</td>
+<td align="left">specific_humidity</td>
+<td align="left">NA</td>
+<td align="left">qair</td>
+<td align="left">shum</td>
+<td align="left">CALC(RH)</td>
+</tr>
+<tr class="even">
+<td align="left">water_vapor_saturation_deficit</td>
+<td align="left">Pa</td>
+<td align="left">VPD</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">VPD <em>(NOT DONE)</em></td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>surface_downwelling_longwave_flux_in_air</strong></td>
+<td align="left">W m-2</td>
+<td align="left">same</td>
+<td align="left">rldsAdjust</td>
+<td align="left">lwdown</td>
+<td align="left">dlwrf</td>
+<td align="left">Rgl</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>surface_downwelling_shortwave_flux_in_air</strong></td>
+<td align="left">W m-2</td>
+<td align="left">solar_radiation</td>
+<td align="left">rsdsAdjust</td>
+<td align="left">swdown</td>
+<td align="left">dswrf</td>
+<td align="left">Rg</td>
+</tr>
+<tr class="odd">
+<td align="left">surface_downwelling_photosynthetic_photon_flux_in_air</td>
+<td align="left">mol m-2 s-1</td>
+<td align="left">PAR</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">PAR <em>(NOT DONE)</em></td>
+</tr>
+<tr class="even">
+<td align="left"><strong>precipitation_flux</strong></td>
+<td align="left">kg m-2 s-1</td>
+<td align="left">cccc</td>
+<td align="left">prAdjust</td>
+<td align="left">rain</td>
+<td align="left">acpc</td>
+<td align="left">PREC (mm/s)</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">degrees</td>
+<td align="left">wind_direction</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">WD</td>
+</tr>
+<tr class="even">
+<td align="left">wind_speed</td>
+<td align="left">m/s</td>
+<td align="left">Wspd</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">WS</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>eastward_wind</strong></td>
+<td align="left">m/s</td>
+<td align="left">eastward_wind</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">CALC(WS+WD)</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>northward_wind</strong></td>
+<td align="left">m/s</td>
+<td align="left">northward_wind</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">CALC(WS+WD)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>preferred variables indicated in bold</li>
+<li>wind_direction has no CF equivalent and should not be converted, instead the met2CF functions should convert wind_direction and wind_speed to eastward_wind and northward_wind</li>
+<li>variable names are from <a href="http://nacp.ornl.gov/MsTMIP_variables.shtml">MsTMIP</a>, but lowercase to be consistent with the MsTMIP drivers.</li>
+<li>standard_name is CF-convention standard names</li>
+<li>units can be converted by udunits, so these can vary (e.g. the time denominator may change with time frequency of inputs)</li>
+<li>soil moisture for the full column, rather than a layer, is soil_moisture_content</li>
+</ul>
+<p>For the standardized files, we are using CF standard names as variable names.</p>
+<p>For example, in the <a href="https://www.betydb.org/inputs/280">MsTMIP-CRUNCEP</a> data, the variable <code>rain</code> should be <code>precipitation_rate</code>. We want to standardize the units as well as part of the <code>met2CF.&lt;product&gt;</code> step. I believe we want to use the CF “canonical” units but retain the MsTMIP units any time CF is ambiguous about the units.</p>
+<p>The key is to process each type of met data (site, reanalysis, forecast, climate scenario, etc) to the exact same standard. This way every operation after that (extract, gap fill, downscale, convert to a model, etc) will always have the exact same inputs. This will make everything else much simpler to code and allow us to avoid a lot of unnecessary data checking, tests, etc being repeated in every downstream function.</p>
 
+<p>In addition to the state assimilation routines found in the assim.sequential module, another approach for state data assimilation in PEcAn is through the DART workflow created by the DARES group in NCAR.</p>
+<p>This section gives a straight-forward explanation how to implement DART, focused on the technical aspects of the implementation. If there are any questions, feel free to send <span class="citation">@Viskari</span> an email (<a href="mailto:tt.viskari@gmail.com">tt.viskari@gmail.com</a>) or contacting DART support as they are quite awesome in helping people with problems. Also, if there are any suggestions on how to improve the wiki, please let me know.</p>
+<p><strong>Running with current folders in PEcAn</strong></p>
+<p>Currently the DART folders in PEcAn are that you can simply copy the structure there over a downloaded DART workflow and it should replace/add relevant files and folders. The most important step after that is to check and change the run paths in the following files: Path_name files in the work folders T_ED2IN file, as it indicates where the run results be written. advance_model.csh, as it indicates where to copy files from/to.</p>
+<p>Second thing is setting the state vector size. This is explained in more detail below, but essentially this is governed by the variable model_size in model_mod.f90. In addition to this, it should be changed in utils/F2R.f90 and R2F.f90 programs, which are responsible for reading and writing state variable information for the different ensembles. This also will be expanded below. Finally, the new state vector size should be updated for any other executable that runs it.</p>
+<p>Third thing needed are the initial condition and observation sequence files. They will always follow the same format and are explained in more detail below.</p>
+<p>Finally the ensemble size, which is the easiest to change. In the work subfolder, there is a file named input.nml. Simply changing the ensemble size there will set it for the run itself. Also remember that initial conditions file should have the equal amount of state vectors as there are ensemble members.</p>
+<p><strong>Adjusting the workflow</strong></p>
+<p>The central file for the actual workflow is advance_model.csh. It is a script DART calls to determine how the state vector changes between the two observation times and is essentially the only file one needs to change when changing state models or observations operators. The file itself should be commented to give a good idea of the flow, but beneath is a crude order of events. 1. Create a temporary folder to run the model in and copy/link required files in to it. 2. Read in the state vector values and times from DART. Here it is important to note that the values will be in binary format, which need to be read in by a Fortran program. In my system, there is a program called F2R which reads in the binary values and writes out in ascii form the state vector values as well as which ED2 history files it needs to copy based on the time stamps. 3. Run the observation operator, which writes the state vector state in to the history files and adjusts them if necessary. 4. Run the program. 5. Read the new state vector values from output files. 6. Convert the state vector values to the binary. In my system, this is done by the program R2F.</p>
+<p><strong>Initial conditions file</strong></p>
+<p>The initial conditions file, commonly named filter_ics although you can set it to something else in input.nml, is relatively simple in structure. It has one sequence repeating over the number of ensemble members. First line contains two times: Seconds and days. Just use one of them in this situation, but it has to match the starting time given in input.nml. After that each line should contain a value from the state vector in the order you want to treat them. R functions filter_ics.R and B_filter_ics.R in the R folder give good examples of how to create these.</p>
+<p><strong>Observations files</strong></p>
+<p>The file which contains the observations is commonly known as obs_seq.out, although again the name of the file can be changed in input.nml. The structure of the file is relatively straight-forward and the R function ObsSeq.R in the R subfolder has the write structure for this. Instead of writing it out here, I want to focus on a few really important details in this file. Each observations will have a time, a value, an uncertainty, a location and a kind. The first four are self-explanatory, but the kind is really important, but also unfortunately really easy to misunderstand. In this file, the kind does not refer to a unit or a type of observation, but which member of the state vector is this observation of. So if the kind was, for example, 5, it would mean that it was of the fifth member of the state vector. However, if the kind value is positive, the system assumes that there is some sort of an operator change in comparing the observation and state vector value which is specified in a subprogram in model_mod.f90.</p>
+<p>So for an direct identity comparison between the observation and the state vector value, the kind needs to be negative number of the state vector component. Thus, again if the observation is of the fifth state vector value, the kind should be set as -5. Thus it is recommendable that the state vector values have already been altered to be comparable with the observations.</p>
+<p>As for location, there are many ways to set in DART and the method needs to be chosen when compiling the code by giving the program which of the location mods it is to use. In our examples we used a 1-dimensional location vector with scaled values between 0 and 1. For future it makes sense to switch to a 2 dimensional long- and lat-scale, but for the time being the location does not impact the system a lot. The main impact will be if the covariances will be localized, as that will be decided on their locations.</p>
+<p><strong>State variable vector in DART</strong></p>
+<p>Creating/adjusting a state variable vector in DART is relatively straight-forward. Below are listed the steps to specify a state variable vector in DART.</p>
+<p>I. For each specific model, there should be an own folder within the DART root models folder. In this folder there is a model_mod.f90, which contains the model specific subroutines necessary for a DART run.</p>
+<p>At the beginning of this file there should be the following line:</p>
+<p>integer, parameter :: model_size = [number]</p>
+<p>The number here should be the number of variables in the vector. So for example if there were three state variables, then the line should look like this:</p>
+<p>integer, parameter :: model_size = 3</p>
+<p>This number should also be changed to match with any of the other executables called during the run as indicated by the list above.</p>
+<ol start="2" style="list-style-type: upper-roman">
+<li>In the DART root, there should be a folder named obs_kind, which contains a file called DEFAULT_obs_kind_mod.F90. It is important to note that all changes should be done to this file instead of obs_kind_mod.f90, as during compilation DART creates obs_kind_mod.f90 from DEFAULT_obs_kind_mod.F90. This program file contains all the defined observation types used by DART and numbers them for easier reference later. Different types are classified according to observation instrument or relevant observation phenomenon. Adding a new type only requires finding an unused number and starting a new identifying line with the following:</li>
+</ol>
+<p>integer, parameter, public :: &amp; KIND_…</p>
+<p>Note that the observation kind should always be easy to understand, so avoid using unnecessary acronyms. For example, when adding an observation type for Leaf Area Index, it would look like below:</p>
+<p>integer, parameter, public :: &amp; KIND_LEAF_AREA_INDEX = [number]</p>
+<ol start="3" style="list-style-type: upper-roman">
+<li>In the DART root, there should be a folder named obs_def, which contains several files starting with obs_def_. There files contain the different available observation kinds classified either according to observation instrument or observable system. Each file starts with the line</li>
+</ol>
+<p>! BEGIN DART PREPROCESS KIND LIST</p>
+<p>And end with line</p>
+<p>! END DART PREPROCESS KIND LIST</p>
+<p>The lines between these two should contain</p>
+<p>! The desired observation reference, the observation type, COMMON_CODE.</p>
+<p>For example, for observations relating to phenology, I have created a file called obs_def_phen_mod.f90. In this file I define the Leaf Area Index observations in the following way.</p>
+<p>! BEGIN DART PREPROCESS KIND LIST ! LAI, TYPE_LEAF_AREA_INDEX, COMMON_CODE ! END DART PREPROCESS KIND LIST</p>
+<p>Note that the exclamation marks are necessary for the file.</p>
+<ol start="4" style="list-style-type: upper-roman">
+<li>In the model specific folder, in the work subfolder there is a namelist file input.nml. This contains all the run specific information for DART. In it, there is a subtitle &amp;preprocess, under which there is a line</li>
+</ol>
+<p>input_files = ‘….’</p>
+<p>This input_files sections must be set to refer to the obs_def file created in step III. The input files can contain references to multiple obs_def files if necessary.</p>
+<p>As an example, the reference to the obs_def_phen_mod.f90 would look like input_files = ‘../../../obs_def/obs_def_phen_mod.f90’</p>
+<p>V. Finally, as an optional step, the different values in state vector can be typed. In model_mod, referred to in step I, there is a subroutine get_state_meta_data. In it, there is an input variable index_in, which refers to the vector component. So for instance for the second component of the vector index_in would be 2. If this is done, the variable kind has to be also included at the beginning of the model_mod.f90 file, at the section which begins</p>
+<p>use obs_kind_mod, only ::</p>
+<p>The location of the variable can be set, but for a 0-dimensional model we are discussing here, this is not necessary.</p>
+<p>Here, though, it is possible to set the variable types by including the following line</p>
+<p>if(index_in .eq. [number]) var_type = [One of the variable kinds set in step II]</p>
+<ol start="6" style="list-style-type: upper-roman">
+<li>If the length of the state vector is changed, it is important that the script ran with DART produces a vector of that length. Change appropriately if necessary.</li>
+</ol>
+<p>After these steps, DART should be able to run with the state vector of interest.</p>
+
+<p>PEcAn has a single xml configuration file. This fill will dictate what models to run, where, with what input files and for how long. Each model has its own configuration file as well.</p>
+<div id="pecan-configuration-files" class="section level3">
+<h3><span class="header-section-number">35.2.1</span> <a href="PEcAn-Configuration">PEcAn Configuration Files</a></h3>
+<p>This file is often called pecan.xml. The system will try to find this file in the following locations:<br />
+* Passed in when calling R with –settings<br />
+* Passed in to read.settings() function * PECAN_SETTINGS environment variable * File called pecan.xml in the current working folder<br />
+Once any of these are loaded it will try to locate a pecan.xml in the outdir specified in the loaded file.</p>
+</div>
+<div id="model-specific-configuration-files" class="section level3">
+<h3><span class="header-section-number">35.2.2</span> Model-specific configuration files</h3>
+<ul>
+<li><a href="../users_guide/advanced_users_guideED2-Configuration">ED2</a><br />
+</li>
+<li><a href="../users_guide/advanced_users_guide/SIPNET-Configuration">SIPNET</a><br />
+</li>
+<li><a href="../BIOCRO-Configuration.md">BIOCRO</a></li>
+</ul>
+
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="contributor-covenant-code-of-conduct.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="adding-an-ecosystem-model.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="coding-style.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

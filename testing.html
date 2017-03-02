@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="index.html">
-<link rel="next" href="contributor-covenant-code-of-conduct.html">
+<link rel="prev" href="roxygen2.html">
+<link rel="next" href="package-data.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -145,7 +145,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6" data-path="specific-model-configurations.html"><a href="specific-model-configurations.html"><i class="fa fa-check"></i><b>6</b> Specific Model Configurations</a></li>
 <li class="chapter" data-level="7" data-path="advanced-setup.html"><a href="advanced-setup.html"><i class="fa fa-check"></i><b>7</b> Advanced Setup</a></li>
 <li class="part"><span><b>III Advanced User Guide - Cmd Line</b></span><ul>
-<li class="chapter" data-level="7.1" data-path="book_intro/project_overview.html"><a href="#advanced-command-line-guide"><i class="fa fa-check"></i><b>7.1</b> Advanced Command Line Guide</a></li>
+<li class="chapter" data-level="7.1" data-path="developers_guide/Testing.html"><a href="#advanced-command-line-guide"><i class="fa fa-check"></i><b>7.1</b> Advanced Command Line Guide</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="run-pecan-from-command-line.html"><a href="run-pecan-from-command-line.html"><i class="fa fa-check"></i><b>8</b> Run PEcAn from COmmand Line</a></li>
 <li class="chapter" data-level="9" data-path="working-with-the-vm.html"><a href="working-with-the-vm.html"><i class="fa fa-check"></i><b>9</b> Working with the VM</a></li>
@@ -530,41 +530,329 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="project-overview" class="section level1 unnumbered">
-<h1>Project Overview</h1>
-<p>The Predictive Ecosystem Analyzer (PEcAn) is an integrated informatics toolbox for ecosystem modeling (Dietze et al. 2013, LeBauer et al. 2013). PEcAn consists of:</p>
-<ol style="list-style-type: decimal">
-<li><p>An application program interface (API) that encapsulates an ecosystem model, providing a common interface, inputs, and output.</p></li>
-<li><p>Core utilities for handling and tracking model runs and the flows of information and uncertainties into and out of models and analyses</p></li>
-<li><p>An accessible web-based user interface and visualization tools</p></li>
-<li><p>An extensible collection of modules to handle specific types of analyses (sensitivity, uncertainty, ensemble), model-data syntheses (benchmarking, parameter data assimilation, state data assimilation), and data processing (model inputs and data constraints)</p></li>
-</ol>
-<p><img src="figures/PEcAn_Components.jpeg" width="335" style="display: block; margin: auto;" /></p>
-<p>This project is motivated by the fact that many of the most pressing questions about global change are limited by our ability to synthesize existing data and strategically prioritize the collection of new data. This project seeks to improve this ability by developing a framework for integrating multiple data sources in a sensible manner.</p>
-<p>The workflow system allows ecosystem modeling to be more reproducible, automated, and transparent in terms of operations applied to data, and thus ultimately more comprehensible to both peers and the public. It reduces the redundancy of effort among modeling groups, facilitate collaboration, and make models more accessible the rest of the research community.</p>
-<p>PEcAn is not itself an ecosystem model, and it can be used to with a variety of different ecosystem models; integrating a model involves writing a wrapper to convert inputs and outputs to and from the standards used by PEcAn. Currently, PEcAn supports multiple models listed <a href="pecan-models.html#pecan-models">PEcAn Models</a>.</p>
-<p><strong>Acknowledgements</strong></p>
-<p>This material is based upon work supported by the National Science Foundation under Grant No. 1062547, 1062204, 1241894, 1261582, 1318164, 1346748, 1458021, 1638577, the National Aeronautics and Space Administration (NASA) Grant No. 13-TE13-0060, and the Energy Biosciences Institute. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation or NASA. PEcAn is a collaboration among research groups at the Department of Earth And Environment at Boston University, the Energy Biosciences Institute at the University of Illinois, the Image Spatial Data Analysis group at NCSA, the Department of Atmospheric &amp; Oceanic Sciences at the University Wisconsin-Madison, and the Terrestrial Ecosystem Science &amp; Technology (TEST) Group at Brookhaven National Lab.</p>
-<p>BETY-db is a product of the Energy Biosciences Institute at the University of Illinois at Urbana-Champaign. We gratefully acknowledge the great effort of other researchers who generously made their own data available for further study.</p>
-<p><strong>PEcAn Publications</strong></p>
+<div id="testing" class="section level1">
+<h1><span class="header-section-number">38</span> Testing</h1>
+<p>PEcAn uses the testthat package developed by Hadley Wickham. Hadley has written instructions for using this pakcage in his <a href="http://adv-r.had.co.nz/Testing.html">Testing</a> chapter.</p>
+<div id="rationale" class="section level2">
+<h2><span class="header-section-number">38.1</span> Rationale</h2>
 <ul>
-<li>Shiklomanov. A, MC Dietze, T Viskari, PA Townsend, SP Serbin. 2016 “Quantifying the influences of spectral resolution on uncertainty in leaf trait estimates through a Bayesian approach to RTM inversion” Remote Sensing of the Environment 183: 226-238</li>
-<li>Viskari et al. 2015 Model-data assimilation of multiple phenological observations to constrain and forecast leaf area index. Ecological Applications 25(2): 546-558</li>
-<li>Dietze, M. C., S. P. Serbin, C. Davidson, A. R. Desai, X. Feng, R. Kelly, R. Kooper, D. LeBauer, J. Mantooth, K. McHenry, and D. Wang (2014) A quantitative assessment of a terrestrial biosphere model’s data needs across North American biomes. Journal of Geophysical Research-Biogeosciences <a href="http://dx.doi.org/10.1002/2013jg002392">doi:10.1002/2013jg002392</a></li>
-<li>LeBauer, D.S., D. Wang, K. Richter, C. Davidson, &amp; M.C. Dietze. (2013). Facilitating feedbacks between field measurements and ecosystem models. Ecological Monographs. <a href="http://dx.doi.org/10.1890/12-0137.1">doi:10.1890/12-0137.1</a></li>
-<li>Wang, D, D.S. LeBauer, and M.C. Dietze(2013) Predicting yields of short-rotation hybrid poplar (Populus spp.) for the contiguous US through model-data synthesis. Ecological Applications <a href="http://dx.doi.org/10.1890/12-0854.1">doi:10.1890/12-0854.1</a></li>
-<li>Dietze, M.C., D.S LeBauer, R. Kooper (2013) On improving the communication between models and data. Plant, Cell, &amp; Environment <a href="http://dx.doi.org/10.1111/pce.12043">doi:10.1111/pce.12043</a></li>
+<li>makes development easier</li>
+<li>provides working documentation of expected functionality</li>
+<li>saves time by allowing computer to take over error checking once a test has been made</li>
+<li>improves code quality</li>
+<li>Further reading: <a href="http://arxiv.org/pdf/1210.0530v3.pdf">Aruliah et al 2012 Best Practices for Scientific Computing</a></li>
 </ul>
-<p><a href="https://scholar.google.com/scholar?start=0&amp;q=%22predictive+ecosystem+analyzer+PEcAn%22">Longer / auto-updated list of publications that mention PEcAn’s full name in Google Scholar</a></p>
+</div>
+<div id="tests-makes-development-easier-and-less-error-prone" class="section level2">
+<h2><span class="header-section-number">38.2</span> Tests makes development easier and less error prone</h2>
+<p>Testing makes it easier to develop by organizing everything you are already doing anyway - but integrating it into the testing and documentation. With a codebase like PEcAn, it is often difficult to get started. You have to figure out</p>
+<ul>
+<li>what was I doing yesterday?</li>
+<li>what do I want to do today?</li>
+<li>what existing functions do I need to edit?</li>
+<li>what are the arguements to these functions (and what are examples of valid arguments)</li>
+<li>what packages are affected</li>
+<li>where is a logical place to put files used in testing</li>
+</ul>
+</div>
+<div id="quick-start-1" class="section level2">
+<h2><span class="header-section-number">38.3</span> Quick Start:</h2>
+<ul>
+<li>decide what you want to do today</li>
+<li>identify the issue in redmine or github (if none exists, create one)</li>
+<li>to work on issue 99, create a new branch called “redmine99”, “github99” or some descriptive name… Today we will add enable an existing function, <code>make.cheas</code> to make <code>goat.cheddar</code>. We will know that we are done by the color and taste.</li>
+</ul>
+<pre><code>    git branch goat-cheddar
+    git checkout goat-cheddar</code></pre>
+<pre><code>* open existing (or create new) file in `inst/tests/`. If working on code in &quot;myfunction&quot; or a set of functions in &quot;R/myfile.R&quot;, the file should be named accordingly, e.g. &quot;inst/tests/test.myfile.R&quot;
+* if you are lucky, the function has already been tested and has some examples.
+* if not, you may need to create a minimal example, often requiring a settings file. The default settings file can be obtained in this way:</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  settings &lt;-<span class="st"> </span><span class="kw">read.settings</span>(<span class="kw">system.file</span>(<span class="st">&quot;extdata/test.settings.xml&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;PEcAn.utils&quot;</span>))</code></pre></div>
+<pre><code>* write what you want to do</code></pre>
+<pre><code>      test_that(&quot;make.cheas can make cheese&quot;,{
+        goat.cheddar &lt;- make.cheas(source = &#39;goat&#39;, style = &#39;cheddar&#39;)
+        expect_equal(color(goat.cheddar), &quot;orange&quot;)
+        expect_is(object = goat.cheddar, class = &quot;cheese&quot;)
+        expect_true(all(c(&quot;sharp&quot;, &quot;creamy&quot;) %in% taste(goat.cheddar)))
+      } </code></pre>
+<pre><code>* now edit the goat.cheddar function until it makes savory, creamy, orange cheese.
+* commit often
+* update documentation and test
+  
+  ```r
+  library(devtools)
+  document(&quot;mypkg&quot;)
+  test(&quot;mypkg&quot;)  
+  ```
+* commit again
+* when complete, merge, and push
+  
+  ```bash
+  git commit -m &quot;make.cheas makes goat.cheddar now&quot;
+  git checkout master
+  git merge goat-cheddar
+  git push
+  ```</code></pre>
+</div>
+<div id="test-files" class="section level2">
+<h2><span class="header-section-number">38.4</span> Test files</h2>
+<p>Many of PEcAn’s functions require inputs that are provided as data. These can be in the <code>/data</code> or the <code>/inst/extdata</code> folders of a package. Data that are not package specific should be placed in the PEcAn.all or PEcAn.utils files.</p>
+<p>Some useful conventions:</p>
+<div id="settings" class="section level3">
+<h3><span class="header-section-number">38.4.1</span> Settings</h3>
+<ul>
+<li><p>A generic settings can be found in the PEcAn.all package</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">settings.xml &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;pecan.biocro.xml&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;PEcAn.BIOCRO&quot;</span>)
+settings &lt;-<span class="st"> </span><span class="kw">read.settings</span>(settings.xml)</code></pre></div></li>
+<li><p>database settings can be specified, and tests run only if a connection is available</p></li>
+</ul>
+<p>We currently use the following database to run tests against; tests that require access to a database should be enclosed by <code>if(db.exists())</code> to avoid failed tests on systems that do not have the database installed.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">settings<span class="op">$</span>database &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">userid =</span> <span class="st">&quot;bety&quot;</span>, 
+                          <span class="dt">passwd =</span> <span class="st">&quot;bety&quot;</span>, 
+                          <span class="dt">name =</span> <span class="st">&quot;bety&quot;</span>,     <span class="co"># database name </span>
+                          <span class="dt">host =</span> <span class="st">&quot;localhost&quot;</span> <span class="co"># server name)</span>
+<span class="cf">if</span>(<span class="kw">db.exists</span>()){
+  <span class="kw">test_that</span>(... ## write tests here
+<span class="er">}</span></code></pre></div>
+<ul>
+<li>instructions for installing this are available on the <a href="VM-Creation.md">VM creation wiki</a></li>
+<li><p>examples can be found in the PEcAn.DB package (<code>db/inst/tests/</code>).</p></li>
+<li><p>Model specific settings can go in the model-specific module, for example:</p></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">settings.xml &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;pecan.biocro.xml&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;PEcAn.BIOCRO&quot;</span>)
+settings &lt;-<span class="st"> </span><span class="kw">read.settings</span>(settings.xml)</code></pre></div>
+<ul>
+<li>test-specific settings:</li>
+<li>settings text can be specified inline:</li>
+</ul>
+<pre><code>  settings.text &lt;- &quot;
+  &lt;pecan&gt;
+  &lt;nocheck&gt;nope&lt;/nocheck&gt; ## allows bypass of checks in the read.settings functions 
+  &lt;pfts&gt;
+    &lt;pft&gt;
+      &lt;name&gt;ebifarm.pavi&lt;/name&gt;
+      &lt;outdir&gt;test/&lt;/outdir&gt;
+    &lt;/pft&gt;
+  &lt;/pfts&gt;
+  &lt;outdir&gt;test/&lt;/outdir&gt;
+  &lt;database&gt;
+    &lt;userid&gt;bety&lt;/userid&gt;
+    &lt;passwd&gt;bety&lt;/passwd&gt;
+    &lt;location&gt;localhost&lt;/location&gt;
+    &lt;name&gt;bety&lt;/name&gt;
+  &lt;/database&gt;
+&lt;/pecan&gt;&quot;
+settings &lt;- read.settings(settings.text)</code></pre>
+<ul>
+<li><p>values in settings can be updated:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">settings &lt;-<span class="st"> </span><span class="kw">read.settings</span>(settings.text)
+settings<span class="op">$</span>outdir &lt;-<span class="st"> &quot;/tmp&quot;</span> ## or any other settings</code></pre></div></li>
+</ul>
+</div>
+<div id="helper-functions-created-to-make-testing-easier" class="section level3">
+<h3><span class="header-section-number">38.4.2</span> Helper functions created to make testing easier</h3>
+<ul>
+<li><strong>tryl</strong> returns FALSE if function gives error</li>
+<li><strong>temp.settings</strong> creates temporary settings file</li>
+<li><strong>test.remote</strong> returns TRUE if remote connection is available</li>
+<li><strong>db.exists</strong> returns TRUE if connection to database is available</li>
+</ul>
+</div>
+<div id="when-should-i-test" class="section level3">
+<h3><span class="header-section-number">38.4.3</span> When should I test?</h3>
+<p>A test <em>should</em> be written for each of the following situations:</p>
+<ol style="list-style-type: decimal">
+<li>Each bug should get a regression test.</li>
+</ol>
+<ul>
+<li>The first step in handling a bug is to write code that reproduces the error</li>
+<li>This code becomes the test</li>
+<li>most important when error could re-appear</li>
+<li>essential when error silently produces invalid results</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Every time a (non-trivial) function is created or edited</li>
+</ol>
+<ul>
+<li>Write tests that indicate how the function should perform
+<ul>
+<li>example: <code>expect_equal(sum(1,1), 2)</code> indicates that the sum function should take the sum of its arguments</li>
+</ul></li>
+<li>Write tests for cases under which the function should throw an error</li>
+<li>example: <code>expect_error(sum(&quot;foo&quot;)</code></li>
+<li>better : <code>expect_error(sum(&quot;foo&quot;), &quot;invalid 'type' (character)&quot;)</code></li>
+</ul>
+</div>
+<div id="what-types-of-testing-are-important-to-understand" class="section level3">
+<h3><span class="header-section-number">38.4.4</span> What types of testing are important to understand?</h3>
+</div>
+<div id="unit-testing-test-driven-development" class="section level3">
+<h3><span class="header-section-number">38.4.5</span> Unit Testing / Test Driven Development</h3>
+<p>Tests are only as good as the test</p>
+<ol style="list-style-type: decimal">
+<li>write test</li>
+<li>write code</li>
+</ol>
+</div>
+<div id="regression-testing" class="section level3">
+<h3><span class="header-section-number">38.4.6</span> Regression Testing</h3>
+<p>When a bug is found,</p>
+<ol style="list-style-type: decimal">
+<li>write a test that finds the bug (the minimum test required to make the test fail)</li>
+<li>fix the bug</li>
+<li>bug is fixed when test passes</li>
+</ol>
+</div>
+<div id="how-should-i-test-in-r-the-testthat-package." class="section level3">
+<h3><span class="header-section-number">38.4.7</span> How should I test in R? The testthat package.</h3>
+<p>tests are found in <code>~/pecan/&lt;packagename&gt;/inst/tests</code>, for example <code>utils/inst/tests/</code></p>
+<p>See attached file and <a href="https://github.com/hadley/devtools/wiki/Testing" class="uri">https://github.com/hadley/devtools/wiki/Testing</a> for details on how to use the testthat package.</p>
+<div id="list-of-expectations" class="section level4">
+<h4><span class="header-section-number">38.4.7.1</span> List of Expectations</h4>
+<table>
+<thead>
+<tr class="header">
+<th>Full</th>
+<th>Abbreviation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>expect_that(x, is_true())</td>
+<td>expect_true(x)</td>
+</tr>
+<tr class="even">
+<td>expect_that(x, is_false())</td>
+<td>expect_false(x)</td>
+</tr>
+<tr class="odd">
+<td>expect_that(x, is_a(y))</td>
+<td>expect_is(x, y)</td>
+</tr>
+<tr class="even">
+<td>expect_that(x, equals(y))</td>
+<td>expect_equal(x, y)</td>
+</tr>
+<tr class="odd">
+<td>expect_that(x, is_equivalent_to(y))</td>
+<td>expect_equivalent(x, y)</td>
+</tr>
+<tr class="even">
+<td>expect_that(x, is_identical_to(y))</td>
+<td>expect_identical(x, y)</td>
+</tr>
+<tr class="odd">
+<td>expect_that(x, matches(y))</td>
+<td>expect_matches(x, y)</td>
+</tr>
+<tr class="even">
+<td>expect_that(x, prints_text(y))</td>
+<td>expect_output(x, y)</td>
+</tr>
+<tr class="odd">
+<td>expect_that(x, shows_message(y))</td>
+<td>expect_message(x, y)</td>
+</tr>
+<tr class="even">
+<td>expect_that(x, gives_warning(y))</td>
+<td>expect_warning(x, y)</td>
+</tr>
+<tr class="odd">
+<td>expect_that(x, throws_error(y))</td>
+<td>expect_error(x, y)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="how-to-run-tests" class="section level4">
+<h4><span class="header-section-number">38.4.7.2</span> How to run tests</h4>
+<p>add the following to “pecan/tests/run.all.R”</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(testthat)
+<span class="kw">library</span>(mypackage)
 
+<span class="kw">test_package</span>(<span class="st">&quot;mypackage&quot;</span>)</code></pre></div>
+</div>
+</div>
+<div id="basic-use-of-the-testthat-package" class="section level3">
+<h3><span class="header-section-number">38.4.8</span> basic use of the testthat package</h3>
+<p>Here is an example of tests (these should be placed in <code>&lt;packagename&gt;/inst/tests/test_&lt;sourcefilename&gt;.R</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">test_that</span>(<span class="st">&quot;mathematical operators plus and minus work as expected&quot;</span>,{
+  <span class="kw">expect_equal</span>(<span class="kw">sum</span>(<span class="dv">1</span>,<span class="dv">1</span>), <span class="dv">2</span>)
+  <span class="kw">expect_equal</span>(<span class="kw">sum</span>(<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>), <span class="op">-</span><span class="dv">2</span>)
+  <span class="kw">expect_equal</span>(<span class="kw">sum</span>(<span class="dv">1</span>,<span class="ot">NA</span>), <span class="ot">NA</span>)
+  <span class="kw">expect_error</span>(<span class="kw">sum</span>(<span class="st">&quot;cat&quot;</span>))
+  <span class="kw">set.seed</span>(<span class="dv">0</span>)
+  <span class="kw">expect_equal</span>(<span class="kw">sum</span>(<span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">100</span>)), <span class="kw">sum</span>(<span class="kw">data.frame</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">100</span>)))
+})
+
+<span class="kw">test_that</span>(<span class="st">&quot;different testing functions work, giving excuse to demonstrate&quot;</span>,{
+  <span class="kw">expect_identical</span>(<span class="dv">1</span>, <span class="dv">1</span>)
+  <span class="kw">expect_identical</span>(<span class="kw">numeric</span>(<span class="dv">1</span>), <span class="kw">integer</span>(<span class="dv">1</span>))
+  <span class="kw">expect_equivalent</span>(<span class="kw">numeric</span>(<span class="dv">1</span>), <span class="kw">integer</span>(<span class="dv">1</span>))
+  <span class="kw">expect_warning</span>(<span class="kw">mean</span>(<span class="st">&#39;1&#39;</span>))
+  <span class="kw">expect_that</span>(<span class="kw">mean</span>(<span class="st">&#39;1&#39;</span>), <span class="kw">gives_warning</span>(<span class="st">&quot;argument is not numeric or logical: returning NA&quot;</span>))
+  <span class="kw">expect_warning</span>(<span class="kw">mean</span>(<span class="st">&#39;1&#39;</span>), <span class="st">&quot;argument is not numeric or logical: returning NA&quot;</span>)
+  <span class="kw">expect_message</span>(<span class="kw">message</span>(<span class="st">&quot;a&quot;</span>), <span class="st">&quot;a&quot;</span>)
+})</code></pre></div>
+<div id="script-testing" class="section level4">
+<h4><span class="header-section-number">38.4.8.1</span> Script testing</h4>
+<p>It is useful to add tests to a script during development. This allows you to test that the code is doing what you expect it to do.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">*</span><span class="st"> </span>here is a fake script using the iris data set
+
+<span class="kw">test_that</span>(<span class="st">&quot;the iris data set has the same basic features as before&quot;</span>,{
+  <span class="kw">expect_equal</span>(<span class="kw">dim</span>(iris), <span class="kw">c</span>(<span class="dv">150</span>,<span class="dv">5</span>))
+  <span class="kw">expect_that</span>(iris<span class="op">$</span>Sepal.Length, <span class="kw">is_a</span>(<span class="st">&quot;numeric&quot;</span>))
+  <span class="kw">expect_is</span>(iris<span class="op">$</span>Sepal.Length, <span class="st">&quot;numeric&quot;</span>)<span class="co">#equivalent to prev. line</span>
+  <span class="kw">expect_is</span>(iris<span class="op">$</span>Species, <span class="st">&quot;factor&quot;</span>)
+})
+
+iris.color &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Species =</span> <span class="kw">c</span>(<span class="st">&quot;setosa&quot;</span>, <span class="st">&quot;versicolor&quot;</span>, <span class="st">&quot;virginica&quot;</span>),
+                         <span class="dt">color =</span> <span class="kw">c</span>(<span class="st">&quot;pink&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;orange&quot;</span>))
+
+newiris &lt;-<span class="st"> </span><span class="kw">merge</span>(iris, iris.color)
+iris.model &lt;-<span class="st"> </span><span class="kw">lm</span>(Petal.Length <span class="op">~</span><span class="st"> </span>color, <span class="dt">data =</span> newiris)
+
+<span class="kw">test_that</span>(<span class="st">&quot;changes to Iris code occurred as expected&quot;</span>,{
+  <span class="kw">expect_that</span>(<span class="kw">dim</span>(newiris), <span class="kw">equals</span>(<span class="kw">c</span>(<span class="dv">150</span>, <span class="dv">6</span>)))
+  <span class="kw">expect_that</span>(<span class="kw">unique</span>(newiris<span class="op">$</span>color),
+              <span class="kw">is_identical_to</span>(<span class="kw">unique</span>(iris.color<span class="op">$</span>color)))
+  <span class="kw">expect_equivalent</span>(iris.model<span class="op">$</span>coefficients[<span class="st">&quot;(Intercept)&quot;</span>], <span class="fl">4.26</span>)
+})</code></pre></div>
+</div>
+<div id="function-testing" class="section level4">
+<h4><span class="header-section-number">38.4.8.2</span> Function testing</h4>
+<p>Testing of a new function, <code>as.sequence</code>. The function and documentation are in source:R/utils.R and the tests are in source:tests/test.utils.R.</p>
+<p>Recently, I made the function <code>as.sequence</code> to turn any vector into a sequence, with custom handling of NA’s:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">function</span>(x, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>){
+  x2 &lt;-<span class="st"> </span><span class="kw">as.integer</span>(<span class="kw">factor</span>(x, <span class="kw">unique</span>(x)))
+  <span class="cf">if</span>(<span class="kw">all</span>(<span class="kw">is.na</span>(x2))){
+    x2 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span>, <span class="kw">length</span>(x2))
+  }
+  <span class="cf">if</span>(na.rm <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span>){
+    x2[<span class="kw">is.na</span>(x2)] &lt;-<span class="st"> </span><span class="kw">max</span>(x2, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>) <span class="op">+</span><span class="st"> </span><span class="dv">1</span>
+  }
+  <span class="kw">return</span>(x2)
+}</code></pre></div>
+<p>The next step was to add documentation and test. Many people find it more efficient to write tests before writing the function. This is true, but it also requires more discipline. I wrote these tests to handle the variety of cases that I had observed.</p>
+<p>As currently used, the function is exposed to a fairly restricted set of options - results of downloads from the database and transformations.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">test_that</span>(“as.sequence works”;{
+ <span class="kw">expect_identical</span>(<span class="kw">as.sequence</span>(<span class="kw">c</span>(“a”, “b”)), <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>)
+ <span class="kw">expect_identical</span>(<span class="kw">as.sequence</span>(<span class="kw">c</span>(“a”, <span class="ot">NA</span>)), <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>)
+ <span class="kw">expect_equal</span>(<span class="kw">as.sequence</span>(<span class="kw">c</span>(“a”, <span class="ot">NA</span>), <span class="dt">na.rm =</span> <span class="ot">FALSE</span>), <span class="kw">c</span>(<span class="dv">1</span>,<span class="ot">NA</span>))
+ <span class="kw">expect_equal</span>(<span class="kw">as.sequence</span>(<span class="kw">c</span>(<span class="ot">NA</span>,<span class="ot">NA</span>)), <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))
+})</code></pre></div>
+
+</div>
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="contributor-covenant-code-of-conduct.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="roxygen2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="package-data.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

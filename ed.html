@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="index.html">
-<link rel="next" href="contributor-covenant-code-of-conduct.html">
+<link rel="prev" href="dalec.html">
+<link rel="next" href="ed-computation-hpc.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -145,7 +145,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6" data-path="specific-model-configurations.html"><a href="specific-model-configurations.html"><i class="fa fa-check"></i><b>6</b> Specific Model Configurations</a></li>
 <li class="chapter" data-level="7" data-path="advanced-setup.html"><a href="advanced-setup.html"><i class="fa fa-check"></i><b>7</b> Advanced Setup</a></li>
 <li class="part"><span><b>III Advanced User Guide - Cmd Line</b></span><ul>
-<li class="chapter" data-level="7.1" data-path="book_intro/project_overview.html"><a href="#advanced-command-line-guide"><i class="fa fa-check"></i><b>7.1</b> Advanced Command Line Guide</a></li>
+<li class="chapter" data-level="7.1" data-path="models/ed.html"><a href="#advanced-command-line-guide"><i class="fa fa-check"></i><b>7.1</b> Advanced Command Line Guide</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="run-pecan-from-command-line.html"><a href="run-pecan-from-command-line.html"><i class="fa fa-check"></i><b>8</b> Run PEcAn from COmmand Line</a></li>
 <li class="chapter" data-level="9" data-path="working-with-the-vm.html"><a href="working-with-the-vm.html"><i class="fa fa-check"></i><b>9</b> Working with the VM</a></li>
@@ -530,41 +530,175 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="project-overview" class="section level1 unnumbered">
-<h1>Project Overview</h1>
-<p>The Predictive Ecosystem Analyzer (PEcAn) is an integrated informatics toolbox for ecosystem modeling (Dietze et al. 2013, LeBauer et al. 2013). PEcAn consists of:</p>
-<ol style="list-style-type: decimal">
-<li><p>An application program interface (API) that encapsulates an ecosystem model, providing a common interface, inputs, and output.</p></li>
-<li><p>Core utilities for handling and tracking model runs and the flows of information and uncertainties into and out of models and analyses</p></li>
-<li><p>An accessible web-based user interface and visualization tools</p></li>
-<li><p>An extensible collection of modules to handle specific types of analyses (sensitivity, uncertainty, ensemble), model-data syntheses (benchmarking, parameter data assimilation, state data assimilation), and data processing (model inputs and data constraints)</p></li>
-</ol>
-<p><img src="figures/PEcAn_Components.jpeg" width="335" style="display: block; margin: auto;" /></p>
-<p>This project is motivated by the fact that many of the most pressing questions about global change are limited by our ability to synthesize existing data and strategically prioritize the collection of new data. This project seeks to improve this ability by developing a framework for integrating multiple data sources in a sensible manner.</p>
-<p>The workflow system allows ecosystem modeling to be more reproducible, automated, and transparent in terms of operations applied to data, and thus ultimately more comprehensible to both peers and the public. It reduces the redundancy of effort among modeling groups, facilitate collaboration, and make models more accessible the rest of the research community.</p>
-<p>PEcAn is not itself an ecosystem model, and it can be used to with a variety of different ecosystem models; integrating a model involves writing a wrapper to convert inputs and outputs to and from the standards used by PEcAn. Currently, PEcAn supports multiple models listed <a href="pecan-models.html#pecan-models">PEcAn Models</a>.</p>
-<p><strong>Acknowledgements</strong></p>
-<p>This material is based upon work supported by the National Science Foundation under Grant No. 1062547, 1062204, 1241894, 1261582, 1318164, 1346748, 1458021, 1638577, the National Aeronautics and Space Administration (NASA) Grant No. 13-TE13-0060, and the Energy Biosciences Institute. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation or NASA. PEcAn is a collaboration among research groups at the Department of Earth And Environment at Boston University, the Energy Biosciences Institute at the University of Illinois, the Image Spatial Data Analysis group at NCSA, the Department of Atmospheric &amp; Oceanic Sciences at the University Wisconsin-Madison, and the Terrestrial Ecosystem Science &amp; Technology (TEST) Group at Brookhaven National Lab.</p>
-<p>BETY-db is a product of the Energy Biosciences Institute at the University of Illinois at Urbana-Champaign. We gratefully acknowledge the great effort of other researchers who generously made their own data available for further study.</p>
-<p><strong>PEcAn Publications</strong></p>
+<div id="ed" class="section level1">
+<h1><span class="header-section-number">17</span> ED</h1>
+<table>
+<thead>
+<tr class="header">
+<th>Model Information</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Home Page</td>
+<td><a href="http://moorcroftlab.oeb.harvard.edu/" class="uri">http://moorcroftlab.oeb.harvard.edu/</a></td>
+</tr>
+<tr class="even">
+<td>Source Code</td>
+<td><a href="https://github.com/EDmodel/ED2" class="uri">https://github.com/EDmodel/ED2</a></td>
+</tr>
+<tr class="odd">
+<td>License</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Authors</td>
+<td>Paul Moorcroft, …</td>
+</tr>
+<tr class="odd">
+<td>PEcAn Integration</td>
+<td>Michael Dietze, Rob Kooper</td>
+</tr>
+</tbody>
+</table>
+<div id="introduction-3" class="section level2">
+<h2><span class="header-section-number">17.1</span> Introduction</h2>
+<p>Introduction about ED model</p>
+</div>
+<div id="pecan-configuration-file-additions-3" class="section level2">
+<h2><span class="header-section-number">17.2</span> PEcAn configuration file additions</h2>
+<p>Should list the model specific additions to the PEcAn file here</p>
+</div>
+<div id="model-specific-input-files-3" class="section level2">
+<h2><span class="header-section-number">17.3</span> Model specific input files</h2>
+<p>List of inputs required by model, such as met, etc.</p>
+</div>
+<div id="model-configuration-files-3" class="section level2">
+<h2><span class="header-section-number">17.4</span> Model configuration files</h2>
+<p>ED2 is configured using 2 files which are placed in the run folder.</p>
 <ul>
-<li>Shiklomanov. A, MC Dietze, T Viskari, PA Townsend, SP Serbin. 2016 “Quantifying the influences of spectral resolution on uncertainty in leaf trait estimates through a Bayesian approach to RTM inversion” Remote Sensing of the Environment 183: 226-238</li>
-<li>Viskari et al. 2015 Model-data assimilation of multiple phenological observations to constrain and forecast leaf area index. Ecological Applications 25(2): 546-558</li>
-<li>Dietze, M. C., S. P. Serbin, C. Davidson, A. R. Desai, X. Feng, R. Kelly, R. Kooper, D. LeBauer, J. Mantooth, K. McHenry, and D. Wang (2014) A quantitative assessment of a terrestrial biosphere model’s data needs across North American biomes. Journal of Geophysical Research-Biogeosciences <a href="http://dx.doi.org/10.1002/2013jg002392">doi:10.1002/2013jg002392</a></li>
-<li>LeBauer, D.S., D. Wang, K. Richter, C. Davidson, &amp; M.C. Dietze. (2013). Facilitating feedbacks between field measurements and ecosystem models. Ecological Monographs. <a href="http://dx.doi.org/10.1890/12-0137.1">doi:10.1890/12-0137.1</a></li>
-<li>Wang, D, D.S. LeBauer, and M.C. Dietze(2013) Predicting yields of short-rotation hybrid poplar (Populus spp.) for the contiguous US through model-data synthesis. Ecological Applications <a href="http://dx.doi.org/10.1890/12-0854.1">doi:10.1890/12-0854.1</a></li>
-<li>Dietze, M.C., D.S LeBauer, R. Kooper (2013) On improving the communication between models and data. Plant, Cell, &amp; Environment <a href="http://dx.doi.org/10.1111/pce.12043">doi:10.1111/pce.12043</a></li>
+<li><strong>ED2IN</strong> : template for this file is located at models/ed/inst/ED2IN.&lt;revision&gt;. The values in this template that need to be modified are described below and are surrounded with @ symbols.</li>
+<li><strong>config.xml</strong> : this file is generated by PEcAn. Some values are stored in the pecan.xml in &lt;pfts&gt;&lt;pft&gt;&lt;constants&gt; section as well as in &lt;model&gt; section.</li>
 </ul>
-<p><a href="https://scholar.google.com/scholar?start=0&amp;q=%22predictive+ecosystem+analyzer+PEcAn%22">Longer / auto-updated list of publications that mention PEcAn’s full name in Google Scholar</a></p>
+<p>An example of the template can be found in <a href="https://github.com/PecanProject/pecan/blob/master/models/ed/inst/ED2IN.r82">ED2IN.r82</a></p>
+<p>The ED2IN template can contain the following variables. These will be replaced with actual values when the model configuration is written.</p>
+<ul>
+<li><p>**<span class="citation">@ENSNAME</span><span class="citation">@*</span>* : run id of the simulation, used in template for NL%EXPNME</p></li>
+<li>**<span class="citation">@START_MONTH</span><span class="citation">@*</span>* : start of simulation UTC time, from &lt;run&gt;&lt;start.date&gt;, used in template for NL%IMONTHA<br />
+</li>
+<li>**<span class="citation">@START_DAY</span><span class="citation">@*</span>* : start of simulation UTC time, from &lt;run&gt;&lt;start.date&gt;, used in template for NL%IDATEA<br />
+</li>
+<li>**<span class="citation">@START_YEAR</span><span class="citation">@*</span>* : start of simulation UTC time, from &lt;run&gt;&lt;start.date&gt;, used in template for NL%IYEARA<br />
+</li>
+<li>**<span class="citation">@END_MONTH</span><span class="citation">@*</span>* : end of simulation UTC time, from &lt;run&gt;&lt;end.date&gt;, used in template for NL%IMONTHZ<br />
+</li>
+<li>**<span class="citation">@END_DAY</span><span class="citation">@*</span>* : end of simulation UTC time, from &lt;run&gt;&lt;end.date&gt;, used in template for NL%IDATEZ<br />
+</li>
+<li><p>**<span class="citation">@END_YEAR</span><span class="citation">@*</span>* : end of simulation UTC time, from &lt;run&gt;&lt;end.date&gt;, used in template for NL%IYEARZ</p></li>
+<li>**<span class="citation">@SITE_LAT</span><span class="citation">@*</span>* : site latitude location, from &lt;run&gt;&lt;site&gt;&lt;lat&gt;, used in template for NL%POI_LAT<br />
+</li>
+<li><p>**<span class="citation">@SITE_LON</span><span class="citation">@*</span>* : site longitude location, from &lt;run&gt;&lt;site&gt;&lt;lon&gt;, used in template for NL%POI_LON</p></li>
+<li>**<span class="citation">@SITE_MET</span><span class="citation">@*</span>* : met header location, from &lt;run&gt;&lt;site&gt;&lt;met&gt;, used in template for NL%ED_MET_DRIVER_DB<br />
+</li>
+<li>**<span class="citation">@MET_START</span><span class="citation">@*</span>* : first year of met data, from &lt;run&gt;&lt;site&gt;&lt;met.start&gt;, used in template for NL%METCYC1<br />
+</li>
+<li><p>**<span class="citation">@MET_END</span><span class="citation">@*</span>* : last year of met data, from &lt;run&gt;&lt;site&gt;&lt;met.end&gt;, used in template for NL%METCYCF</p></li>
+<li>**<span class="citation">@PHENOL_SCHEME</span><span class="citation">@*</span>* : phenology scheme, if this variabe is 1 the following 3 fields will be used, otherwise they will be set to empty strings, from &lt;model&gt;&lt;phenol.scheme&gt;, used in template for NL%IPHEN_SCHEME<br />
+</li>
+<li>**<span class="citation">@PHENOL_START</span><span class="citation">@*</span>* : first year for phenology, from &lt;model&gt;&lt;phenol.start&gt;, used in template for NL%IPHENYS1 and NL%IPHENYF1<br />
+</li>
+<li><p><strong><span class="citation">@PHENOL_END</span><span class="citation">@*</span>* : last year for phenology, from &lt;model&gt;&lt;phenol.end&gt;, used in template for NL%IPHENYSF and NL%IPHENYFF<br />
+</strong><span class="citation">@PHENOL</span><span class="citation">@*</span>* : path and prefix of the prescribed phenology data, from * <model\>&lt;phenol&gt;, used in template for NL%PHENPATH</p></li>
+<li>**<span class="citation">@SITE_PSSCSS</span><span class="citation">@*</span>* : path and prefix of the previous ecosystem state, from &lt;model&gt;&lt;psscss&gt;, used in template for NL%SFILIN<br />
+</li>
+<li>**<span class="citation">@ED_VEG</span><span class="citation">@*</span>* : path and prefix of the vegetation database, used only to determine the land/water mask, from &lt;model&gt;&lt;veg&gt;, used in template for NL%VEG_DATABASE<br />
+</li>
+<li>**<span class="citation">@ED_SOIL</span><span class="citation">@*</span>* : path and prefix of the soil database, used to determine the soil type, from &lt;model&gt;&lt;soil&gt;, used in template for NL%SOIL_DATABASE<br />
+</li>
+<li><p>**<span class="citation">@ED_INPUTS</span><span class="citation">@*</span>* : input directory with dataset to initialise chilling degrees and growing degree days, which is used to drive the cold-deciduous phenology, from &lt;model&gt;&lt;inputs&gt;, used in template for NL%THSUMS_DATABASE</p></li>
+<li>**<span class="citation">@FFILOUT</span><span class="citation">@*</span>* : path and prefix for analysis files, generated from &lt;run&gt;&lt;host&gt;&lt;outdir&gt;/run.id/analysis, used in template for NL%FFILOUT<br />
+</li>
+<li><p>**<span class="citation">@SFILOUT</span><span class="citation">@*</span>* : path and prefix for history files, generated from &lt;run&gt;&lt;host&gt;&lt;outdir&gt;/run.id/history, used in template for NL%SFILOUT</p></li>
+<li><p>**<span class="citation">@CONFIGFILE</span><span class="citation">@*</span>* : XML file containing additional parameter settings, this is always “config.xml”, used in template for NL%IEDCNFGF</p></li>
+<li><strong><span class="citation">@OUTDIR</span><span class="citation">@*</span>* : location where output files are written (</strong>without the runid**), from &lt;run&gt;&lt;host&gt;&lt;outdir&gt;, should not be used.<br />
+</li>
+<li><p>**<span class="citation">@SCRATCH</span><span class="citation">@*</span>* : local scratch space for outputs, generated /scratch/&lt;username&gt;/run$scratch, should not be used right now since it only works on ebi-cluster</p></li>
+</ul>
+</div>
+<div id="installation-notes-3" class="section level2">
+<h2><span class="header-section-number">17.5</span> Installation notes</h2>
+<p>This section contains notes on how to compile the model. The notes for the VM might work on other machines or configurations as well.</p>
+<div id="vm-3" class="section level3">
+<h3><span class="header-section-number">17.5.1</span> VM</h3>
+</div>
+<div id="bu-geo" class="section level3">
+<h3><span class="header-section-number">17.5.2</span> BU geo</h3>
+</div>
+<div id="tacc-lonestar" class="section level3">
+<h3><span class="header-section-number">17.5.3</span> TACC lonestar</h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">module</span> load hdf5
+<span class="ex">curl</span> -o ED.r82.tgz http://isda.ncsa.illinois.edu/~kooper/EBI/ED.r82.tgz
+<span class="fu">tar</span> zxf ED.r82.tgz
+<span class="fu">rm</span> ED.r82.tgz
+<span class="bu">cd</span> ED.r82/ED/build/bin
+<span class="ex">curl</span> -o include.mk.lonestar http://isda.ncsa.illinois.edu/~kooper/EBI/include.mk.lonestar
+<span class="fu">make</span> OPT=lonestar</code></pre></div>
+</div>
+<div id="tacc-stampede" class="section level3">
+<h3><span class="header-section-number">17.5.4</span> TACC stampede</h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">module</span> load hdf5
+<span class="ex">curl</span> -o ED.r82.tgz http://isda.ncsa.illinois.edu/~kooper/EBI/ED.r82.tgz
+<span class="fu">tar</span> zxf ED.r82.tgz
+<span class="fu">rm</span> ED.r82.tgz
+<span class="bu">cd</span> ED.r82/ED/build/bin
+<span class="ex">curl</span> -o include.mk.stampede http://isda.ncsa.illinois.edu/~kooper/EBI/include.mk.stampede
+<span class="fu">make</span> OPT=stampede</code></pre></div>
 
+<p>ED2 is configured using 2 files which are placed in the run folder.</p>
+<ul>
+<li><strong>ED2IN</strong> : template for this file is located at models/ed/inst/ED2IN.&lt;revision&gt;. The values in this template that need to be modified are described below and are surrounded with @ symbols.</li>
+<li><strong>config.xml</strong> : this file is generated by PEcAn. Some values are stored in the pecan.xml in &lt;pfts&gt;&lt;pft&gt;&lt;constants&gt; section as well as in &lt;model&gt; section.</li>
+</ul>
+<p>An example of the template can be found in <a href="https://github.com/PecanProject/pecan/blob/master/models/ed/inst/ED2IN.r82">ED2IN.r82</a></p>
+</div>
+</div>
+<div id="ed2in-configuration-variables" class="section level2">
+<h2><span class="header-section-number">17.6</span> ED2IN configuration variables</h2>
+<p>**<span class="citation">@ENSNAME</span><span class="citation">@*</span>* : run id of the simulation, used in template for NL%EXPNME</p>
+<p><strong><span class="citation">@START_MONTH</span><span class="citation">@*</span>* : start of simulation UTC time, from &lt;run&gt;&lt;start.date&gt;, used in template for NL%IMONTHA<br />
+</strong><span class="citation">@START_DAY</span><span class="citation">@*</span>* : start of simulation UTC time, from &lt;run&gt;&lt;start.date&gt;, used in template for NL%IDATEA<br />
+<strong><span class="citation">@START_YEAR</span><span class="citation">@*</span>* : start of simulation UTC time, from &lt;run&gt;&lt;start.date&gt;, used in template for NL%IYEARA<br />
+</strong><span class="citation">@END_MONTH</span><span class="citation">@*</span>* : end of simulation UTC time, from &lt;run&gt;&lt;end.date&gt;, used in template for NL%IMONTHZ<br />
+<strong><span class="citation">@END_DAY</span><span class="citation">@*</span>* : end of simulation UTC time, from &lt;run&gt;&lt;end.date&gt;, used in template for NL%IDATEZ<br />
+</strong><span class="citation">@END_YEAR</span><span class="citation">@*</span>* : end of simulation UTC time, from &lt;run&gt;&lt;end.date&gt;, used in template for NL%IYEARZ</p>
+<p><strong><span class="citation">@SITE_LAT</span><span class="citation">@*</span>* : site latitude location, from &lt;run&gt;&lt;site&gt;&lt;lat&gt;, used in template for NL%POI_LAT<br />
+</strong><span class="citation">@SITE_LON</span><span class="citation">@*</span>* : site longitude location, from &lt;run&gt;&lt;site&gt;&lt;lon&gt;, used in template for NL%POI_LON</p>
+<p><strong><span class="citation">@SITE_MET</span><span class="citation">@*</span>* : met header location, from &lt;run&gt;&lt;site&gt;&lt;met&gt;, used in template for NL%ED_MET_DRIVER_DB<br />
+</strong><span class="citation">@MET_START</span><span class="citation">@*</span>* : first year of met data, from &lt;run&gt;&lt;site&gt;&lt;met.start&gt;, used in template for NL%METCYC1<br />
+**<span class="citation">@MET_END</span><span class="citation">@*</span>* : last year of met data, from &lt;run&gt;&lt;site&gt;&lt;met.end&gt;, used in template for NL%METCYCF</p>
+<p><strong><span class="citation">@PHENOL_SCHEME</span><span class="citation">@*</span>* : phenology scheme, if this variabe is 1 the following 3 fields will be used, otherwise they will be set to empty strings, from &lt;model&gt;&lt;phenol.scheme&gt;, used in template for NL%IPHEN_SCHEME<br />
+</strong><span class="citation">@PHENOL_START</span><span class="citation">@*</span>* : first year for phenology, from &lt;model&gt;&lt;phenol.start&gt;, used in template for NL%IPHENYS1 and NL%IPHENYF1<br />
+<strong><span class="citation">@PHENOL_END</span><span class="citation">@*</span>* : last year for phenology, from &lt;model&gt;&lt;phenol.end&gt;, used in template for NL%IPHENYSF and NL%IPHENYFF<br />
+</strong><span class="citation">@PHENOL</span><span class="citation">@*</span>* : path and prefix of the prescribed phenology data, from &lt;model&gt;&lt;phenol&gt;, used in template for NL%PHENPATH</p>
+<p><strong><span class="citation">@SITE_PSSCSS</span><span class="citation">@*</span>* : path and prefix of the previous ecosystem state, from &lt;model&gt;&lt;psscss&gt;, used in template for NL%SFILIN<br />
+</strong><span class="citation">@ED_VEG</span><span class="citation">@*</span>* : path and prefix of the vegetation database, used only to determine the land/water mask, from &lt;model&gt;&lt;veg&gt;, used in template for NL%VEG_DATABASE<br />
+<strong><span class="citation">@ED_SOIL</span><span class="citation">@*</span>* : path and prefix of the soil database, used to determine the soil type, from &lt;model&gt;&lt;soil&gt;, used in template for NL%SOIL_DATABASE<br />
+</strong><span class="citation">@ED_INPUTS</span><span class="citation">@*</span>* : input directory with dataset to initialise chilling degrees and growing degree days, which is used to drive the cold-deciduous phenology, from &lt;model&gt;&lt;inputs&gt;, used in template for NL%THSUMS_DATABASE</p>
+<p><strong><span class="citation">@FFILOUT</span><span class="citation">@*</span>* : path and prefix for analysis files, generated from &lt;run&gt;&lt;host&gt;&lt;outdir&gt;/run.id/analysis, used in template for NL%FFILOUT<br />
+</strong><span class="citation">@SFILOUT</span><span class="citation">@*</span>* : path and prefix for history files, generated from &lt;run&gt;&lt;host&gt;&lt;outdir&gt;/run.id/history, used in template for NL%SFILOUT</p>
+<p>**<span class="citation">@CONFIGFILE</span><span class="citation">@*</span>* : XML file containing additional parameter settings, this is always “config.xml”, used in template for NL%IEDCNFGF</p>
+<p><strong><span class="citation">@OUTDIR</span><span class="citation">@*</span>* : location where output files are written (</strong>without the runid<strong>), from &lt;run&gt;&lt;host&gt;&lt;outdir&gt;, should not be used.<br />
+</strong><span class="citation">@SCRATCH</span><span class="citation">@*</span>* : local scratch space for outputs, generated /scratch/&lt;username&gt;/run$scratch, should not be used right now since it only works on ebi-cluster</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="contributor-covenant-code-of-conduct.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="dalec.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ed-computation-hpc.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
