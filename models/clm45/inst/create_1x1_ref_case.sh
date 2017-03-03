@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Modified script originally provided by Ryan Knox
-# To be run from ed-clm/cime/scripts to generate point reference case
+# To be run from CLM_dev_tags/clm4_6_00/scripts to generate point reference case
 # After run, need to insert model record into BETY
 # In this case the whole CASE directory is the 'executable'
 #
