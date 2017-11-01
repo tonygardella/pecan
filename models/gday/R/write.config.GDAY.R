@@ -21,7 +21,7 @@
 ##' @param run.id id of run
 ##' @return configuration file for GDAY for given run
 ##' @export
-##' @author Martin De Kauwe
+##' @author Martin De Kauwe, Tony Gardella
 ##-------------------------------------------------------------------------------------------------#
 write.config.GDAY <- function(defaults, trait.values, settings, run.id) {
     
@@ -61,6 +61,17 @@ write.config.GDAY <- function(defaults, trait.values, settings, run.id) {
     # Write out base param file to run directory
     params <- readLines(con = system.file("base_start.cfg", package = "PEcAn.GDAY"), n = -1)
     writeLines(params, con = file.path(settings$rundir, run.id, "base_start.cfg"))
+    
+    in_fname <- "base_start.cfg"
+    out_fname <- "test.ini"
+    
+    replacements <- list("ncycle" = "true",
+                         "modeljm" = "3",
+                         "print_options" = "end",
+                         "jmax" = "110.0",
+                         "vcmax" = "55.0")
+    
+    adjust_gday_params(in_fname, out_fname, replacements)
     
     
     # Create Python Run script
