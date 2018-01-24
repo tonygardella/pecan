@@ -3,33 +3,53 @@
 ##'
 ##' @name german.model
 ##' @title German Soil Model code
+##' @param input_met list of hourly temperature in degress C
 ##' @param input_params list of defaults to process
-##' @param input_temp vector of samples for a given trait
 ##' @return soil model output
 ##' @description GER is a model of soil decomposition developed from German et al. (2012) 
 ##' DOI: 10.1111/j.1365-2486.2011.02615.x with parameter values from Li et al. (2014) DOI:10.1007/s10533-013-9948-8.
 ##' @export
-##' @author Rose Abramoff, Katerina Georgiou
+##' @author Rose Abramoff, Katerina Georgiou, Anthony Gardella
 ##-------------------------------------------------------------------------------------------------#
 
-german_model <- function(input_params = NULL, input_temp =NULL){
+german_model <- function( input_met =NULL, input_params = NULL){
   
 library(FME)
 
-if(is.null(input_temp)){
-  PEcAn.logger::logger.info("No Input meteorological data, using default 2009 Harvard Forest data ")
+if(is.null(input_met)){
+  PEcAn.logger::logger.info("No Input meteorological data, using default 2009 Harvard Forest data")
   # Option 1: Seasonally varying temperature from Harvard Forest EMS 2009
   inputdata <- read.csv(paste0(getwd(),"/InputTemp.csv"))
   RunTime <- length(inputdata$indexHour) # Hours
   if(!exists(inputdata)){
     # Option 2: Constant temperature
+    PEcAn.logger::logger.info("Unable to find default temperature data. Using Constant temperature of 20 C")
     inputdata <- as.data.frame(cbind(1:RunTime, rep(20,RunTime)))
     names(inputdata) <- c("indexHour","temperatureC")
   }
+}else if(!is.null(input_temp)){
+  PEcAn.logger::logger.info("Using Input meteorological data processed through PEcAn")
+  
+  
+} else{
+  
 }
 
 if(is.null(input_params)){
-PEcAn.logger::logger.info("No Input parameter, using made up paramters")
+PEcAn.logger::logger.info("No Input parameter, using default parameters")
+  Tref=20 # Reference temperature
+  Is=0.00016 # SOC input rate (mg/g/hr)
+  Vmax0=0.01 # SOC reference Vmax (mg C (mg MBC)^-1 hr^-1)
+  Km0=250 # SOC reference Km (mgC /g soil)
+  Ea=47 # SOC Vmax activation energy (kJ/mol)
+  KEa=30 # SOC Km activation energy (kJ/mol)
+  rB=0.00028 # MBC turnover rate (mg C (mg C)^-1 hr^-1)
+  CUE0=0.31 # Carbon use efficiency reference(mg C (mg C)^-1)
+  CUEslope=-0.016 # Slope of CUE temperature sensitivity
+  p = c(Tref,Vmax0,Km0,Ea,KEa,rB,CUE0,CUEslope)
+}  
+  
+  
   # Option 1: Made a fake seasonal input based on reference input...just for fun
 A1=0.0005       #seasonal amplitude
 A2=0            #daily amplitude
@@ -38,7 +58,6 @@ w2=2*pi
 Iref=Is         #reference input
 t=1:RunTime
 Litter = Iref+A1*sin(w1*t-pi/2)+A2*sin(w2*t) # mgC g-1 soil hour-1
-
   
 }
 
