@@ -3,7 +3,7 @@
 ##'
 ##' @name german.model
 ##' @title German Soil Model code
-##' @param input_met list of hourly temperature in degress C
+##' @param input_met path to meteorological data
 ##' @param input_params list of defaults to process
 ##' @return soil model output
 ##' @description GER is a model of soil decomposition developed from German et al. (2012) 
@@ -17,21 +17,48 @@ german_model <- function( input_met =NULL, input_params = NULL){
 library(FME)
 
 if(is.null(input_met)){
+  #Handle met data if PEcAN can't procvide it
   PEcAn.logger::logger.info("No Input meteorological data, using default 2009 Harvard Forest data")
+  
   # Option 1: Seasonally varying temperature from Harvard Forest EMS 2009
-  inputdata <- read.csv(paste0(getwd(),"/InputTemp.csv"))
+  deafault_file__path <- readLines(con = system.file("template.job", package = "PEcAn.GERMAN"), n = -1)
+  inputdata <- read.csv(default_file_path)
+  
   RunTime <- length(inputdata$indexHour) # Hours
   if(!exists(inputdata)){
     # Option 2: Constant temperature
     PEcAn.logger::logger.info("Unable to find default temperature data. Using Constant temperature of 20 C")
     inputdata <- as.data.frame(cbind(1:RunTime, rep(20,RunTime)))
     names(inputdata) <- c("indexHour","temperatureC")
+    RunTime <- length(inputdata$indexHour)
   }
 }else if(!is.null(input_temp)){
   PEcAn.logger::logger.info("Using Input meteorological data processed through PEcAn")
-  
-  
 } else{
+  
+  # Use PEcAN provided Temperature data
+  input_met <-paste0("/fs/data1/pecan.data/input/Ameriflux_CF_gapfill_site_0-676/US-WCr.2002.nc")
+  nc   <- ncdf4::nc_open(input_met)
+  
+  sec <- nc$dim$time$vals
+  sec <- udunits2::ud.convert(sec, unlist(strsplit(nc$dim$time$units, " "))[1], "seconds")
+  
+  ## build day and year
+  
+  dt <- PEcAn.utils::seconds_in_year(year) / length(sec)
+  timestep.s <- udunits2::ud.convert(1, "day", "seconds")  # Number of seconds in a day
+  tstep <- round(timestep.s / dt)  #time steps per day
+  
+  diy <- PEcAn.utils::days_in_year(year)
+  doy <- rep(seq_len(diy), each = tstep)[seq_along(sec)]
+  Tair <- ncdf4::ncvar_get(nc, "air_temperature")  # air temperature in K
+  ncdf4::nc_close(nc)
+  
+  tair <- udunits2::ud.convert(Tair, "kelvin", "celsius")  # Convert Kelvin to Celcius
+  
+  
+  
+  
   
 }
 
@@ -59,7 +86,7 @@ Iref=Is         #reference input
 t=1:RunTime
 Litter = Iref+A1*sin(w1*t-pi/2)+A2*sin(w2*t) # mgC g-1 soil hour-1
   
-}
+
 
 # Option 2: Constant Litter input
 Litter = rep(Iref,RunTime)
