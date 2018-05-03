@@ -47,8 +47,11 @@ del_workflow<- (wkf_id,hostname,con){
               filter(id %in% wkf_info$model_id) %>%
               pull(model_name)
  
- type <- pull(ens_info = runtype)
- 
+ type <- if(exists("ens_info") && !all(is.na(ens_info))){(ens_info = runtype)
+                                                          }else
+                                                           { "No Type" 
+                                                             }
+                                                        
  site <- PEcAn.DB::query.site(wkf_info$site_id,con)
  
  user_name <- tbl(con,"users") %>%
@@ -60,16 +63,14 @@ glue::glue('You are deleting a workflow created by {user_name} with the followin
             'Site = {site$sitename} ',
             'Start Date = {wkf_info$start_date}',
             'End Date = {wkf_info$end_date}',
+            'Date Created = {wkf_info$created_at} ',
+            'Date Updated = {wkf_info$updated_at}',
+            'Type = {type}',
+            'Host = {wkf_info$hostname}',
+            'Folder Location = {wkf_info$folder}',
+            'Posterior Files = 
             .sep ="\n"
             )
-
-
-glue('My name is {name},',
-     ' my age next year is {age + 1},',
-     ' my anniversary is {format(anniversary, "%A, %B %d, %Y")}.',
-     name = "Joe",
-     age = 40,
-     anniversary = as.Date("2001-10-12"))
 
  ## Pause for 15 sec so person can stop execution if needed
  PEcAn.logger::logger.warn("Deletion will begin in 15 seconds")
