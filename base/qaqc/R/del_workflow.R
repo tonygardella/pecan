@@ -9,8 +9,8 @@
 ##' and then deletes all files and records associated with it.
 ##'
 ##'
-##'wkf_id = 1000004781
-del_workflow<- (wkf_id,hostname,con){
+##'wkf_id = 1000000679
+del_workflow<- function(wkf_id,hostname,con){
   
 #Find workflow, ensemble,run,likelihood, input, and dbfile information
   wkf_info <- as.data.frame(dplyr::tbl(con, "workflows") %>%
@@ -47,16 +47,22 @@ del_workflow<- (wkf_id,hostname,con){
               filter(id %in% wkf_info$model_id) %>%
               pull(model_name)
  
- type <- if(exists("ens_info") && !all(is.na(ens_info))){(ens_info = runtype)
+ type <- if(exists("ens_info") && !all(is.na(ens_info))){
+                                collapse(ens_info$runtype, sep = ",")
                                                           }else
                                                            { "No Type" 
                                                              }
                                                         
  site <- PEcAn.DB::query.site(wkf_info$site_id,con)
  
- user_name <- tbl(con,"users") %>%
-                filter(id %in% wkf_info$user_id) %>%
-                pull()
+ user_name <- if(is.na(wkf_info$user_id)){
+                  NA
+                  }else{
+                    tbl(con,"users") %>%
+                      filter(id %in% wkf_info$user_id) %>%
+                      pull(name)
+                  }
+
  
 glue::glue('You are deleting a workflow created by {user_name} with the following information: ',
             'Model = {model_name} ',
@@ -67,19 +73,40 @@ glue::glue('You are deleting a workflow created by {user_name} with the followin
             'Date Updated = {wkf_info$updated_at}',
             'Type = {type}',
             'Host = {wkf_info$hostname}',
-            'Folder Location = {wkf_info$folder}',
-            'Posterior Files = 
+            'Files deleted are located here',
+            'Workflow Folder Location = {wkf_info$folder}',
             .sep ="\n"
             )
 
- ## Pause for 15 sec so person can stop execution if needed
+ ## Pause for 15 sec so person can read info and stop execution if needed
  PEcAn.logger::logger.warn("Deletion will begin in 15 seconds")
  profvis::pause(15)
  PEcAn.logger::logger.warn("Deletion of records and files begginning now")
  
- ## Delete From the bottom up
+ ## Delete
+ if(exists("run_info"))
+ for (i in seq_along(run_info$id)){
+   PEcAn.DB::db.query(query =paste0("DELETE FROM likelihoods where run_id =",run_info$id[i]),
+            con)
+ }
  
- if(li)
+ for (i in seq_along(ens_info$id)){
+   PEcAn.DB::db.query(query =paste0("DELETE FROM runs where ensemble_id =",ens_info$id[i]),
+            con)
+   PEcAn.DB::db.query(query =paste0("DELETE FROM ensembles where id =",ens_info$id[i]),
+            con)
+ }
  
+ for (i in seq_along(wkf_info$id)){
+   PEcAn.DB::db.query(query =paste0("DELETE FROM workflows where id =",wkf_info$id[i]),
+            con)
+   
+ }
+
  
+ for (i in seq_along(wkf_info$folder)){
+   unlink(wkf_info$folder, recursive = TRUE)
+ }
+ 
+ PEcAn.logger::logger.warn("Deletion Complete. All records and files were deleted")
 }
