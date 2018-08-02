@@ -60,8 +60,17 @@ write.config.GDAY <- function(defaults, trait.values, settings, run.id) {
     
     # Write out base param file to run directory
     params <- readLines(con = system.file("base_start.cfg", package = "PEcAn.GDAY"), n = -1)
-    writeLines(params, con = file.path(settings$rundir, run.id, "base_start.cfg"))
+    # Edit param file
+    in_fname <- system.file("base_start.cfg", package = "PEcAn.GDAY")
+    out_fname<- file.path(settings$rundir, run.id, "base_start.cfg")
+    ### Make replacement list
+    if ("autotrophic_respiration_fraction" %in% names(trait.samples)) {
+      names(trait.samples)[which(names(trait.samples) == "autotrophic_respiration_fraction")] <- "t2"
+    }
     
+    
+    ###
+    adjust_gday_params(in_fname, out_fname, replacements)
     
     # Create Python Run script
     runpy<- readLines(con = system.file("run_simulations.py", package = "PEcAn.GDAY"), n = -1)
