@@ -13,7 +13,7 @@ In this Vignette we will go through downloading CRUNCEP meteorological data and 
 ### Set up Arguments for Met Process
 FYI- Within worklow, met.process get called from do.conversions. `workflow.R` -> `do.conversions` -> `met.process` 
 
-# These arg are pull from the pecan.xml
+#### These arg are pulled from the pecan.xml
 
 ```{r}
 site<-list()
