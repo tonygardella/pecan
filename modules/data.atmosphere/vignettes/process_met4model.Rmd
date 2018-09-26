@@ -1,0 +1,73 @@
+---
+title: "Process Met for Model"
+author: "Tony Gardella"
+date: "9/26/2018"
+output: html_document
+---
+
+## Introduction
+
+In this Vignette we will go through downloading CRUNCEP meteorological data and processing it for the SIPNET model.
+
+
+### Set up Arguments for Met Process
+FYI- Within worklow, met.process get called from do.conversions. `workflow.R` -> `do.conversions` -> `met.process` 
+
+# These arg are pull from the pecan.xml
+
+```{r}
+site<-list()
+site$id <- "1104"
+site$met.start <- "2004/01/01"
+site$met.end <- "2004/12/31"
+site$name <- "Brookhaven National Laboratory"
+site$lat <- 40.87371
+site$lon <- -72.86913
+```
+
+```{r}
+input_met <- list()
+input_met$source <- "CRUNCEP"
+input_met$output <-  "SIPNET"
+```
+
+```{r}
+start_date <- "2004/01/01"
+end_date <- "2004/12/31"
+```
+
+```{r}
+model <- "SIPNET"
+```
+
+```{r}
+host <- "localhost"
+```
+
+```{r}
+dbparms <- list()
+dbparms$user <-"bety"
+
+dbparms$password <-"bety"
+
+dbparms$host <- "psql-pecan.bu.edu"
+
+dbparms$dbname <- "bety"
+
+dbparms$driver<-"PostgreSQL"
+
+dbparms$write<- TRUE
+```
+
+```{r}
+dir <- "/fs/data1/pecan.data/dbfiles"
+```
+
+
+## Run Met.Process
+
+```{r}
+result <- met.process(site, input_met, start_date, end_date, model,host = "localhost", dbparms, dir, browndog = NULL, spin=NULL,
+                        overwrite = FALSE) 
+```
+
