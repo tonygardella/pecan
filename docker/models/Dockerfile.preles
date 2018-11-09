@@ -1,7 +1,7 @@
 # ----------------------------------------------------------------------
-# BUILD GDAY BINARY
+# BUILD PRELES BINARY
 # ----------------------------------------------------------------------
-FROM debian:stretch as gday-binary
+FROM debian:stretch as preles-binary
 
 # Some variables that can be used to set control the docker build
 ARG MODEL_VERSION=git
@@ -12,13 +12,13 @@ RUN apt-get update \
        gcc \
        git \
        make \
+       r-base
     && rm -rf /var/lib/apt/lists/*
 
 # download, and make gday
 WORKDIR /src
-RUN git -c http.sslVerify=false clone https://github.com/mdekauwe/GDAY.git\
-    && cd GDAY/src \
-    && make \
+RUN git -c http.sslVerify=false clone https://github.com/MikkoPeltoniemi/Rpreles
+    &&  R CMD INSTALL Rpreles \
 
 ########################################################################
 
@@ -33,7 +33,7 @@ FROM pecan/executor:latest
 
 # INSTALL PEcAn.ED2
 #COPY models/gday /src/gday/
-#RUN Rscript --vanilla -e  "devtools::install_local('/src/gday'); q(status=as.integer(!'PEcAn.GDAY' %in% installed.packages()))" 
+#RUN Rscript --vanilla -e  "devtools::install_local('/src/preles'); q(status=as.integer(!'PEcAn.preles' %in% installed.packages()))" 
 
 # ----------------------------------------------------------------------
 # SETUP FOR SPECIFIC MODEL
@@ -49,5 +49,4 @@ ENV APPLICATION="./job.sh" \
 
 ENV RABBITMQ_QUEUE="${MODEL_TYPE}_${MODEL_VERSION}"
 
-# COPY model binary
-COPY --from=model-binary /src/GDAY/src/gday /usr/local/bin/gday.${MODEL_VERSION}
+
